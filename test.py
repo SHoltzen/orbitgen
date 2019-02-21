@@ -5,7 +5,7 @@ import unittest
 def count_num_generated(G):
     colors = [[], [i for i in G.vertices()]]
     num_vert = len(G.vertices())
-    l = orbitgen.genrep(G, colors)
+    l = orbitgen.genrep(G)
     tot = 0
     for k in l:
         if len(k[1][0]) == num_vert/2.0:
@@ -42,6 +42,11 @@ class TestGen(unittest.TestCase):
 
     def test_circlelader(self):
         G = graphs.CircularLadderGraph(4)
+        self.assertEqual(orbitgen.count_num_distinct(G),
+                         count_num_generated(G))
+
+    def test_star(self):
+        G = graphs.StarGraph(7)
         self.assertEqual(orbitgen.count_num_distinct(G),
                          count_num_generated(G))
 

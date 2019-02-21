@@ -1,20 +1,12 @@
 from sage.all import *
 import cProfile, pstats, StringIO
 
-# graph: a sage graph
-# colors: a list of lists which partitions the vertices in G into colors
-#   colors[0]: True vertices
-#   colors[1]: False vertices
-#   colors[3] is reserved for the algorithm
-def genrep(graph, colors):
-    ret = [(graph, colors)]
+### foldrep
+def foldrep(graph, colors, acc, f):
+    acc = f(acc, graph, colors)
     if len(colors[0]) >= (len(graph.vertices()) / 2):
-        return ret
-    # print("----\nCall with colors: %s" % colors)
-    # print("graph: %s" % graph.edges())
+        return acc
     A, orbits = graph.automorphism_group(partition=colors, orbits=True, algorithm="bliss")
-    # orbits = A.orbits()
-    # print("A: %s, orbits: %s" % (A, orbits))
     for o in orbits:
         e = o[0] # pick the first element in the orbit arbitrarily
         # check if this orbit is already true
@@ -38,18 +30,26 @@ def genrep(graph, colors):
         canoncolor = [[x for x in Gpcolor[0] if x != inv_c[first_t]],
                       Gpcolor[1],
                       [inv_c[first_t]]]
-        # print("canon color: %s" % canoncolor)
         Dcanon = graph.canonical_label(partition=canoncolor, algorithm="bliss")
-        # print("")
-        # print("   Dcolor: %s" % Dcolor)
-        # print("   Canonical deletion: %s" % canoncolor)
-        # print("   Considering coloring %s" % (Gpcolor))
         if Dcanon == D:
-            # print("   accepted")
-            ret += genrep(graph, Gpcolor)
-    return ret
+            acc = foldrep(graph, Gpcolor, acc, f)
+    return acc
 
-# given a graph g, count the number of distinct 2-colorings
+### genrep: generates a representative of each orbit class of a graph
+### graph: a sage graph
+### colors: a list of lists which partitions the vertices in G into colors
+###   colors[0]: True vertices
+###   colors[1]: False vertices
+###   colors[3] is reserved for the algorithm
+### fold: apply a fold method to each orbit
+def genrep(G):
+    colors = [[], [i for i in G.vertices()]]
+    return foldrep(G, colors, [], lambda acc, g, color: acc + [(g, color)])
+
+# given a graph g, count the number of distinct 2-colorings using Polya's
+# theorem.
+# TODO: This can in be done more efficiently without expanding the cycle index
+# polynomial on 2 variables, but I can't figure out how.
 def count_num_distinct(g):
     return g.automorphism_group().cycle_index().expand(2)((1,1))
 
@@ -58,10 +58,9 @@ def main():
     # pr = cProfile.Profile()
     # pr.enable()
 
-    G = graphs.CompleteGraph(10)
-    colors = [[], [i for i in G.vertices()]]
+    G = graphs.CycleGraph(4)
     num_vert = len(G.vertices())
-    r = genrep(G, colors)
+    r = genrep(G)
     tot = 0
     for k in r:
         if len(k[1][0]) == num_vert/2.0:
