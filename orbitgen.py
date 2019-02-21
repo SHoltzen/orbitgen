@@ -49,12 +49,16 @@ def genrep(graph, colors):
             ret += genrep(graph, Gpcolor)
     return ret
 
+# given a graph g, count the number of distinct 2-colorings
+def count_num_distinct(g):
+    return g.automorphism_group().cycle_index().expand(2)((1,1))
+
 def main():
     # n=3
     # pr = cProfile.Profile()
     # pr.enable()
 
-    G = graphs.CycleGraph(15)
+    G = graphs.CompleteGraph(10)
     colors = [[], [i for i in G.vertices()]]
     num_vert = len(G.vertices())
     r = genrep(G, colors)
@@ -66,8 +70,7 @@ def main():
             tot+= 2
         print(k)
     print("Found configurations: %d" % tot)
-    num_expected = G.automorphism_group().cycle_index().expand(2)((1,1))
-    print("Expected configurations: %d" % num_expected)
+    print("Expected configurations: %d" % count_num_distinct(G))
     # print("size: %d" % len(r))
 
     # pr.disable()
