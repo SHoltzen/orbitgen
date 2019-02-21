@@ -7,14 +7,14 @@ from sage.all import *
 #   colors[3] is reserved for the algorithm
 def genrep(graph, colors):
     ret = [(graph, colors)]
-    if graph.vertices() == colors[0].sort():
+    if len(colors[0]) >= (len(graph.vertices()) / 2):
         return ret
-    # print("colors: %s" % colors)
+    # print("----\nCall with colors: %s" % colors)
+    # print("graph: %s" % graph.edges())
     A = graph.automorphism_group(partition=colors)
     orbits = A.orbits()
-    # print("orbits: %s" % orbits)
+    # print("A: %s, orbits: %s" % (A, orbits))
     for o in orbits:
-        # print("current orbit: %s" % o)
         e = o[0] # pick the first element in the orbit arbitrarily
         # check if this orbit is already true
         if e in colors[0]:
@@ -25,23 +25,37 @@ def genrep(graph, colors):
         Gpcolor = [colors[0] + [e], [c for c in colors[1] if c != e]]
         Gprime, c = graph.canonical_label(partition=Gpcolor, certificate=True)
 
+        # c is a map from old vertices to new vertices; we need to invert it
+        inv_c = {v: k for k, v in c.iteritems()}
+
         # find lexically first vertex whose value is true in the canonical Gprime;
         # default to vertex 0
         first_t = next((v for v in Gprime.vertices() if v not in Gpcolor[1]), Gprime.vertices()[0])
-        canoncolor = [[c for c in Gpcolor[0] if c != first_t], Gpcolor[1], [first_t]]
+
+        # need to convert these colorings into colorings of original vertices
+        canoncolor = [[x for x in Gpcolor[0] if x != inv_c[first_t]],
+                      Gpcolor[1],
+                      [inv_c[first_t]]]
         # print("canon color: %s" % canoncolor)
         Dcanon = graph.canonical_label(partition=canoncolor)
-
+        # print("")
+        # print("   Dcolor: %s" % Dcolor)
+        # print("   Canonical deletion: %s" % canoncolor)
+        # print("   Considering coloring %s" % (Gpcolor))
         if Dcanon == D:
-            ret += genrep(Gprime, Gpcolor)
+            # print("   accepted")
+            ret += genrep(graph, Gpcolor)
     return ret
 
 def main():
     n=4
     G = graphs.CycleGraph(n)
-    # print(G.vertices())
     colors = [[], [i for i in range(0,n)]]
-    print(genrep(G, colors))
+    r = genrep(G, colors)
+    for k in r:
+        print(k)
+    print(len([x for x in r if len(x[0]) >= 3]))
+    print("size: %d" % len(r))
 
 if __name__ == "__main__":
     main()
