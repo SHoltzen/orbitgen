@@ -6,13 +6,7 @@ def count_num_generated(G):
     colors = [[], [i for i in G.vertices()]]
     num_vert = len(G.vertices())
     l = orbitgen.genrep(G)
-    tot = 0
-    for k in l:
-        if len(k[1][0]) == num_vert/2.0:
-            tot += 1
-        else:
-            tot+= 2
-    return tot
+    return len(l)
 
 class TestGen(unittest.TestCase):
     def test_complete(self):
