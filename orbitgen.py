@@ -14,38 +14,53 @@ def findsubsets(S,m):
 ###   colors[1]: False vertices
 ###   colors[3] is reserved for the algorithm
 ### fold: apply a fold method to each orbit
-def foldrep(graph, colors, acc, f):
+def foldrep(graph, colors, acc, f, level=0, debug=False):
     # TODO: reduce number of isomorphism calls if possible
     acc = f(acc, graph, colors)
     if len(colors[0]) >= (len(graph.vertices()) / 2):
         return acc
     A, orbits = graph.automorphism_group(partition=colors, orbits=True, algorithm="bliss")
+    # print("%sorbits: %s" % ("\t"*level, orbits))
     for o in orbits:
+        # print("")
+        # print("%scurrent orbit: %s" % ("\t"*level, o))
         e = o[0] # pick the first element in the orbit arbitrarily
         # check if this orbit is already true
         if e in colors[0]:
             continue
         # we know this is an uncolored vertex
         Dcolor = [colors[0], [c for c in colors[1] if c != e], [e]]
-        D = graph.canonical_label(partition=Dcolor)
+        D = graph.canonical_label(partition=Dcolor, algorithm="bliss")
+
         Gpcolor = [colors[0] + [e], [c for c in colors[1] if c != e]]
         Gprime, c = graph.canonical_label(partition=Gpcolor,
-                                          certificate=True, algorithm="bliss")
+                                           certificate=True, algorithm="bliss")
 
+        # print("%smap: %s" % ("\t"*level, c))
         # c is a map from old vertices to new vertices; we need to invert it
         inv_c = {v: k for k, v in c.iteritems()}
 
         # find lexically first vertex whose value is true in the canonical Gprime;
         # default to vertex 0
-        first_t = next((v for v in Gprime.vertices() if v not in Gpcolor[1]), Gprime.vertices()[0])
+        first_t = None
+        for v in Gprime.vertices(sort=True):
+            if inv_c[v] in Gpcolor[0]:
+                first_t = inv_c[v]
+                break
+        if first_t is None:
+            first_t = Gprime.vertices(sort=True)[0]
 
-        # need to convert these colorings into colorings of original vertices
-        canoncolor = [[x for x in Gpcolor[0] if x != inv_c[first_t]],
+        canoncolor = [[x for x in Gpcolor[0] if x != first_t],
                       Gpcolor[1],
-                      [inv_c[first_t]]]
+                      [first_t]]
+        # print("%scanon color: %s, Dcolor: %s" % ("\t"*level, canoncolor, Dcolor))
         Dcanon = graph.canonical_label(partition=canoncolor, algorithm="bliss")
+        assert(set(Dcolor[0] + Dcolor[2]) == set(canoncolor[0] + canoncolor[2]) == set(Gpcolor[0]))
         if Dcanon == D:
-            acc = foldrep(graph, Gpcolor, acc, f)
+            # print("%saccepted %s" % ("\t"*level,Gpcolor))
+            acc = foldrep(graph, Gpcolor, acc, f, level=level+1)
+        # else:
+            # print("%srejected coloring: %s" % ("\t"*level, Gpcolor))
     return acc
 
 ### genrep: generates a representative of each orbit class of a graph
@@ -57,18 +72,22 @@ def genrep(G):
         if len(color[0]) < len(g.vertices()) / 2.0:
             return acc + [color] + [color[::-1]]
 
-        # we know it's a 50/50 color split, check if this is an isomorphic
-        # inversion or not
-        g2 = Graph(g)
-        g.canonical_label(partition=color)
-        g2.canonical_label(partition=color[::-1])
-        if g == g2:
-            # inversions are isomorphic, return one
-            return acc + [color]
-        else:
-            # inversion are non-isomorphic, return both
-           print("non isomorphic inversion: %s, %s" % (color, color[::-1]))
-           return acc + [color] + [color[::-1]]
+        # use orbit-stabilizer to see if this is a unique orbit or not
+        # A, orbits = g.automorphism_group(partition=color, orbits=True)
+        # check to make sure each orbit has at most a single color
+        # intersect = False
+        # print("colors: %s, orbits: %s" % (color, orbits))
+        # for o in orbits:
+        #     if len(set(o).intersection(set(color[0])).intersection(set(color[1]))) > 0:
+        #         intersect = True
+        #         break
+
+        # if not intersect:
+        #     print("non-overlapping orbits: %s, colors: %s" % (orbits, color))
+        # return acc + [color] + [color[::-1]]
+        # else:
+        #    # inversion are isomorphic, return one
+        return acc + [color]
     return foldrep(G, colors, [], add_vertex)
 
 ### generates a friends and smokers graph with n people
@@ -131,7 +150,8 @@ def main():
     # pr.enable()
 
     # G = gen_friends_smokers(3)
-    G = graphs.CycleGraph(8)
+    G = graphs.CycleGraph(7)
+    # G = graphs.CompleteGraph(10)
     num_vert = len(G.vertices())
     r = genrep(G)
     for x in r:

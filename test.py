@@ -44,5 +44,10 @@ class TestGen(unittest.TestCase):
         self.assertEqual(orbitgen.count_num_distinct(G),
                          count_num_generated(G))
 
+    def test_friends_smokers(self):
+        G = orbitgen.gen_friends_smokers(3)
+        self.assertEqual(orbitgen.count_num_distinct(G),
+                         count_num_generated(G))
+
 if __name__ == '__main__':
     unittest.main()
