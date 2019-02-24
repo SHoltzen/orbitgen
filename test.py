@@ -1,11 +1,12 @@
 from sage.all import *
 import orbitgen
+from my_graphs import *
 import unittest
 
 def count_num_generated(G):
     colors = [[], [i for i in G.vertices()]]
     num_vert = len(G.vertices())
-    l = orbitgen.genrep(G)
+    l = orbitgen.genrep_bfs(G)
     return len(l)
 
 class TestGen(unittest.TestCase):
@@ -45,9 +46,20 @@ class TestGen(unittest.TestCase):
                          count_num_generated(G))
 
     def test_friends_smokers(self):
-        G = orbitgen.gen_friends_smokers(3)
+        G = gen_friends_smokers(3)
         self.assertEqual(orbitgen.count_num_distinct(G),
                          count_num_generated(G))
+
+    def test_friends_smokers(self):
+        G = gen_friends_smokers(4)
+        self.assertEqual(orbitgen.count_num_distinct(G),
+                         count_num_generated(G))
+
+    def test_aug_complete(self):
+        G = gen_complete_extra(8)
+        self.assertEqual(orbitgen.count_num_distinct(G),
+                         count_num_generated(G))
+
 
 if __name__ == '__main__':
     unittest.main()
