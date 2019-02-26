@@ -16,8 +16,11 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f):
     while len(queue) != 0:
         c = queue.popleft()
         # TODO: turn this into a single GI call by having it return both the
-        # automorphism group and the canonical form
-        gcanon, cert = my_bliss.canonical_form(graph, partition=c + fixcolors, certificate=True,
+        # automorphism group and the canonical fora
+        part = c + fixcolors
+        print("partition: %s" % part)
+        print("graph: %s" % (graph))
+        gcanon, cert = my_bliss.canonical_form(graph, partition=part, certificate=True,
                                                return_graph=False)
         gcanon = tuple(gcanon)
         # convert the colors to their coloring in the canonical graph
@@ -37,7 +40,7 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f):
                                              algorithm="bliss")
         acc = f(acc, graph, c, A)
         reps.add((gcanon, (tuple(c_canon[0]), tuple(c_canon[1]))))
-
+        print(len(reps))
         if len(c_canon[0]) + 1 <= len(colors) / 2.0:
             # if we can add more colors, try to
 
@@ -93,14 +96,13 @@ def genrep_bfs(G):
 
 
 def genrep_bfs_factor(G, varnodes, colornodes):
-    colors = varnodes
     # folding function
     def add_vertex(acc, g, color, A):
         if len(color[0]) < len(varnodes) / 2.0:
             return acc + [color] + [color[::-1]]
 
         return acc + [color]
-    return bfs_foldrep(G, colors, colornodes, [], add_vertex)
+    return bfs_foldrep(G, varnodes, colornodes, [], add_vertex)
 
 ### partition_function
 ### computes the partition of a fully symmetric MLN the specified parameter
@@ -108,19 +110,19 @@ def genrep_bfs_factor(G, varnodes, colornodes):
 ### potential: a function which maps variable truth assignments to
 ### probabilities. This function *must* be invariant wrt. the automorphism
 ### group of the graph.
-def partition(G, potential):
-    colors = [[], [i for i in G.vertices()]]
+def partition(G, variables, factors, potential):
     # folding function
-    def sum_prob(acc, g, color):
+    print("G: %s, vars: %s, factors: %s" % (G, variables, factors))
+    def sum_prob(acc, g, color, A):
         # TODO: avoid recomputing these two automorphism groups
         g_order = g.automorphism_group().order()
-        aut_order = g.automorphism_group(partition=color).order()
+        aut_order = A.order()
         orbit_sz = g_order / aut_order # yay orbit stabilizer theorem!
         if len(color[0]) < len(g.vertices()) / 2.0:
             return acc + (orbit_sz * potential(color)) + (orbit_sz * potential(color[::-1]))
 
         return acc + (orbit_sz * potential(color))
-    return foldrep(G, colors, 0.0, sum_prob)
+    return bfs_foldrep(G, variables, factors, 0.0, sum_prob)
 
 def bruteforce_partition(G, potential):
     # evaluate the potential on every assignment to variables
@@ -144,11 +146,19 @@ def count_num_distinct(g):
 
 
 def compute_partition():
-    def partfun(assgn):
-        return len(assgn[0])
-    G = gen_complete_extra(3)
-    print("partition: %d" % (partition(G, partfun)))
-    print("brute forced: %d" % (bruteforce_partition(G, partfun)))
+    G = gen_complete_pairwise_factor(7)
+    def potential(assgn):
+        # count potential: potential is # incoming nodes which are true
+        p = 0.0
+        for factor in G[1][1]:
+            connected = G[0].neighbors(factor)
+            for v in connected:
+                if v in assgn[0]:
+                    p += 1
+        return p
+    part = partition(G[0], G[1][0], [G[1][1]], potential)
+    print("partition: %d" % part)
+    # print("brute forced: %d" % (bruteforce_partition(G, partfun)))
 
 def find_representatives():
     # n=3
@@ -158,7 +168,7 @@ def find_representatives():
     # G = graphs.EmptyGraph()
     # for v in range(0, 300):
     #     G.add_vertex(v)
-    G = gen_complete_pairwise_factor(100)
+    G = gen_complete_pairwise_factor(7)
     # G = graphs.CompleteGraph(5)
     # G = gen_pigeonhole(5,5)
     # G = graphs.CycleGraph(20)
@@ -181,4 +191,5 @@ def find_representatives():
 
 
 if __name__ == "__main__":
-    find_representatives()
+    compute_partition()
+    # find_representatives()
