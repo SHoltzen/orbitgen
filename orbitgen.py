@@ -36,14 +36,13 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f):
             continue
         acc = f(acc, graph, c)
         reps.add((gcanon, (tuple(c_canon[0]), tuple(c_canon[1]))))
-        # print("added rep: %s" % reps)
 
-        # print(c)
         if len(c_canon[0]) + 1 <= len(colors) / 2.0:
             # if we can add more colors, try to
+
             gens = my_bliss.raw_automorphism_generators(graph, partition=c + fixcolors)
-            # compute orbits from generators
-            vset = set(graph.vertices())
+            # big speed hack: compute orbits from generators. avoid calling GAP for this.
+            vset = set(colors)
             seenset = set()
             cur_orbit = set()
             cur_point = graph.vertices()[0]
@@ -61,12 +60,16 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f):
                 cur_orbit.add(cur_point)
                 # apply a generator to this point
                 for gen in gens:
-                    try:
-                        i = gen.index(cur_point)
-                        cur_point = gen[(i + 1) % len(gen)]
-                    except:
-                        continue
+                    # a generator is a list of cycles, so we go one level deeper
+                    for cyc in gen:
+                        try:
+                            i = cyc.index(cur_point)
+                            cur_point = cyc[(i + 1) % len(cyc)]
+                            break
+                        except:
+                            continue
 
+            # if we need the full automorphism group, we can compute it here.
             # A, orbits = graph.automorphism_group(partition=c + fixcolors, orbits=True,
             #                                      algorithm="bliss")
             # expand this node and add it to the queue
@@ -159,7 +162,7 @@ def find_representatives():
     # G = graphs.EmptyGraph()
     # for v in range(0, 300):
     #     G.add_vertex(v)
-
+    # G = gen_complete_pairwise_factor(100)
     # G = graphs.CompleteGraph(5)
     # G = gen_friends_smokers(10)
     # G = graphs.CycleGraph(20)
@@ -167,7 +170,7 @@ def find_representatives():
     G = gen_friends_smokers_factor(7)
     # G = G.complement()
     # r = genrep_bfs(G)
-    r = genrep_bfs_factor(G[0], G[1][0], [G[1][1]])
+    r = genrep_bfs_factor(G[0].complement(), G[1][0], [G[1][1]])
     for x in r:
         print(x)
     print("Found configurations: %d" % len(r))

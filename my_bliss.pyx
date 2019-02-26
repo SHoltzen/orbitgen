@@ -1,4 +1,5 @@
 # distutils: language = c++
+# cython: profile=True
 
 r"""
 Interface with bliss: graph (iso/auto)morphism
@@ -53,6 +54,8 @@ cdef extern from "bliss/graph.hh" namespace "bliss":
         void change_color(const unsigned int, const unsigned int);
         const unsigned int* canonical_form(Stats&, void (*)(void*,unsigned int,
                     const unsigned int*), void*)
+        int cmp(Graph& other)
+        unsigned int get_hash();
 
     cdef cppclass Digraph(AbstractGraph):
         Digraph(const unsigned int)
