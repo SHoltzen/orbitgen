@@ -3,66 +3,24 @@ from my_graphs import *
 import cProfile, pstats, StringIO
 from sage.groups.perm_gps.partn_ref.refinement_graphs import isomorphic
 from collections import deque
+import my_bliss
 
-### foldrep: applies f to each canonical representative, maintains an
-### accumulator
-### graph: a sage graph
-### colors: a list of lists which partitions the vertices in G into colors
-###   colors[0]: True vertices
-###   colors[1]: False vertices
-###   colors[3] is reserved for the algorithm
-### fold: apply a fold method to each orbit
-def foldrep(graph, colors, acc, f):
-    # TODO: reduce number of isomorphism calls if possible
-    acc = f(acc, graph, colors)
-    if len(colors[0]) >= (len(graph.vertices()) / 2):
-        return acc
-    A, orbits = graph.automorphism_group(partition=colors, orbits=True)
-    for o in orbits:
-        e = o[0] # pick the first element in the orbit arbitrarily
-        # check if this orbit is already true
-        if e in colors[0]:
-            continue
-        # we know this is an uncolored vertex
-        Dcolor = [colors[0], [c for c in colors[1] if c != e], [e]]
-        D = graph.canonical_label(partition=Dcolor, algorithm="bliss")
-
-        Gpcolor = [colors[0] + [e], [c for c in colors[1] if c != e]]
-        Gprime, c = graph.canonical_label(partition=Gpcolor,
-                                           certificate=True)
-
-        # c is a map from old vertices to new vertices; we need to invert it
-        inv_c = {v: k for k, v in c.iteritems()}
-
-        # compute the canonical deletion of Gprime
-        # find lexically first vertex whose value is true in the canonical
-        # Gprime; default to vertex 0.
-        first_t = None
-        for v in Gprime.vertices(sort=True):
-            if inv_c[v] in Gpcolor[0]:
-                first_t = inv_c[v]
-                break
-        if first_t is None:
-            first_t = Gprime.vertices(sort=True)[0]
-
-        canoncolor = [[x for x in Gpcolor[0] if x != first_t],
-                      Gpcolor[1],
-                      [first_t]]
-        Dcanon = graph.canonical_label(partition=canoncolor)
-        if Dcanon == D:
-            acc = foldrep(graph, Gpcolor, acc, f)
-    return acc
-
-def bfs_foldrep(graph, colors, acc, f):
+### bfs_foldrep
+### visits all possible isomorphic graph colorings in `colors`. The colors in
+### `fixcolors` are fixed throughout.
+def bfs_foldrep(graph, colors, fixcolors, acc, f):
     # queue of colorings yet to be considered
-    queue = deque([colors])
+    queue = deque()
+    queue.append([[], colors])
     # set of representative graph colorings
     reps = set()
     while len(queue) != 0:
         c = queue.popleft()
         # print("----")
-        # print("Current color: %s" % c)
-        gcanon, cert = graph.canonical_label(partition=c, certificate=True)
+        # print("Current color: %s" % (c + fixcolors))
+        # TODO: turn this into a single GI call by having it return both the
+        # automorphism group and the canonical form
+        gcanon, cert = graph.canonical_label(partition=c + fixcolors, certificate=True)
         G_immut = Graph(gcanon, immutable=True)
 
         # convert the colors to their coloring in the canonical graph
@@ -82,43 +40,42 @@ def bfs_foldrep(graph, colors, acc, f):
         # print("added rep: %s" % reps)
 
         # print(c)
-        if len(c_canon[0]) + 1 <= len(graph.vertices()) / 2.0:
+        if len(c_canon[0]) + 1 <= len(colors) / 2.0:
             # if we can add more colors, try to
-            A, orbits = graph.automorphism_group(partition=c, orbits=True)
+            A, orbits = graph.automorphism_group(partition=c + fixcolors, orbits=True)
             # print("orbits: %s" % orbits)
             # expand this node and add it to the queue
             for o in orbits:
                 # print("Considering orbit %s" % o)
                 e = o[0] # pick the first element in the orbit arbitrarily
-                # check if this orbit is already true
-                if e in c[0]:
+                # check if this orbit is already true, or if it is any of the fixed colors
+                if e in c[0] or e in [y for x in fixcolors for y in x]:
                     continue
                 # we know this is an uncolored vertex
                 newcolor = [c[0] + [e], [x for x in c[1] if x != e]]
                 queue.append(newcolor)
     return acc
 
-### genrep: generates a representative of each orbit class of a graph
-def genrep(G):
-    colors = [[], [i for i in G.vertices()]]
-    # folding function
-    def add_vertex(acc, g, color):
-        if len(color[0]) < len(g.vertices()) / 2.0:
-            return acc + [color] + [color[::-1]]
-
-        return acc + [color]
-    return foldrep(G, colors, [], add_vertex)
-
 def genrep_bfs(G):
-    colors = [[], [i for i in G.vertices()]]
+    colors = G.vertices()
     # folding function
     def add_vertex(acc, g, color):
         if len(color[0]) < len(g.vertices()) / 2.0:
             return acc + [color] + [color[::-1]]
 
         return acc + [color]
-    return bfs_foldrep(G, colors, [], add_vertex)
+    return bfs_foldrep(G, colors, [], [], add_vertex)
 
+
+def genrep_bfs_factor(G, varnodes, colornodes):
+    colors = varnodes
+    # folding function
+    def add_vertex(acc, g, color):
+        if len(color[0]) < len(varnodes) / 2.0:
+            return acc + [color] + [color[::-1]]
+
+        return acc + [color]
+    return bfs_foldrep(G, colors, colornodes, [], add_vertex)
 
 ### partition_function
 ### computes the partition of a fully symmetric MLN the specified parameter
@@ -171,26 +128,32 @@ def compute_partition():
 
 def find_representatives():
     # n=3
-    # pr = cProfile.Profile()
-    # pr.enable()
+    pr = cProfile.Profile()
+    pr.enable()
 
-    # G = graphs.CompleteGraph(4)
-    G = gen_friends_smokers(10)
+    # G = graphs.EmptyGraph()
+    # for v in range(0, 300):
+    #     G.add_vertex(v)
+
+    # G = graphs.CompleteGraph(5)
+    # G = gen_friends_smokers(10)
     # G = graphs.CycleGraph(20)
-    # G = gen_complete_extra(3)
-    num_vert = len(G.vertices())
-    r = genrep_bfs(G)
+    # G = gen_complete_extra(20)
+    G = gen_friends_smokers_factor(6)
+    # G = G.complement()
+    # r = genrep_bfs(G)
+    r = genrep_bfs_factor(G[0], G[1][0], [G[1][1]])
     for x in r:
         print(x)
     print("Found configurations: %d" % len(r))
-    print("Expected configurations: %d" % count_num_distinct(G))
+    # print("Expected configurations: %d" % count_num_distinct(G))
 
-    # pr.disable()
-    # s = StringIO.StringIO()
-    # sortby = 'cumulative'
-    # ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
-    # ps.print_stats()
-    # print s.getvalue()
+    pr.disable()
+    s = StringIO.StringIO()
+    sortby = 'cumulative'
+    ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+    ps.print_stats()
+    print s.getvalue()
 
 
 if __name__ == "__main__":

@@ -26,6 +26,60 @@ def gen_friends_smokers(n):
     g.add_edges(smokeredges)
     return g
 
+### generates a complete pairwise factor graph
+### returns a the graph and a tuple whose first element are the variables
+### and second element are the factors
+def gen_complete_pairwise_factor(n):
+    g = Graph(sparse=True)
+    # make n smoker vertices
+    smokers = [x for x in range(0,n)]
+    # connect all the smoker to the factors
+    # make friends
+    factors = []
+    edges = []
+    # friends = []
+    # friendedges = []
+    count = n
+    for (s1,s2) in findsubsets(smokers, 2):
+        factors += [count]
+        edges += [(s1, count), (s2, count)]
+        count += 1
+
+    g.add_vertices(smokers)
+    g.add_vertices(factors)
+    g.add_edges(edges)
+    return (g, (smokers, factors))
+
+### generates a complete pairwise factor graph
+### returns a the graph and a tuple whose first element are the variables
+### and second element are the factors
+def gen_friends_smokers_factor(n):
+    g = Graph(sparse=True)
+    # make n smoker vertices
+    smokers = [x for x in range(0,n)]
+    # connect all the smoker to the factors
+    # make friends
+    factors = []
+    edges = []
+    count = n
+    friends = []
+    for (s1,s2) in findsubsets(smokers, 2):
+        cur_factor = count
+        factors += [cur_factor]
+        count += 1
+        edges += [(s1, count), (s2, count)]
+        friends += [count]
+        edges += [(cur_factor, count)]
+        count += 1
+
+    g.add_vertices(smokers)
+    g.add_vertices(friends)
+    g.add_vertices(factors)
+    g.add_edges(edges)
+    return (g, (smokers + friends, factors))
+
+
+
 # generates a graph which is fully-connected in m and connected across n
 def gen_pigeonhole(n,m):
     g = Graph()
@@ -71,3 +125,4 @@ def gen_complete_extra(n):
     g.add_vertices(v)
     g.add_edges(e)
     return g
+
