@@ -36,7 +36,7 @@ from cpython cimport PyObject
 from libc.limits cimport LONG_MAX
 
 from cysignals.memory cimport check_calloc, sig_free
-# test
+
 cdef extern from "bliss/graph.hh" namespace "bliss":
 
     cdef cppclass Stats:
@@ -527,6 +527,8 @@ cdef automorphism_group_gens_from_edge_list(int Vnr, Vout, Vin, int Lnr=1, label
     cdef Graph* g
     cdef Digraph* d
     cdef Stats s
+    cdef const unsigned int* aut
+    cdef dict relabel
 
     if not int2vert:
         int2vert = list(range(Vnr))
@@ -550,6 +552,7 @@ cdef automorphism_group_gens_from_edge_list(int Vnr, Vout, Vin, int Lnr=1, label
         del g
 
     return [[cyc for cyc in gen if cyc[0] is not None] for gen in gens]
+
 
 cpdef automorphism_group(G, partition=None, use_edge_labels=True):
     """
@@ -741,6 +744,53 @@ cpdef automorphism_group(G, partition=None, use_edge_labels=True):
     from sage.groups.perm_gps.permgroup import PermutationGroup
     return PermutationGroup(gens, domain=sorted(G))
 
+
+cpdef orbits_and_canonical_labeling(G, partition=None, use_edge_labels=True):
+    # We need this to convert the numbers from <unsigned int> to
+    # <long>. This assertion should be true simply for memory reasons.
+    cdef unsigned long Vnr = G.order()
+    assert Vnr <= <unsigned long>LONG_MAX
+
+    cdef bint directed = G.is_directed()
+
+    cdef int labInd
+    cdef list Vout   = []
+    cdef list Vin    = []
+    cdef list labels = []
+
+    cdef list int2vert = list(G)
+    cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
+    cdef list edge_labels = []
+    cdef dict edge_labels_rev = {}
+    cdef int Lnr = 0
+
+    if bool(partition):
+        partition = [[ vert2int[i] for i in part] for part in partition]
+
+    for x,y,lab in G.edge_iterator(labels=True):
+        if use_edge_labels is False:
+            lab = None
+        try:
+            labInd = edge_labels_rev[lab]
+        except KeyError:
+            labInd = Lnr
+            Lnr += 1
+            edge_labels_rev[lab] = labInd
+            edge_labels.append(lab)
+
+        Vout.append(vert2int[x])
+        Vin.append(vert2int[y])
+        labels.append(labInd)
+
+    lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]
+    labels = [lab_relabels[i] for i in labels]
+
+    gens = automorphism_group_gens_from_edge_list(Vnr, Vout, Vin, Lnr, labels, int2vert, partition, directed)
+
+    # computing this permutation group may not be necessary for my application
+    from sage.groups.perm_gps.permgroup import PermutationGroup
+    return PermutationGroup(gens, domain=sorted(G))
+
 #####################################################
 # old direct interactions graphs <-> bliss graphs
 #####################################################
@@ -810,3 +860,47 @@ cdef Digraph *bliss_digraph(G, partition, vert2int, int2vert):
             for v in partition[i]:
                 g.change_color(vert2int[v], i)
     return g
+
+cpdef raw_automorphism_generators(G, partition=None, use_edge_labels=True):
+    # compute the automorphism group, and then use this to compute orbits
+    cdef unsigned long Vnr = G.order()
+    assert Vnr <= <unsigned long>LONG_MAX
+
+    cdef bint directed = G.is_directed()
+
+    cdef int labInd
+    cdef list Vout   = []
+    cdef list Vin    = []
+    cdef list labels = []
+
+    cdef list int2vert = list(G)
+    cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
+    cdef list edge_labels = []
+    cdef dict edge_labels_rev = {}
+    cdef int Lnr = 0
+
+    if bool(partition):
+        partition = [[ vert2int[i] for i in part] for part in partition]
+
+    for x,y,lab in G.edge_iterator(labels=True):
+        if use_edge_labels is False:
+            lab = None
+        try:
+            labInd = edge_labels_rev[lab]
+        except KeyError:
+            labInd = Lnr
+            Lnr += 1
+            edge_labels_rev[lab] = labInd
+            edge_labels.append(lab)
+
+        Vout.append(vert2int[x])
+        Vin.append(vert2int[y])
+        labels.append(labInd)
+
+    lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]
+    labels = [lab_relabels[i] for i in labels]
+
+    gens = automorphism_group_gens_from_edge_list(Vnr, Vout, Vin, Lnr, labels, int2vert, partition, directed)
+
+    return gens
+

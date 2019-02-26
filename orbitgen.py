@@ -1,7 +1,6 @@
 from sage.all import *
 from my_graphs import *
 import cProfile, pstats, StringIO
-from sage.groups.perm_gps.partn_ref.refinement_graphs import isomorphic
 from collections import deque
 import my_bliss
 
@@ -20,9 +19,9 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f):
         # print("Current color: %s" % (c + fixcolors))
         # TODO: turn this into a single GI call by having it return both the
         # automorphism group and the canonical form
-        gcanon, cert = graph.canonical_label(partition=c + fixcolors, certificate=True)
-        G_immut = Graph(gcanon, immutable=True)
-
+        gcanon, cert = my_bliss.canonical_form(graph, partition=c + fixcolors, certificate=True,
+                                               return_graph=False)
+        gcanon = tuple(gcanon)
         # convert the colors to their coloring in the canonical graph
         c_canon = [[], []]
         for c1 in c[0]:
@@ -33,21 +32,47 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f):
         c_canon[0].sort()
         c_canon[1].sort()
 
-        if (G_immut, (tuple(c_canon[0]), tuple(c_canon[1]))) in reps:
+        if (gcanon, (tuple(c_canon[0]), tuple(c_canon[1]))) in reps:
             continue
         acc = f(acc, graph, c)
-        reps.add((G_immut, (tuple(c_canon[0]), tuple(c_canon[1]))))
+        reps.add((gcanon, (tuple(c_canon[0]), tuple(c_canon[1]))))
         # print("added rep: %s" % reps)
 
         # print(c)
         if len(c_canon[0]) + 1 <= len(colors) / 2.0:
             # if we can add more colors, try to
-            A, orbits = graph.automorphism_group(partition=c + fixcolors, orbits=True)
-            # print("orbits: %s" % orbits)
+            gens = my_bliss.raw_automorphism_generators(graph, partition=c + fixcolors)
+            # compute orbits from generators
+            vset = set(graph.vertices())
+            seenset = set()
+            cur_orbit = set()
+            cur_point = graph.vertices()[0]
+            orbits = []
+            while True:
+                if cur_point in cur_orbit:
+                    orbits += [cur_orbit.copy()]
+                    cur_orbit = set()
+                    # see if there are any more vertices
+                    remaining = vset - seenset
+                    if len(remaining) == 0:
+                        break
+                    cur_point = remaining.pop()
+                seenset.add(cur_point)
+                cur_orbit.add(cur_point)
+                # apply a generator to this point
+                for gen in gens:
+                    try:
+                        i = gen.index(cur_point)
+                        cur_point = gen[(i + 1) % len(gen)]
+                    except:
+                        continue
+
+            # A, orbits = graph.automorphism_group(partition=c + fixcolors, orbits=True,
+            #                                      algorithm="bliss")
             # expand this node and add it to the queue
             for o in orbits:
                 # print("Considering orbit %s" % o)
-                e = o[0] # pick the first element in the orbit arbitrarily
+                e = o.pop() # pick an element in the orbit arbitrarily
                 # check if this orbit is already true, or if it is any of the fixed colors
                 if e in c[0] or e in [y for x in fixcolors for y in x]:
                     continue
@@ -139,7 +164,7 @@ def find_representatives():
     # G = gen_friends_smokers(10)
     # G = graphs.CycleGraph(20)
     # G = gen_complete_extra(20)
-    G = gen_friends_smokers_factor(6)
+    G = gen_friends_smokers_factor(7)
     # G = G.complement()
     # r = genrep_bfs(G)
     r = genrep_bfs_factor(G[0], G[1][0], [G[1][1]])
