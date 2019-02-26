@@ -57,7 +57,7 @@ def compute_partition():
 def mpe(G, variables, factors, potential):
     # folding function
     print("G: %s, vars: %s, factors: %s" % (G, variables, factors))
-    def sum_prob(acc, g, color):
+    def max_prob(acc, g, color):
         (cur_max_state, cur_max_value) = acc
         if len(color[0]) < len(g.vertices()) / 2.0:
             # check both possibilities
@@ -70,11 +70,31 @@ def mpe(G, variables, factors, potential):
             cur_max_value = pot
             cur_max_state = color
         return (cur_max_state, cur_max_value)
-    return bfs_foldrep(G, variables, factors, (None, 0.0), sum_prob)
+    return bfs_foldrep(G, variables, factors, (None, 0.0), max_prob)
+
+
+# potential returns a pair (prob, const) which is the probability and
+# normalizing constant on a particular orbit
+def prob(G, variables, factors, potential):
+    # folding function
+    print("G: %s, vars: %s, factors: %s" % (G, variables, factors))
+    def sum_prob(acc, g, color, g_order, cur_order):
+        cur_sz = g_order / cur_order # yay orbit stabilizer theorem!
+        (cur_prob, cur_z) = acc
+        if len(color[0]) < len(g.vertices()) / 2.0:
+            # check both possibilities
+            (prob, z) = potential(color[::-1])
+            cur_prob += prob * cur_sz
+            cur_z += z * cur_sz
+        (prob, z) = potential(color[::-1])
+        cur_prob += prob * cur_sz
+        cur_z += z * cur_sz
+        return (cur_prob, cur_z)
+    return bfs_foldrep(G, variables, factors, (0.0, 0.0), sum_prob, orders=True)
 
 
 def compute_mpe_complete_2factor():
-    G = gen_complete_pairwise_factor(10)
+    G = gen_complete_pairwise_factor(100)
     # add evidence: the first variable is false
     G[0].add_vertex(name="e")
     G[0].add_edge(("e", G[1][0][0]))
@@ -108,9 +128,35 @@ def compute_mpe_complete_2factor():
     ps.print_stats()
     print s.getvalue()
 
+def compute_prob_big_factor():
+    G = gen_single_big_factor(10)
+    # add evidence: the first variable is false
+    G[0].add_vertex(name="e")
+    G[0].add_edge(("e", G[1][0][0]))
+    def potential(assgn):
+        p = 0.0
+        for v in assgn[0]:
+            p += 1
 
+        if G[1][0][0] in assgn[0]:
+            return (0.0, p)
+        else:
+            return (p, p)
 
+    pr = cProfile.Profile()
+    pr.enable()
+
+    res = prob(G[0], G[1][0], [G[1][1] + ["e"]], potential)
+    print("prob %f" % (res[0] / res[1]))
+    # print("brute forced: %d" % (bruteforce_partition(G, partfun)))
+
+    pr.disable()
+    s = StringIO.StringIO()
+    sortby = 'cumulative'
+    ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+    ps.print_stats()
+    print s.getvalue()
 
 
 if __name__ == "__main__":
-    compute_mpe_complete_2factor()
+    compute_prob_big_factor()

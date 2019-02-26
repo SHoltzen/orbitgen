@@ -47,6 +47,9 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f, orders=False):
     # queue of colorings yet to be considered
     queue = deque()
     queue.append([[], colors])
+    g_order = None
+    if orders:
+        g_order = graph.automorphism_group().order()
     # set of representative graph colorings
     reps = set()
     while len(queue) != 0:
@@ -72,7 +75,10 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f, orders=False):
 
         A, orbits = graph.automorphism_group(partition=c + fixcolors, orbits=True,
                                              algorithm="bliss")
-        acc = f(acc, graph, c)
+        if orders:
+            acc = f(acc, graph, c, g_order, A.order())
+        else:
+            acc = f(acc, graph, c)
         reps.add((gcanon, (tuple(c_canon[0]), tuple(c_canon[1]))))
         print(len(reps))
         if len(c_canon[0]) + 1 <= len(colors) / 2.0:

@@ -50,6 +50,29 @@ def gen_complete_pairwise_factor(n):
     g.add_edges(edges)
     return (g, (smokers, factors))
 
+
+### generates a factor graph with one big factor and n variables connected to it
+### returns a the graph and a tuple whose first element are the variables
+### and second element are the factors
+def gen_single_big_factor(n):
+    g = Graph(sparse=True)
+    # make n smoker vertices
+    v = [x for x in range(0,n)]
+    # connect all the smoker to the factors
+    # make friends
+    factors = [n]
+    edges = []
+    # friends = []
+    # friendedges = []
+    count = n
+    for va in v:
+        edges += [(n, va)]
+
+    g.add_vertices(v)
+    g.add_vertices(factors)
+    g.add_edges(edges)
+    return (g, (v, factors))
+
 ### generates a complete pairwise factor graph
 ### returns a the graph and a tuple whose first element are the variables
 ### and second element are the factors
