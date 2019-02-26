@@ -15,8 +15,6 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f):
     reps = set()
     while len(queue) != 0:
         c = queue.popleft()
-        # print("----")
-        # print("Current color: %s" % (c + fixcolors))
         # TODO: turn this into a single GI call by having it return both the
         # automorphism group and the canonical form
         gcanon, cert = my_bliss.canonical_form(graph, partition=c + fixcolors, certificate=True,
@@ -34,47 +32,46 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f):
 
         if (gcanon, (tuple(c_canon[0]), tuple(c_canon[1]))) in reps:
             continue
-        acc = f(acc, graph, c)
+
+        A, orbits = graph.automorphism_group(partition=c + fixcolors, orbits=True,
+                                             algorithm="bliss")
+        acc = f(acc, graph, c, A)
         reps.add((gcanon, (tuple(c_canon[0]), tuple(c_canon[1]))))
 
         if len(c_canon[0]) + 1 <= len(colors) / 2.0:
             # if we can add more colors, try to
 
-            gens = my_bliss.raw_automorphism_generators(graph, partition=c + fixcolors)
-            # big speed hack: compute orbits from generators. avoid calling GAP for this.
-            vset = set(colors)
-            seenset = set()
-            cur_orbit = set()
-            cur_point = graph.vertices()[0]
-            orbits = []
-            while True:
-                if cur_point in cur_orbit:
-                    orbits += [cur_orbit.copy()]
-                    cur_orbit = set()
-                    # see if there are any more vertices
-                    remaining = vset - seenset
-                    if len(remaining) == 0:
-                        break
-                    cur_point = remaining.pop()
-                seenset.add(cur_point)
-                cur_orbit.add(cur_point)
-                # apply a generator to this point
-                for gen in gens:
-                    # a generator is a list of cycles, so we go one level deeper
-                    for cyc in gen:
-                        try:
-                            i = cyc.index(cur_point)
-                            cur_point = cyc[(i + 1) % len(cyc)]
-                            break
-                        except:
-                            continue
-
+            # gens = my_bliss.raw_automorphism_generators(graph, partition=c + fixcolors)
+            # # big speed hack: compute orbits from generators. avoid calling GAP for this.
+            # vset = set(colors)
+            # seenset = set()
+            # orbits = []
+            # def step_point(point):
+            #     res = []
+            #     for gen in gens:
+            #         # a generator is a list of cycles, so we go one level deeper
+            #         for cyc in gen:
+            #             try:
+            #                 i = cyc.index(point)
+            #                 res.append(cyc[(i + 1) % len(cyc)])
+            #             except:
+            #                 continue
+            #     return res
+            # def dfs_find_orbit(gens, point, cur_orbit):
+            #     frontier = step_point(point)
+            #     cur_orbit.update(frontier)
+            #     for new_point in cur_orbit - set(frontier):
+            #         cur_orbit.update(dfs_find_orbit(gens, new_point, cur_orbit))
+            #     return cur_orbit
+            # while vset != seenset:
+            #     diff = vset - seenset
+            #     cur_point = diff.pop()
+            #     new_orbit = dfs_find_orbit(gens, cur_point, set([cur_point]))
+            #     seenset.update(new_orbit)
+            #     orbits.append(new_orbit)
             # if we need the full automorphism group, we can compute it here.
-            # A, orbits = graph.automorphism_group(partition=c + fixcolors, orbits=True,
-            #                                      algorithm="bliss")
             # expand this node and add it to the queue
             for o in orbits:
-                # print("Considering orbit %s" % o)
                 e = o.pop() # pick an element in the orbit arbitrarily
                 # check if this orbit is already true, or if it is any of the fixed colors
                 if e in c[0] or e in [y for x in fixcolors for y in x]:
@@ -87,7 +84,7 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f):
 def genrep_bfs(G):
     colors = G.vertices()
     # folding function
-    def add_vertex(acc, g, color):
+    def add_vertex(acc, g, color, A):
         if len(color[0]) < len(g.vertices()) / 2.0:
             return acc + [color] + [color[::-1]]
 
@@ -98,7 +95,7 @@ def genrep_bfs(G):
 def genrep_bfs_factor(G, varnodes, colornodes):
     colors = varnodes
     # folding function
-    def add_vertex(acc, g, color):
+    def add_vertex(acc, g, color, A):
         if len(color[0]) < len(varnodes) / 2.0:
             return acc + [color] + [color[::-1]]
 
@@ -128,7 +125,6 @@ def partition(G, potential):
 def bruteforce_partition(G, potential):
     # evaluate the potential on every assignment to variables
     def recurse(c1, c2):
-        print(c1)
         if len(c1) == 0:
             return 0
         tot = potential([c1, c2])
@@ -162,15 +158,15 @@ def find_representatives():
     # G = graphs.EmptyGraph()
     # for v in range(0, 300):
     #     G.add_vertex(v)
-    # G = gen_complete_pairwise_factor(100)
+    G = gen_complete_pairwise_factor(100)
     # G = graphs.CompleteGraph(5)
-    # G = gen_friends_smokers(10)
+    # G = gen_pigeonhole(5,5)
     # G = graphs.CycleGraph(20)
     # G = gen_complete_extra(20)
-    G = gen_friends_smokers_factor(7)
+    # G = gen_friends_smokers_factor(6)
     # G = G.complement()
     # r = genrep_bfs(G)
-    r = genrep_bfs_factor(G[0].complement(), G[1][0], [G[1][1]])
+    r = genrep_bfs_factor(G[0], G[1][0], [G[1][1]])
     for x in r:
         print(x)
     print("Found configurations: %d" % len(r))

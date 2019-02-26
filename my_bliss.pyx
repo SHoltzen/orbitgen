@@ -798,7 +798,7 @@ cpdef orbits_and_canonical_labeling(G, partition=None, use_edge_labels=True):
 # old direct interactions graphs <-> bliss graphs
 #####################################################
 
-cdef Graph *bliss_graph(G, partition, vert2int, int2vert):
+cpdef object bliss_graph(G, partition, vert2int, int2vert):
     r"""
     Return a bliss copy of a graph G
 
@@ -829,7 +829,7 @@ cdef Graph *bliss_graph(G, partition, vert2int, int2vert):
         for i in range(1, len(partition)):
             for v in partition[i]:
                 g.change_color(vert2int[v], i)
-    return g
+    return <Py_ssize_t> g;
 
 cdef Digraph *bliss_digraph(G, partition, vert2int, int2vert):
     r"""

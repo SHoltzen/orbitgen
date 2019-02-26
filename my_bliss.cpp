@@ -904,7 +904,7 @@ struct __pyx_opt_args_8my_bliss_automorphism_group;
 struct __pyx_opt_args_8my_bliss_orbits_and_canonical_labeling;
 struct __pyx_opt_args_8my_bliss_raw_automorphism_generators;
 
-/* "my_bliss.pyx":287
+/* "my_bliss.pyx":288
  * #####################################################
  * 
  * cdef canonical_form_from_edge_list(int Vnr, list Vout, list Vin, int Lnr=1, list labels=[],             # <<<<<<<<<<<<<<
@@ -920,7 +920,7 @@ struct __pyx_opt_args_8my_bliss_canonical_form_from_edge_list {
   int certificate;
 };
 
-/* "my_bliss.pyx":369
+/* "my_bliss.pyx":370
  *         return new_edges
  * 
  * cpdef canonical_form(G, partition=None, return_graph=False, use_edge_labels=True, certificate=False):             # <<<<<<<<<<<<<<
@@ -935,7 +935,7 @@ struct __pyx_opt_args_8my_bliss_canonical_form {
   PyObject *certificate;
 };
 
-/* "my_bliss.pyx":498
+/* "my_bliss.pyx":499
  * #####################################################
  * 
  * cdef automorphism_group_gens_from_edge_list(int Vnr, Vout, Vin, int Lnr=1, labels=[],             # <<<<<<<<<<<<<<
@@ -951,7 +951,7 @@ struct __pyx_opt_args_8my_bliss_automorphism_group_gens_from_edge_list {
   int directed;
 };
 
-/* "my_bliss.pyx":559
+/* "my_bliss.pyx":560
  * 
  * 
  * cpdef automorphism_group(G, partition=None, use_edge_labels=True):             # <<<<<<<<<<<<<<
@@ -964,7 +964,7 @@ struct __pyx_opt_args_8my_bliss_automorphism_group {
   PyObject *use_edge_labels;
 };
 
-/* "my_bliss.pyx":750
+/* "my_bliss.pyx":751
  * 
  * 
  * cpdef orbits_and_canonical_labeling(G, partition=None, use_edge_labels=True):             # <<<<<<<<<<<<<<
@@ -977,7 +977,7 @@ struct __pyx_opt_args_8my_bliss_orbits_and_canonical_labeling {
   PyObject *use_edge_labels;
 };
 
-/* "my_bliss.pyx":866
+/* "my_bliss.pyx":867
  *     return g
  * 
  * cpdef raw_automorphism_generators(G, partition=None, use_edge_labels=True):             # <<<<<<<<<<<<<<
@@ -1811,6 +1811,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *, int __pyx_skip_dis
 static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int, PyObject *, PyObject *, struct __pyx_opt_args_8my_bliss_automorphism_group_gens_from_edge_list *__pyx_optional_args); /*proto*/
 static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_8my_bliss_automorphism_group *__pyx_optional_args); /*proto*/
 static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_8my_bliss_orbits_and_canonical_labeling *__pyx_optional_args); /*proto*/
+static PyObject *__pyx_f_8my_bliss_bliss_graph(PyObject *, PyObject *, PyObject *, PyObject *, int __pyx_skip_dispatch); /*proto*/
 static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *, int __pyx_skip_dispatch, struct __pyx_opt_args_8my_bliss_raw_automorphism_generators *__pyx_optional_args); /*proto*/
 #define __Pyx_MODULE_NAME "my_bliss"
 extern int __pyx_module_is_main_my_bliss;
@@ -1841,7 +1842,9 @@ static const char __pyx_k_labels[] = "labels";
 static const char __pyx_k_sorted[] = "sorted";
 static const char __pyx_k_DiGraph[] = "DiGraph";
 static const char __pyx_k_KeyError[] = "KeyError";
+static const char __pyx_k_int2vert[] = "int2vert";
 static const char __pyx_k_operator[] = "operator";
+static const char __pyx_k_vert2int[] = "vert2int";
 static const char __pyx_k_enumerate[] = "enumerate";
 static const char __pyx_k_iteritems[] = "iteritems";
 static const char __pyx_k_partition[] = "partition";
@@ -1886,6 +1889,7 @@ static PyObject *__pyx_n_s_extend;
 static PyObject *__pyx_kp_s_failed_to_allocate_s_bytes;
 static PyObject *__pyx_kp_s_failed_to_allocate_s_s_bytes;
 static PyObject *__pyx_n_s_import;
+static PyObject *__pyx_n_s_int2vert;
 static PyObject *__pyx_n_s_is_directed;
 static PyObject *__pyx_n_s_itemgetter;
 static PyObject *__pyx_n_s_items;
@@ -1907,10 +1911,12 @@ static PyObject *__pyx_n_s_sage_groups_perm_gps_permgroup;
 static PyObject *__pyx_n_s_sorted;
 static PyObject *__pyx_n_s_test;
 static PyObject *__pyx_n_s_use_edge_labels;
+static PyObject *__pyx_n_s_vert2int;
 static PyObject *__pyx_pf_8my_bliss_canonical_form(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_partition, PyObject *__pyx_v_return_graph, PyObject *__pyx_v_use_edge_labels, PyObject *__pyx_v_certificate); /* proto */
 static PyObject *__pyx_pf_8my_bliss_2automorphism_group(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_partition, PyObject *__pyx_v_use_edge_labels); /* proto */
 static PyObject *__pyx_pf_8my_bliss_4orbits_and_canonical_labeling(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_partition, PyObject *__pyx_v_use_edge_labels); /* proto */
-static PyObject *__pyx_pf_8my_bliss_6raw_automorphism_generators(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_partition, PyObject *__pyx_v_use_edge_labels); /* proto */
+static PyObject *__pyx_pf_8my_bliss_6bliss_graph(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_partition, PyObject *__pyx_v_vert2int, PyObject *__pyx_v_int2vert); /* proto */
+static PyObject *__pyx_pf_8my_bliss_8raw_automorphism_generators(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_partition, PyObject *__pyx_v_use_edge_labels); /* proto */
 static __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_items = {0, &__pyx_n_s_items, 0, 0, 0};
 static __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_iteritems = {0, &__pyx_n_s_iteritems, 0, 0, 0};
 static PyObject *__pyx_int_0;
@@ -1922,7 +1928,7 @@ static PyObject *__pyx_tuple_;
 /* Late includes */
 #include "macros.h"
 
-/* "my_bliss.pyx":69
+/* "my_bliss.pyx":70
  *         unsigned int get_hash()
  * 
  * cdef void add_gen(void *user_param, unsigned int n, const unsigned int *aut):             # <<<<<<<<<<<<<<
@@ -1955,9 +1961,9 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
   int __pyx_t_11;
   int __pyx_t_12;
   __Pyx_RefNannySetupContext("add_gen", 0);
-  __Pyx_TraceCall("add_gen", __pyx_f[0], 69, 0, __PYX_ERR(0, 69, __pyx_L1_error));
+  __Pyx_TraceCall("add_gen", __pyx_f[0], 70, 0, __PYX_ERR(0, 70, __pyx_L1_error));
 
-  /* "my_bliss.pyx":87
+  /* "my_bliss.pyx":88
  *     - ``aut`` -- ``int *``; an automorphism of the graph
  *     """
  *     cdef int tmp    = 0             # <<<<<<<<<<<<<<
@@ -1966,7 +1972,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
  */
   __pyx_v_tmp = 0;
 
-  /* "my_bliss.pyx":88
+  /* "my_bliss.pyx":89
  *     """
  *     cdef int tmp    = 0
  *     cdef int marker = 0             # <<<<<<<<<<<<<<
@@ -1975,7 +1981,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
  */
   __pyx_v_marker = 0;
 
-  /* "my_bliss.pyx":89
+  /* "my_bliss.pyx":90
  *     cdef int tmp    = 0
  *     cdef int marker = 0
  *     cdef int cur    = 0             # <<<<<<<<<<<<<<
@@ -1984,29 +1990,29 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
  */
   __pyx_v_cur = 0;
 
-  /* "my_bliss.pyx":90
+  /* "my_bliss.pyx":91
  *     cdef int marker = 0
  *     cdef int cur    = 0
  *     cdef list perm  = []             # <<<<<<<<<<<<<<
  *     cdef bint* done = <bint*> check_calloc(n, sizeof(bint))
  *     cdef int i
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 90, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_perm = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":91
+  /* "my_bliss.pyx":92
  *     cdef int cur    = 0
  *     cdef list perm  = []
  *     cdef bint* done = <bint*> check_calloc(n, sizeof(bint))             # <<<<<<<<<<<<<<
  *     cdef int i
  *     for i in range(n):
  */
-  __pyx_t_2 = __pyx_f_9cysignals_6memory_check_calloc(__pyx_v_n, (sizeof(int))); if (unlikely(__pyx_t_2 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_9cysignals_6memory_check_calloc(__pyx_v_n, (sizeof(int))); if (unlikely(__pyx_t_2 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 92, __pyx_L1_error)
   __pyx_v_done = ((int *)__pyx_t_2);
 
-  /* "my_bliss.pyx":93
+  /* "my_bliss.pyx":94
  *     cdef bint* done = <bint*> check_calloc(n, sizeof(bint))
  *     cdef int i
  *     for i in range(n):             # <<<<<<<<<<<<<<
@@ -2018,7 +2024,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "my_bliss.pyx":94
+    /* "my_bliss.pyx":95
  *     cdef int i
  *     for i in range(n):
  *         done[i] = False             # <<<<<<<<<<<<<<
@@ -2028,7 +2034,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
     (__pyx_v_done[__pyx_v_i]) = 0;
   }
 
-  /* "my_bliss.pyx":96
+  /* "my_bliss.pyx":97
  *         done[i] = False
  * 
  *     gens, int_to_vertex = <object> <PyObject *> user_param             # <<<<<<<<<<<<<<
@@ -2043,7 +2049,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 96, __pyx_L1_error)
+      __PYX_ERR(0, 97, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -2056,15 +2062,15 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
     __Pyx_INCREF(__pyx_t_6);
     __Pyx_INCREF(__pyx_t_7);
     #else
-    __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_6 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_7 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_8 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 96, __pyx_L1_error)
+    __pyx_t_8 = PyObject_GetIter(__pyx_t_1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 97, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_9 = Py_TYPE(__pyx_t_8)->tp_iternext;
@@ -2072,7 +2078,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
     __Pyx_GOTREF(__pyx_t_6);
     index = 1; __pyx_t_7 = __pyx_t_9(__pyx_t_8); if (unlikely(!__pyx_t_7)) goto __pyx_L5_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_7);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < 0) __PYX_ERR(0, 96, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_9(__pyx_t_8), 2) < 0) __PYX_ERR(0, 97, __pyx_L1_error)
     __pyx_t_9 = NULL;
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     goto __pyx_L6_unpacking_done;
@@ -2080,7 +2086,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     __pyx_t_9 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 96, __pyx_L1_error)
+    __PYX_ERR(0, 97, __pyx_L1_error)
     __pyx_L6_unpacking_done:;
   }
   __pyx_v_gens = __pyx_t_6;
@@ -2088,7 +2094,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
   __pyx_v_int_to_vertex = __pyx_t_7;
   __pyx_t_7 = 0;
 
-  /* "my_bliss.pyx":98
+  /* "my_bliss.pyx":99
  *     gens, int_to_vertex = <object> <PyObject *> user_param
  * 
  *     while True:             # <<<<<<<<<<<<<<
@@ -2097,7 +2103,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
  */
   while (1) {
 
-    /* "my_bliss.pyx":99
+    /* "my_bliss.pyx":100
  * 
  *     while True:
  *         while cur < n and done[cur]:             # <<<<<<<<<<<<<<
@@ -2116,7 +2122,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
       __pyx_L11_bool_binop_done:;
       if (!__pyx_t_10) break;
 
-      /* "my_bliss.pyx":100
+      /* "my_bliss.pyx":101
  *     while True:
  *         while cur < n and done[cur]:
  *             cur += 1             # <<<<<<<<<<<<<<
@@ -2126,7 +2132,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
       __pyx_v_cur = (__pyx_v_cur + 1);
     }
 
-    /* "my_bliss.pyx":101
+    /* "my_bliss.pyx":102
  *         while cur < n and done[cur]:
  *             cur += 1
  *         if cur == n:             # <<<<<<<<<<<<<<
@@ -2136,7 +2142,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
     __pyx_t_10 = ((__pyx_v_cur == __pyx_v_n) != 0);
     if (__pyx_t_10) {
 
-      /* "my_bliss.pyx":102
+      /* "my_bliss.pyx":103
  *             cur += 1
  *         if cur == n:
  *             break             # <<<<<<<<<<<<<<
@@ -2145,7 +2151,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
  */
       goto __pyx_L8_break;
 
-      /* "my_bliss.pyx":101
+      /* "my_bliss.pyx":102
  *         while cur < n and done[cur]:
  *             cur += 1
  *         if cur == n:             # <<<<<<<<<<<<<<
@@ -2154,7 +2160,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
  */
     }
 
-    /* "my_bliss.pyx":104
+    /* "my_bliss.pyx":105
  *             break
  * 
  *         marker = tmp = cur             # <<<<<<<<<<<<<<
@@ -2164,16 +2170,16 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
     __pyx_v_marker = __pyx_v_cur;
     __pyx_v_tmp = __pyx_v_cur;
 
-    /* "my_bliss.pyx":105
+    /* "my_bliss.pyx":106
  * 
  *         marker = tmp = cur
  *         cycle = [int_to_vertex[cur]]             # <<<<<<<<<<<<<<
  *         done[cur] = True
  * 
  */
-    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_int_to_vertex, __pyx_v_cur, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt(__pyx_v_int_to_vertex, __pyx_v_cur, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_7 = PyList_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 106, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_GIVEREF(__pyx_t_1);
     PyList_SET_ITEM(__pyx_t_7, 0, __pyx_t_1);
@@ -2181,7 +2187,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
     __Pyx_XDECREF_SET(__pyx_v_cycle, ((PyObject*)__pyx_t_7));
     __pyx_t_7 = 0;
 
-    /* "my_bliss.pyx":106
+    /* "my_bliss.pyx":107
  *         marker = tmp = cur
  *         cycle = [int_to_vertex[cur]]
  *         done[cur] = True             # <<<<<<<<<<<<<<
@@ -2190,7 +2196,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
  */
     (__pyx_v_done[__pyx_v_cur]) = 1;
 
-    /* "my_bliss.pyx":108
+    /* "my_bliss.pyx":109
  *         done[cur] = True
  * 
  *         while aut[tmp] != marker:             # <<<<<<<<<<<<<<
@@ -2201,7 +2207,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
       __pyx_t_10 = (((__pyx_v_aut[__pyx_v_tmp]) != __pyx_v_marker) != 0);
       if (!__pyx_t_10) break;
 
-      /* "my_bliss.pyx":109
+      /* "my_bliss.pyx":110
  * 
  *         while aut[tmp] != marker:
  *             tmp = aut[tmp]             # <<<<<<<<<<<<<<
@@ -2210,7 +2216,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
  */
       __pyx_v_tmp = (__pyx_v_aut[__pyx_v_tmp]);
 
-      /* "my_bliss.pyx":110
+      /* "my_bliss.pyx":111
  *         while aut[tmp] != marker:
  *             tmp = aut[tmp]
  *             done[tmp] = True             # <<<<<<<<<<<<<<
@@ -2219,43 +2225,43 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
  */
       (__pyx_v_done[__pyx_v_tmp]) = 1;
 
-      /* "my_bliss.pyx":111
+      /* "my_bliss.pyx":112
  *             tmp = aut[tmp]
  *             done[tmp] = True
  *             cycle.append(int_to_vertex[tmp])             # <<<<<<<<<<<<<<
  * 
  *         perm.append(tuple(cycle))
  */
-      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_int_to_vertex, __pyx_v_tmp, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 111, __pyx_L1_error)
+      __pyx_t_7 = __Pyx_GetItemInt(__pyx_v_int_to_vertex, __pyx_v_tmp, int, 1, __Pyx_PyInt_From_int, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 112, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
-      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_cycle, __pyx_t_7); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 111, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_cycle, __pyx_t_7); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 112, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     }
 
-    /* "my_bliss.pyx":113
+    /* "my_bliss.pyx":114
  *             cycle.append(int_to_vertex[tmp])
  * 
  *         perm.append(tuple(cycle))             # <<<<<<<<<<<<<<
  *     gens.append(perm)
  * 
  */
-    __pyx_t_7 = PyList_AsTuple(__pyx_v_cycle); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_7 = PyList_AsTuple(__pyx_v_cycle); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_perm, __pyx_t_7); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 113, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyList_Append(__pyx_v_perm, __pyx_t_7); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
   }
   __pyx_L8_break:;
 
-  /* "my_bliss.pyx":114
+  /* "my_bliss.pyx":115
  * 
  *         perm.append(tuple(cycle))
  *     gens.append(perm)             # <<<<<<<<<<<<<<
  * 
  *     sig_free(done)
  */
-  __pyx_t_12 = __Pyx_PyObject_Append(__pyx_v_gens, __pyx_v_perm); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 114, __pyx_L1_error)
+  __pyx_t_12 = __Pyx_PyObject_Append(__pyx_v_gens, __pyx_v_perm); if (unlikely(__pyx_t_12 == ((int)-1))) __PYX_ERR(0, 115, __pyx_L1_error)
 
-  /* "my_bliss.pyx":116
+  /* "my_bliss.pyx":117
  *     gens.append(perm)
  * 
  *     sig_free(done)             # <<<<<<<<<<<<<<
@@ -2264,7 +2270,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
  */
   sig_free(__pyx_v_done);
 
-  /* "my_bliss.pyx":69
+  /* "my_bliss.pyx":70
  *         unsigned int get_hash()
  * 
  * cdef void add_gen(void *user_param, unsigned int n, const unsigned int *aut):             # <<<<<<<<<<<<<<
@@ -2289,7 +2295,7 @@ static void __pyx_f_8my_bliss_add_gen(void *__pyx_v_user_param, unsigned int __p
   __Pyx_RefNannyFinishContext();
 }
 
-/* "my_bliss.pyx":118
+/* "my_bliss.pyx":119
  *     sig_free(done)
  * 
  * cdef void empty_hook(void *user_param , unsigned int n, const unsigned int *aut):             # <<<<<<<<<<<<<<
@@ -2301,9 +2307,9 @@ static void __pyx_f_8my_bliss_empty_hook(CYTHON_UNUSED void *__pyx_v_user_param,
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("empty_hook", 0);
-  __Pyx_TraceCall("empty_hook", __pyx_f[0], 118, 0, __PYX_ERR(0, 118, __pyx_L1_error));
+  __Pyx_TraceCall("empty_hook", __pyx_f[0], 119, 0, __PYX_ERR(0, 119, __pyx_L1_error));
 
-  /* "my_bliss.pyx":119
+  /* "my_bliss.pyx":120
  * 
  * cdef void empty_hook(void *user_param , unsigned int n, const unsigned int *aut):
  *     return             # <<<<<<<<<<<<<<
@@ -2312,7 +2318,7 @@ static void __pyx_f_8my_bliss_empty_hook(CYTHON_UNUSED void *__pyx_v_user_param,
  */
   goto __pyx_L0;
 
-  /* "my_bliss.pyx":118
+  /* "my_bliss.pyx":119
  *     sig_free(done)
  * 
  * cdef void empty_hook(void *user_param , unsigned int n, const unsigned int *aut):             # <<<<<<<<<<<<<<
@@ -2328,7 +2334,7 @@ static void __pyx_f_8my_bliss_empty_hook(CYTHON_UNUSED void *__pyx_v_user_param,
   __Pyx_RefNannyFinishContext();
 }
 
-/* "my_bliss.pyx":125
+/* "my_bliss.pyx":126
  * #####################################################
  * 
  * cdef Graph *bliss_graph_from_labelled_edges(int Vnr, int Lnr, Vout, Vin, labels, partition):             # <<<<<<<<<<<<<<
@@ -2367,10 +2373,10 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
   unsigned int __pyx_t_15;
   int __pyx_t_16;
   __Pyx_RefNannySetupContext("bliss_graph_from_labelled_edges", 0);
-  __Pyx_TraceCall("bliss_graph_from_labelled_edges", __pyx_f[0], 125, 0, __PYX_ERR(0, 125, __pyx_L1_error));
+  __Pyx_TraceCall("bliss_graph_from_labelled_edges", __pyx_f[0], 126, 0, __PYX_ERR(0, 126, __pyx_L1_error));
   __Pyx_INCREF(__pyx_v_partition);
 
-  /* "my_bliss.pyx":155
+  /* "my_bliss.pyx":156
  *     """
  *     cdef Py_ssize_t i, j
  *     cdef int logLnr = 0             # <<<<<<<<<<<<<<
@@ -2379,7 +2385,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
  */
   __pyx_v_logLnr = 0;
 
-  /* "my_bliss.pyx":161
+  /* "my_bliss.pyx":162
  *     cdef int x,y, lab
  * 
  *     if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -2389,7 +2395,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
   __pyx_t_1 = ((__pyx_v_Lnr == 1) != 0);
   if (__pyx_t_1) {
 
-    /* "my_bliss.pyx":162
+    /* "my_bliss.pyx":163
  * 
  *     if Lnr == 1:
  *         g = new Graph(Vnr)             # <<<<<<<<<<<<<<
@@ -2398,7 +2404,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
  */
     __pyx_v_g = new bliss::Graph(__pyx_v_Vnr);
 
-    /* "my_bliss.pyx":163
+    /* "my_bliss.pyx":164
  *     if Lnr == 1:
  *         g = new Graph(Vnr)
  *         if not g:             # <<<<<<<<<<<<<<
@@ -2408,20 +2414,20 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
     __pyx_t_1 = ((!(__pyx_v_g != 0)) != 0);
     if (unlikely(__pyx_t_1)) {
 
-      /* "my_bliss.pyx":164
+      /* "my_bliss.pyx":165
  *         g = new Graph(Vnr)
  *         if not g:
  *             raise MemoryError("allocation failed")             # <<<<<<<<<<<<<<
  *     else:
  *         logLnr = len(numpy.binary_repr(Lnr))
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 164, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 164, __pyx_L1_error)
+      __PYX_ERR(0, 165, __pyx_L1_error)
 
-      /* "my_bliss.pyx":163
+      /* "my_bliss.pyx":164
  *     if Lnr == 1:
  *         g = new Graph(Vnr)
  *         if not g:             # <<<<<<<<<<<<<<
@@ -2430,7 +2436,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
  */
     }
 
-    /* "my_bliss.pyx":161
+    /* "my_bliss.pyx":162
  *     cdef int x,y, lab
  * 
  *     if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -2440,7 +2446,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
     goto __pyx_L3;
   }
 
-  /* "my_bliss.pyx":166
+  /* "my_bliss.pyx":167
  *             raise MemoryError("allocation failed")
  *     else:
  *         logLnr = len(numpy.binary_repr(Lnr))             # <<<<<<<<<<<<<<
@@ -2448,12 +2454,12 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
  *         if not g:
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_binary_repr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_binary_repr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_Lnr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_Lnr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -2468,14 +2474,14 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
     __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 166, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_6 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_6 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_logLnr = __pyx_t_6;
 
-    /* "my_bliss.pyx":167
+    /* "my_bliss.pyx":168
  *     else:
  *         logLnr = len(numpy.binary_repr(Lnr))
  *         g = new Graph(Vnr * logLnr)             # <<<<<<<<<<<<<<
@@ -2484,7 +2490,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
  */
     __pyx_v_g = new bliss::Graph((__pyx_v_Vnr * __pyx_v_logLnr));
 
-    /* "my_bliss.pyx":168
+    /* "my_bliss.pyx":169
  *         logLnr = len(numpy.binary_repr(Lnr))
  *         g = new Graph(Vnr * logLnr)
  *         if not g:             # <<<<<<<<<<<<<<
@@ -2494,20 +2500,20 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
     __pyx_t_1 = ((!(__pyx_v_g != 0)) != 0);
     if (unlikely(__pyx_t_1)) {
 
-      /* "my_bliss.pyx":169
+      /* "my_bliss.pyx":170
  *         g = new Graph(Vnr * logLnr)
  *         if not g:
  *             raise MemoryError("allocation failed")             # <<<<<<<<<<<<<<
  *         for j in range(1, logLnr):
  *             for i in range((j - 1) * Vnr, j * Vnr):
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 169, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 170, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 169, __pyx_L1_error)
+      __PYX_ERR(0, 170, __pyx_L1_error)
 
-      /* "my_bliss.pyx":168
+      /* "my_bliss.pyx":169
  *         logLnr = len(numpy.binary_repr(Lnr))
  *         g = new Graph(Vnr * logLnr)
  *         if not g:             # <<<<<<<<<<<<<<
@@ -2516,7 +2522,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
  */
     }
 
-    /* "my_bliss.pyx":170
+    /* "my_bliss.pyx":171
  *         if not g:
  *             raise MemoryError("allocation failed")
  *         for j in range(1, logLnr):             # <<<<<<<<<<<<<<
@@ -2528,7 +2534,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
     for (__pyx_t_6 = 1; __pyx_t_6 < __pyx_t_8; __pyx_t_6+=1) {
       __pyx_v_j = __pyx_t_6;
 
-      /* "my_bliss.pyx":171
+      /* "my_bliss.pyx":172
  *             raise MemoryError("allocation failed")
  *         for j in range(1, logLnr):
  *             for i in range((j - 1) * Vnr, j * Vnr):             # <<<<<<<<<<<<<<
@@ -2540,7 +2546,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
       for (__pyx_t_11 = ((__pyx_v_j - 1) * __pyx_v_Vnr); __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
         __pyx_v_i = __pyx_t_11;
 
-        /* "my_bliss.pyx":172
+        /* "my_bliss.pyx":173
  *         for j in range(1, logLnr):
  *             for i in range((j - 1) * Vnr, j * Vnr):
  *                 g.add_edge(i, i + Vnr)             # <<<<<<<<<<<<<<
@@ -2553,17 +2559,17 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
   }
   __pyx_L3:;
 
-  /* "my_bliss.pyx":174
+  /* "my_bliss.pyx":175
  *                 g.add_edge(i, i + Vnr)
  * 
  *     cdef int Enr = len(Vout)             # <<<<<<<<<<<<<<
  * 
  *     for i in range(Enr):
  */
-  __pyx_t_6 = PyObject_Length(__pyx_v_Vout); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_v_Vout); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 175, __pyx_L1_error)
   __pyx_v_Enr = __pyx_t_6;
 
-  /* "my_bliss.pyx":176
+  /* "my_bliss.pyx":177
  *     cdef int Enr = len(Vout)
  * 
  *     for i in range(Enr):             # <<<<<<<<<<<<<<
@@ -2575,33 +2581,33 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
   for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_8; __pyx_t_6+=1) {
     __pyx_v_i = __pyx_t_6;
 
-    /* "my_bliss.pyx":177
+    /* "my_bliss.pyx":178
  * 
  *     for i in range(Enr):
  *         x = Vout[i]             # <<<<<<<<<<<<<<
  *         y = Vin[i]
  *         if Lnr == 1:
  */
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_Vout, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_Vout, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_x = __pyx_t_12;
 
-    /* "my_bliss.pyx":178
+    /* "my_bliss.pyx":179
  *     for i in range(Enr):
  *         x = Vout[i]
  *         y = Vin[i]             # <<<<<<<<<<<<<<
  *         if Lnr == 1:
  *             lab = 0
  */
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_Vin, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 178, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_Vin, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 179, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 179, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_y = __pyx_t_12;
 
-    /* "my_bliss.pyx":179
+    /* "my_bliss.pyx":180
  *         x = Vout[i]
  *         y = Vin[i]
  *         if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -2611,7 +2617,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
     __pyx_t_1 = ((__pyx_v_Lnr == 1) != 0);
     if (__pyx_t_1) {
 
-      /* "my_bliss.pyx":180
+      /* "my_bliss.pyx":181
  *         y = Vin[i]
  *         if Lnr == 1:
  *             lab = 0             # <<<<<<<<<<<<<<
@@ -2620,7 +2626,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
  */
       __pyx_v_lab = 0;
 
-      /* "my_bliss.pyx":179
+      /* "my_bliss.pyx":180
  *         x = Vout[i]
  *         y = Vin[i]
  *         if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -2630,7 +2636,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
       goto __pyx_L12;
     }
 
-    /* "my_bliss.pyx":182
+    /* "my_bliss.pyx":183
  *             lab = 0
  *         else:
  *             lab = labels[i]             # <<<<<<<<<<<<<<
@@ -2638,15 +2644,15 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
  *         if lab:
  */
     /*else*/ {
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_labels, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 182, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_labels, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 183, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_v_lab = __pyx_t_12;
     }
     __pyx_L12:;
 
-    /* "my_bliss.pyx":184
+    /* "my_bliss.pyx":185
  *             lab = labels[i]
  * 
  *         if lab:             # <<<<<<<<<<<<<<
@@ -2656,7 +2662,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
     __pyx_t_1 = (__pyx_v_lab != 0);
     if (__pyx_t_1) {
 
-      /* "my_bliss.pyx":185
+      /* "my_bliss.pyx":186
  * 
  *         if lab:
  *             lab += 1             # <<<<<<<<<<<<<<
@@ -2665,7 +2671,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
  */
       __pyx_v_lab = (__pyx_v_lab + 1);
 
-      /* "my_bliss.pyx":186
+      /* "my_bliss.pyx":187
  *         if lab:
  *             lab += 1
  *             for j in range(logLnr - 1, -1, -1):             # <<<<<<<<<<<<<<
@@ -2675,7 +2681,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
       for (__pyx_t_9 = (__pyx_v_logLnr - 1); __pyx_t_9 > -1L; __pyx_t_9-=1) {
         __pyx_v_j = __pyx_t_9;
 
-        /* "my_bliss.pyx":187
+        /* "my_bliss.pyx":188
  *             lab += 1
  *             for j in range(logLnr - 1, -1, -1):
  *                 if lab & (1 << j):             # <<<<<<<<<<<<<<
@@ -2685,7 +2691,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
         __pyx_t_1 = ((__pyx_v_lab & (1 << __pyx_v_j)) != 0);
         if (__pyx_t_1) {
 
-          /* "my_bliss.pyx":188
+          /* "my_bliss.pyx":189
  *             for j in range(logLnr - 1, -1, -1):
  *                 if lab & (1 << j):
  *                     g.add_edge(j * Vnr + x, j * Vnr + y)             # <<<<<<<<<<<<<<
@@ -2694,7 +2700,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
  */
           __pyx_v_g->add_edge(((__pyx_v_j * __pyx_v_Vnr) + __pyx_v_x), ((__pyx_v_j * __pyx_v_Vnr) + __pyx_v_y));
 
-          /* "my_bliss.pyx":187
+          /* "my_bliss.pyx":188
  *             lab += 1
  *             for j in range(logLnr - 1, -1, -1):
  *                 if lab & (1 << j):             # <<<<<<<<<<<<<<
@@ -2704,7 +2710,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
         }
       }
 
-      /* "my_bliss.pyx":184
+      /* "my_bliss.pyx":185
  *             lab = labels[i]
  * 
  *         if lab:             # <<<<<<<<<<<<<<
@@ -2714,7 +2720,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
       goto __pyx_L13;
     }
 
-    /* "my_bliss.pyx":190
+    /* "my_bliss.pyx":191
  *                     g.add_edge(j * Vnr + x, j * Vnr + y)
  *         else:
  *             g.add_edge(x, y)             # <<<<<<<<<<<<<<
@@ -2727,33 +2733,33 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
     __pyx_L13:;
   }
 
-  /* "my_bliss.pyx":192
+  /* "my_bliss.pyx":193
  *             g.add_edge(x, y)
  * 
  *     if not bool(partition):             # <<<<<<<<<<<<<<
  *         partition = [list(range(Vnr))]
  *     cdef int Pnr = len(partition)
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 193, __pyx_L1_error)
   __pyx_t_13 = ((!((!(!__pyx_t_1)) != 0)) != 0);
   if (__pyx_t_13) {
 
-    /* "my_bliss.pyx":193
+    /* "my_bliss.pyx":194
  * 
  *     if not bool(partition):
  *         partition = [list(range(Vnr))]             # <<<<<<<<<<<<<<
  *     cdef int Pnr = len(partition)
  *     for i in range(Pnr):
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_Vnr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 193, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_Vnr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 193, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PySequence_List(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 193, __pyx_L1_error)
+    __pyx_t_2 = PySequence_List(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 193, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 194, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_2);
     PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -2761,7 +2767,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
     __Pyx_DECREF_SET(__pyx_v_partition, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "my_bliss.pyx":192
+    /* "my_bliss.pyx":193
  *             g.add_edge(x, y)
  * 
  *     if not bool(partition):             # <<<<<<<<<<<<<<
@@ -2770,17 +2776,17 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
  */
   }
 
-  /* "my_bliss.pyx":194
+  /* "my_bliss.pyx":195
  *     if not bool(partition):
  *         partition = [list(range(Vnr))]
  *     cdef int Pnr = len(partition)             # <<<<<<<<<<<<<<
  *     for i in range(Pnr):
  *         for v in partition[i]:
  */
-  __pyx_t_6 = PyObject_Length(__pyx_v_partition); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_v_partition); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 195, __pyx_L1_error)
   __pyx_v_Pnr = __pyx_t_6;
 
-  /* "my_bliss.pyx":195
+  /* "my_bliss.pyx":196
  *         partition = [list(range(Vnr))]
  *     cdef int Pnr = len(partition)
  *     for i in range(Pnr):             # <<<<<<<<<<<<<<
@@ -2792,22 +2798,22 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
   for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_8; __pyx_t_6+=1) {
     __pyx_v_i = __pyx_t_6;
 
-    /* "my_bliss.pyx":196
+    /* "my_bliss.pyx":197
  *     cdef int Pnr = len(partition)
  *     for i in range(Pnr):
  *         for v in partition[i]:             # <<<<<<<<<<<<<<
  *             if Lnr == 1:
  *                 g.change_color(v, i)
  */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_partition, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_partition, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
       __pyx_t_2 = __pyx_t_4; __Pyx_INCREF(__pyx_t_2); __pyx_t_9 = 0;
       __pyx_t_14 = NULL;
     } else {
-      __pyx_t_9 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
+      __pyx_t_9 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_14 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 196, __pyx_L1_error)
+      __pyx_t_14 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_14)) __PYX_ERR(0, 197, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     for (;;) {
@@ -2815,17 +2821,17 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
         if (likely(PyList_CheckExact(__pyx_t_2))) {
           if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 196, __pyx_L1_error)
+          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 197, __pyx_L1_error)
           #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         } else {
           if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 196, __pyx_L1_error)
+          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 197, __pyx_L1_error)
           #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 197, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         }
@@ -2835,7 +2841,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 196, __pyx_L1_error)
+            else __PYX_ERR(0, 197, __pyx_L1_error)
           }
           break;
         }
@@ -2844,7 +2850,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
       __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "my_bliss.pyx":197
+      /* "my_bliss.pyx":198
  *     for i in range(Pnr):
  *         for v in partition[i]:
  *             if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -2854,17 +2860,17 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
       __pyx_t_13 = ((__pyx_v_Lnr == 1) != 0);
       if (__pyx_t_13) {
 
-        /* "my_bliss.pyx":198
+        /* "my_bliss.pyx":199
  *         for v in partition[i]:
  *             if Lnr == 1:
  *                 g.change_color(v, i)             # <<<<<<<<<<<<<<
  *             else:
  *                 for j in range(logLnr):
  */
-        __pyx_t_15 = __Pyx_PyInt_As_unsigned_int(__pyx_v_v); if (unlikely((__pyx_t_15 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 198, __pyx_L1_error)
+        __pyx_t_15 = __Pyx_PyInt_As_unsigned_int(__pyx_v_v); if (unlikely((__pyx_t_15 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 199, __pyx_L1_error)
         __pyx_v_g->change_color(__pyx_t_15, __pyx_v_i);
 
-        /* "my_bliss.pyx":197
+        /* "my_bliss.pyx":198
  *     for i in range(Pnr):
  *         for v in partition[i]:
  *             if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -2874,7 +2880,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
         goto __pyx_L22;
       }
 
-      /* "my_bliss.pyx":200
+      /* "my_bliss.pyx":201
  *                 g.change_color(v, i)
  *             else:
  *                 for j in range(logLnr):             # <<<<<<<<<<<<<<
@@ -2887,26 +2893,26 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
         for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_16; __pyx_t_10+=1) {
           __pyx_v_j = __pyx_t_10;
 
-          /* "my_bliss.pyx":201
+          /* "my_bliss.pyx":202
  *             else:
  *                 for j in range(logLnr):
  *                     g.change_color(j * Vnr + v, j * Pnr + i)             # <<<<<<<<<<<<<<
  *     return g
  * 
  */
-          __pyx_t_4 = PyInt_FromSsize_t((__pyx_v_j * __pyx_v_Vnr)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 201, __pyx_L1_error)
+          __pyx_t_4 = PyInt_FromSsize_t((__pyx_v_j * __pyx_v_Vnr)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 202, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_v_v); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
+          __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_v_v); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_15 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_15 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L1_error)
+          __pyx_t_15 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_15 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 202, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
           __pyx_v_g->change_color(__pyx_t_15, ((__pyx_v_j * __pyx_v_Pnr) + __pyx_v_i));
         }
       }
       __pyx_L22:;
 
-      /* "my_bliss.pyx":196
+      /* "my_bliss.pyx":197
  *     cdef int Pnr = len(partition)
  *     for i in range(Pnr):
  *         for v in partition[i]:             # <<<<<<<<<<<<<<
@@ -2917,7 +2923,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
 
-  /* "my_bliss.pyx":202
+  /* "my_bliss.pyx":203
  *                 for j in range(logLnr):
  *                     g.change_color(j * Vnr + v, j * Pnr + i)
  *     return g             # <<<<<<<<<<<<<<
@@ -2927,7 +2933,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
   __pyx_r = __pyx_v_g;
   goto __pyx_L0;
 
-  /* "my_bliss.pyx":125
+  /* "my_bliss.pyx":126
  * #####################################################
  * 
  * cdef Graph *bliss_graph_from_labelled_edges(int Vnr, int Lnr, Vout, Vin, labels, partition):             # <<<<<<<<<<<<<<
@@ -2951,7 +2957,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph_from_labelled_edges(int __pyx
   return __pyx_r;
 }
 
-/* "my_bliss.pyx":204
+/* "my_bliss.pyx":205
  *     return g
  * 
  * cdef Digraph *bliss_digraph_from_labelled_edges(int Vnr, int Lnr, Vout, Vin, labels, partition):             # <<<<<<<<<<<<<<
@@ -2992,10 +2998,10 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
   unsigned int __pyx_t_17;
   unsigned int __pyx_t_18;
   __Pyx_RefNannySetupContext("bliss_digraph_from_labelled_edges", 0);
-  __Pyx_TraceCall("bliss_digraph_from_labelled_edges", __pyx_f[0], 204, 0, __PYX_ERR(0, 204, __pyx_L1_error));
+  __Pyx_TraceCall("bliss_digraph_from_labelled_edges", __pyx_f[0], 205, 0, __PYX_ERR(0, 205, __pyx_L1_error));
   __Pyx_INCREF(__pyx_v_partition);
 
-  /* "my_bliss.pyx":234
+  /* "my_bliss.pyx":235
  *     """
  *     cdef Py_ssize_t i, j
  *     cdef int logLnr = 0             # <<<<<<<<<<<<<<
@@ -3004,7 +3010,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
  */
   __pyx_v_logLnr = 0;
 
-  /* "my_bliss.pyx":240
+  /* "my_bliss.pyx":241
  *     cdef int x, y, lab
  * 
  *     if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -3014,7 +3020,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
   __pyx_t_1 = ((__pyx_v_Lnr == 1) != 0);
   if (__pyx_t_1) {
 
-    /* "my_bliss.pyx":241
+    /* "my_bliss.pyx":242
  * 
  *     if Lnr == 1:
  *         g = new Digraph(Vnr)             # <<<<<<<<<<<<<<
@@ -3023,7 +3029,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
  */
     __pyx_v_g = new bliss::Digraph(__pyx_v_Vnr);
 
-    /* "my_bliss.pyx":242
+    /* "my_bliss.pyx":243
  *     if Lnr == 1:
  *         g = new Digraph(Vnr)
  *         if not g:             # <<<<<<<<<<<<<<
@@ -3033,20 +3039,20 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
     __pyx_t_1 = ((!(__pyx_v_g != 0)) != 0);
     if (unlikely(__pyx_t_1)) {
 
-      /* "my_bliss.pyx":243
+      /* "my_bliss.pyx":244
  *         g = new Digraph(Vnr)
  *         if not g:
  *             raise MemoryError("allocation failed")             # <<<<<<<<<<<<<<
  *     else:
  *         logLnr = len(numpy.binary_repr(Lnr))
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 243, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 244, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 243, __pyx_L1_error)
+      __PYX_ERR(0, 244, __pyx_L1_error)
 
-      /* "my_bliss.pyx":242
+      /* "my_bliss.pyx":243
  *     if Lnr == 1:
  *         g = new Digraph(Vnr)
  *         if not g:             # <<<<<<<<<<<<<<
@@ -3055,7 +3061,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
  */
     }
 
-    /* "my_bliss.pyx":240
+    /* "my_bliss.pyx":241
  *     cdef int x, y, lab
  * 
  *     if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -3065,7 +3071,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
     goto __pyx_L3;
   }
 
-  /* "my_bliss.pyx":245
+  /* "my_bliss.pyx":246
  *             raise MemoryError("allocation failed")
  *     else:
  *         logLnr = len(numpy.binary_repr(Lnr))             # <<<<<<<<<<<<<<
@@ -3073,12 +3079,12 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
  *         if not g:
  */
   /*else*/ {
-    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_n_s_numpy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_binary_repr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_binary_repr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_Lnr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_Lnr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_5 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -3093,14 +3099,14 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
     __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 245, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_6 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 245, __pyx_L1_error)
+    __pyx_t_6 = PyObject_Length(__pyx_t_2); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 246, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_logLnr = __pyx_t_6;
 
-    /* "my_bliss.pyx":246
+    /* "my_bliss.pyx":247
  *     else:
  *         logLnr = len(numpy.binary_repr(Lnr))
  *         g = new Digraph(Vnr * logLnr)             # <<<<<<<<<<<<<<
@@ -3109,7 +3115,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
  */
     __pyx_v_g = new bliss::Digraph((__pyx_v_Vnr * __pyx_v_logLnr));
 
-    /* "my_bliss.pyx":247
+    /* "my_bliss.pyx":248
  *         logLnr = len(numpy.binary_repr(Lnr))
  *         g = new Digraph(Vnr * logLnr)
  *         if not g:             # <<<<<<<<<<<<<<
@@ -3119,20 +3125,20 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
     __pyx_t_1 = ((!(__pyx_v_g != 0)) != 0);
     if (unlikely(__pyx_t_1)) {
 
-      /* "my_bliss.pyx":248
+      /* "my_bliss.pyx":249
  *         g = new Digraph(Vnr * logLnr)
  *         if not g:
  *             raise MemoryError("allocation failed")             # <<<<<<<<<<<<<<
  *         for j in range(1, logLnr):
  *             for i in range((j - 1) * Vnr, j * Vnr):
  */
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 248, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_Raise(__pyx_t_2, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __PYX_ERR(0, 248, __pyx_L1_error)
+      __PYX_ERR(0, 249, __pyx_L1_error)
 
-      /* "my_bliss.pyx":247
+      /* "my_bliss.pyx":248
  *         logLnr = len(numpy.binary_repr(Lnr))
  *         g = new Digraph(Vnr * logLnr)
  *         if not g:             # <<<<<<<<<<<<<<
@@ -3141,7 +3147,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
  */
     }
 
-    /* "my_bliss.pyx":249
+    /* "my_bliss.pyx":250
  *         if not g:
  *             raise MemoryError("allocation failed")
  *         for j in range(1, logLnr):             # <<<<<<<<<<<<<<
@@ -3153,7 +3159,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
     for (__pyx_t_6 = 1; __pyx_t_6 < __pyx_t_8; __pyx_t_6+=1) {
       __pyx_v_j = __pyx_t_6;
 
-      /* "my_bliss.pyx":250
+      /* "my_bliss.pyx":251
  *             raise MemoryError("allocation failed")
  *         for j in range(1, logLnr):
  *             for i in range((j - 1) * Vnr, j * Vnr):             # <<<<<<<<<<<<<<
@@ -3165,7 +3171,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
       for (__pyx_t_11 = ((__pyx_v_j - 1) * __pyx_v_Vnr); __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
         __pyx_v_i = __pyx_t_11;
 
-        /* "my_bliss.pyx":251
+        /* "my_bliss.pyx":252
  *         for j in range(1, logLnr):
  *             for i in range((j - 1) * Vnr, j * Vnr):
  *                 g.add_edge(i, i + Vnr)             # <<<<<<<<<<<<<<
@@ -3178,17 +3184,17 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
   }
   __pyx_L3:;
 
-  /* "my_bliss.pyx":253
+  /* "my_bliss.pyx":254
  *                 g.add_edge(i, i + Vnr)
  * 
  *     cdef int Enr = len(Vout)             # <<<<<<<<<<<<<<
  * 
  *     for i in range(Enr):
  */
-  __pyx_t_6 = PyObject_Length(__pyx_v_Vout); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 253, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_v_Vout); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 254, __pyx_L1_error)
   __pyx_v_Enr = __pyx_t_6;
 
-  /* "my_bliss.pyx":255
+  /* "my_bliss.pyx":256
  *     cdef int Enr = len(Vout)
  * 
  *     for i in range(Enr):             # <<<<<<<<<<<<<<
@@ -3200,33 +3206,33 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
   for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_8; __pyx_t_6+=1) {
     __pyx_v_i = __pyx_t_6;
 
-    /* "my_bliss.pyx":256
+    /* "my_bliss.pyx":257
  * 
  *     for i in range(Enr):
  *         x = Vout[i]             # <<<<<<<<<<<<<<
  *         y = Vin[i]
  *         if Lnr == 1:
  */
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_Vout, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_Vout, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 256, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_x = __pyx_t_12;
 
-    /* "my_bliss.pyx":257
+    /* "my_bliss.pyx":258
  *     for i in range(Enr):
  *         x = Vout[i]
  *         y = Vin[i]             # <<<<<<<<<<<<<<
  *         if Lnr == 1:
  *             lab = 0
  */
-    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_Vin, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_Vin, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 258, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 257, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 258, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_v_y = __pyx_t_12;
 
-    /* "my_bliss.pyx":258
+    /* "my_bliss.pyx":259
  *         x = Vout[i]
  *         y = Vin[i]
  *         if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -3236,7 +3242,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
     __pyx_t_1 = ((__pyx_v_Lnr == 1) != 0);
     if (__pyx_t_1) {
 
-      /* "my_bliss.pyx":259
+      /* "my_bliss.pyx":260
  *         y = Vin[i]
  *         if Lnr == 1:
  *             lab = 0             # <<<<<<<<<<<<<<
@@ -3245,7 +3251,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
  */
       __pyx_v_lab = 0;
 
-      /* "my_bliss.pyx":258
+      /* "my_bliss.pyx":259
  *         x = Vout[i]
  *         y = Vin[i]
  *         if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -3255,7 +3261,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
       goto __pyx_L12;
     }
 
-    /* "my_bliss.pyx":261
+    /* "my_bliss.pyx":262
  *             lab = 0
  *         else:
  *             lab = labels[i]             # <<<<<<<<<<<<<<
@@ -3263,15 +3269,15 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
  *         if lab:
  */
     /*else*/ {
-      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_labels, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_GetItemInt(__pyx_v_labels, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyInt_As_int(__pyx_t_2); if (unlikely((__pyx_t_12 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 262, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_v_lab = __pyx_t_12;
     }
     __pyx_L12:;
 
-    /* "my_bliss.pyx":263
+    /* "my_bliss.pyx":264
  *             lab = labels[i]
  * 
  *         if lab:             # <<<<<<<<<<<<<<
@@ -3281,7 +3287,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
     __pyx_t_1 = (__pyx_v_lab != 0);
     if (__pyx_t_1) {
 
-      /* "my_bliss.pyx":264
+      /* "my_bliss.pyx":265
  * 
  *         if lab:
  *             lab += 1             # <<<<<<<<<<<<<<
@@ -3290,7 +3296,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
  */
       __pyx_v_lab = (__pyx_v_lab + 1);
 
-      /* "my_bliss.pyx":265
+      /* "my_bliss.pyx":266
  *         if lab:
  *             lab += 1
  *             for j in range(logLnr - 1, -1, -1):             # <<<<<<<<<<<<<<
@@ -3300,7 +3306,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
       for (__pyx_t_9 = (__pyx_v_logLnr - 1); __pyx_t_9 > -1L; __pyx_t_9-=1) {
         __pyx_v_j = __pyx_t_9;
 
-        /* "my_bliss.pyx":266
+        /* "my_bliss.pyx":267
  *             lab += 1
  *             for j in range(logLnr - 1, -1, -1):
  *                 if lab & (1 << j):             # <<<<<<<<<<<<<<
@@ -3310,7 +3316,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
         __pyx_t_1 = ((__pyx_v_lab & (1 << __pyx_v_j)) != 0);
         if (__pyx_t_1) {
 
-          /* "my_bliss.pyx":267
+          /* "my_bliss.pyx":268
  *             for j in range(logLnr - 1, -1, -1):
  *                 if lab & (1 << j):
  *                     g.add_edge(j * Vnr + x, j * Vnr + y)             # <<<<<<<<<<<<<<
@@ -3319,7 +3325,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
  */
           __pyx_v_g->add_edge(((__pyx_v_j * __pyx_v_Vnr) + __pyx_v_x), ((__pyx_v_j * __pyx_v_Vnr) + __pyx_v_y));
 
-          /* "my_bliss.pyx":266
+          /* "my_bliss.pyx":267
  *             lab += 1
  *             for j in range(logLnr - 1, -1, -1):
  *                 if lab & (1 << j):             # <<<<<<<<<<<<<<
@@ -3329,7 +3335,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
         }
       }
 
-      /* "my_bliss.pyx":263
+      /* "my_bliss.pyx":264
  *             lab = labels[i]
  * 
  *         if lab:             # <<<<<<<<<<<<<<
@@ -3339,7 +3345,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
       goto __pyx_L13;
     }
 
-    /* "my_bliss.pyx":269
+    /* "my_bliss.pyx":270
  *                     g.add_edge(j * Vnr + x, j * Vnr + y)
  *         else:
  *             g.add_edge(x, y)             # <<<<<<<<<<<<<<
@@ -3352,33 +3358,33 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
     __pyx_L13:;
   }
 
-  /* "my_bliss.pyx":271
+  /* "my_bliss.pyx":272
  *             g.add_edge(x, y)
  * 
  *     if not bool(partition):             # <<<<<<<<<<<<<<
  *         partition = [list(range(Vnr))]
  *     cdef Pnr = len(partition)
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 271, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 272, __pyx_L1_error)
   __pyx_t_13 = ((!((!(!__pyx_t_1)) != 0)) != 0);
   if (__pyx_t_13) {
 
-    /* "my_bliss.pyx":272
+    /* "my_bliss.pyx":273
  * 
  *     if not bool(partition):
  *         partition = [list(range(Vnr))]             # <<<<<<<<<<<<<<
  *     cdef Pnr = len(partition)
  *     for i in range(Pnr):
  */
-    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_Vnr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_Vnr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 273, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    __pyx_t_2 = PySequence_List(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_2 = PySequence_List(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 273, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 272, __pyx_L1_error)
+    __pyx_t_4 = PyList_New(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_2);
     PyList_SET_ITEM(__pyx_t_4, 0, __pyx_t_2);
@@ -3386,7 +3392,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
     __Pyx_DECREF_SET(__pyx_v_partition, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "my_bliss.pyx":271
+    /* "my_bliss.pyx":272
  *             g.add_edge(x, y)
  * 
  *     if not bool(partition):             # <<<<<<<<<<<<<<
@@ -3395,47 +3401,47 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
  */
   }
 
-  /* "my_bliss.pyx":273
+  /* "my_bliss.pyx":274
  *     if not bool(partition):
  *         partition = [list(range(Vnr))]
  *     cdef Pnr = len(partition)             # <<<<<<<<<<<<<<
  *     for i in range(Pnr):
  *         for v in partition[i]:
  */
-  __pyx_t_6 = PyObject_Length(__pyx_v_partition); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 273, __pyx_L1_error)
-  __pyx_t_4 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
+  __pyx_t_6 = PyObject_Length(__pyx_v_partition); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 274, __pyx_L1_error)
+  __pyx_t_4 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 274, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v_Pnr = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "my_bliss.pyx":274
+  /* "my_bliss.pyx":275
  *         partition = [list(range(Vnr))]
  *     cdef Pnr = len(partition)
  *     for i in range(Pnr):             # <<<<<<<<<<<<<<
  *         for v in partition[i]:
  *             if Lnr == 1:
  */
-  __pyx_t_14 = __Pyx_PyInt_As_long(__pyx_v_Pnr); if (unlikely((__pyx_t_14 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 274, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyInt_As_long(__pyx_v_Pnr); if (unlikely((__pyx_t_14 == (long)-1) && PyErr_Occurred())) __PYX_ERR(0, 275, __pyx_L1_error)
   __pyx_t_15 = __pyx_t_14;
   for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_15; __pyx_t_6+=1) {
     __pyx_v_i = __pyx_t_6;
 
-    /* "my_bliss.pyx":275
+    /* "my_bliss.pyx":276
  *     cdef Pnr = len(partition)
  *     for i in range(Pnr):
  *         for v in partition[i]:             # <<<<<<<<<<<<<<
  *             if Lnr == 1:
  *                 g.change_color(v, i)
  */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_partition, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 275, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_partition, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 276, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (likely(PyList_CheckExact(__pyx_t_4)) || PyTuple_CheckExact(__pyx_t_4)) {
       __pyx_t_2 = __pyx_t_4; __Pyx_INCREF(__pyx_t_2); __pyx_t_9 = 0;
       __pyx_t_16 = NULL;
     } else {
-      __pyx_t_9 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 275, __pyx_L1_error)
+      __pyx_t_9 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 276, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_16 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 275, __pyx_L1_error)
+      __pyx_t_16 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_16)) __PYX_ERR(0, 276, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     for (;;) {
@@ -3443,17 +3449,17 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
         if (likely(PyList_CheckExact(__pyx_t_2))) {
           if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 275, __pyx_L1_error)
+          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 276, __pyx_L1_error)
           #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 275, __pyx_L1_error)
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 276, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         } else {
           if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 275, __pyx_L1_error)
+          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 276, __pyx_L1_error)
           #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 275, __pyx_L1_error)
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_2, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 276, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         }
@@ -3463,7 +3469,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 275, __pyx_L1_error)
+            else __PYX_ERR(0, 276, __pyx_L1_error)
           }
           break;
         }
@@ -3472,7 +3478,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
       __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_4);
       __pyx_t_4 = 0;
 
-      /* "my_bliss.pyx":276
+      /* "my_bliss.pyx":277
  *     for i in range(Pnr):
  *         for v in partition[i]:
  *             if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -3482,17 +3488,17 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
       __pyx_t_13 = ((__pyx_v_Lnr == 1) != 0);
       if (__pyx_t_13) {
 
-        /* "my_bliss.pyx":277
+        /* "my_bliss.pyx":278
  *         for v in partition[i]:
  *             if Lnr == 1:
  *                 g.change_color(v, i)             # <<<<<<<<<<<<<<
  *             else:
  *                 for j in range(logLnr):
  */
-        __pyx_t_17 = __Pyx_PyInt_As_unsigned_int(__pyx_v_v); if (unlikely((__pyx_t_17 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 277, __pyx_L1_error)
+        __pyx_t_17 = __Pyx_PyInt_As_unsigned_int(__pyx_v_v); if (unlikely((__pyx_t_17 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 278, __pyx_L1_error)
         __pyx_v_g->change_color(__pyx_t_17, __pyx_v_i);
 
-        /* "my_bliss.pyx":276
+        /* "my_bliss.pyx":277
  *     for i in range(Pnr):
  *         for v in partition[i]:
  *             if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -3502,7 +3508,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
         goto __pyx_L22;
       }
 
-      /* "my_bliss.pyx":279
+      /* "my_bliss.pyx":280
  *                 g.change_color(v, i)
  *             else:
  *                 for j in range(logLnr):             # <<<<<<<<<<<<<<
@@ -3515,39 +3521,39 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
         for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_8; __pyx_t_10+=1) {
           __pyx_v_j = __pyx_t_10;
 
-          /* "my_bliss.pyx":280
+          /* "my_bliss.pyx":281
  *             else:
  *                 for j in range(logLnr):
  *                     g.change_color(j * Vnr + v, j * Pnr + i)             # <<<<<<<<<<<<<<
  *     return g
  * 
  */
-          __pyx_t_4 = PyInt_FromSsize_t((__pyx_v_j * __pyx_v_Vnr)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 280, __pyx_L1_error)
+          __pyx_t_4 = PyInt_FromSsize_t((__pyx_v_j * __pyx_v_Vnr)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
-          __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_v_v); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error)
+          __pyx_t_3 = PyNumber_Add(__pyx_t_4, __pyx_v_v); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 281, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          __pyx_t_17 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_17 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 280, __pyx_L1_error)
+          __pyx_t_17 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_17 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 281, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_j); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error)
+          __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_j); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 281, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_v_Pnr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 280, __pyx_L1_error)
+          __pyx_t_4 = PyNumber_Multiply(__pyx_t_3, __pyx_v_Pnr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 280, __pyx_L1_error)
+          __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 281, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_5 = PyNumber_Add(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 280, __pyx_L1_error)
+          __pyx_t_5 = PyNumber_Add(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 281, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_5);
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
           __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-          __pyx_t_18 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_18 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 280, __pyx_L1_error)
+          __pyx_t_18 = __Pyx_PyInt_As_unsigned_int(__pyx_t_5); if (unlikely((__pyx_t_18 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 281, __pyx_L1_error)
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __pyx_v_g->change_color(__pyx_t_17, __pyx_t_18);
         }
       }
       __pyx_L22:;
 
-      /* "my_bliss.pyx":275
+      /* "my_bliss.pyx":276
  *     cdef Pnr = len(partition)
  *     for i in range(Pnr):
  *         for v in partition[i]:             # <<<<<<<<<<<<<<
@@ -3558,7 +3564,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   }
 
-  /* "my_bliss.pyx":281
+  /* "my_bliss.pyx":282
  *                 for j in range(logLnr):
  *                     g.change_color(j * Vnr + v, j * Pnr + i)
  *     return g             # <<<<<<<<<<<<<<
@@ -3568,7 +3574,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
   __pyx_r = __pyx_v_g;
   goto __pyx_L0;
 
-  /* "my_bliss.pyx":204
+  /* "my_bliss.pyx":205
  *     return g
  * 
  * cdef Digraph *bliss_digraph_from_labelled_edges(int Vnr, int Lnr, Vout, Vin, labels, partition):             # <<<<<<<<<<<<<<
@@ -3593,7 +3599,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(int _
   return __pyx_r;
 }
 
-/* "my_bliss.pyx":287
+/* "my_bliss.pyx":288
  * #####################################################
  * 
  * cdef canonical_form_from_edge_list(int Vnr, list Vout, list Vin, int Lnr=1, list labels=[],             # <<<<<<<<<<<<<<
@@ -3605,7 +3611,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
   int __pyx_v_Lnr = ((int)1);
   PyObject *__pyx_v_labels = __pyx_k__2;
 
-  /* "my_bliss.pyx":288
+  /* "my_bliss.pyx":289
  * 
  * cdef canonical_form_from_edge_list(int Vnr, list Vout, list Vin, int Lnr=1, list labels=[],
  *                                        list partition=None, bint directed=False, bint certificate=False):             # <<<<<<<<<<<<<<
@@ -3646,7 +3652,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
   int __pyx_t_13;
   int __pyx_t_14;
   __Pyx_RefNannySetupContext("canonical_form_from_edge_list", 0);
-  __Pyx_TraceCall("canonical_form_from_edge_list", __pyx_f[0], 287, 0, __PYX_ERR(0, 287, __pyx_L1_error));
+  __Pyx_TraceCall("canonical_form_from_edge_list", __pyx_f[0], 288, 0, __PYX_ERR(0, 288, __pyx_L1_error));
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_Lnr = __pyx_optional_args->Lnr;
@@ -3665,7 +3671,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
     }
   }
 
-  /* "my_bliss.pyx":317
+  /* "my_bliss.pyx":318
  *     # We need this to convert the numbers from <unsigned int> to
  *     # <long>. This assertion should be true simply for memory reasons.
  *     assert <unsigned long>(Vnr) <= <unsigned long>LONG_MAX             # <<<<<<<<<<<<<<
@@ -3676,24 +3682,24 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((((unsigned long)__pyx_v_Vnr) <= ((unsigned long)LONG_MAX)) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 317, __pyx_L1_error)
+      __PYX_ERR(0, 318, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "my_bliss.pyx":325
+  /* "my_bliss.pyx":326
  *     cdef dict relabel
  * 
  *     cdef list new_edges = []             # <<<<<<<<<<<<<<
  *     cdef long e, f
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 325, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 326, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_new_edges = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":328
+  /* "my_bliss.pyx":329
  *     cdef long e, f
  * 
  *     if directed:             # <<<<<<<<<<<<<<
@@ -3703,7 +3709,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
   __pyx_t_2 = (__pyx_v_directed != 0);
   if (__pyx_t_2) {
 
-    /* "my_bliss.pyx":329
+    /* "my_bliss.pyx":330
  * 
  *     if directed:
  *         d = bliss_digraph_from_labelled_edges(Vnr, Lnr, Vout, Vin, labels, partition)             # <<<<<<<<<<<<<<
@@ -3712,7 +3718,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
  */
     __pyx_v_d = __pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(__pyx_v_Vnr, __pyx_v_Lnr, __pyx_v_Vout, __pyx_v_Vin, __pyx_v_labels, __pyx_v_partition);
 
-    /* "my_bliss.pyx":330
+    /* "my_bliss.pyx":331
  *     if directed:
  *         d = bliss_digraph_from_labelled_edges(Vnr, Lnr, Vout, Vin, labels, partition)
  *         aut = d.canonical_form(s, empty_hook, NULL)             # <<<<<<<<<<<<<<
@@ -3721,7 +3727,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
  */
     __pyx_v_aut = __pyx_v_d->canonical_form(__pyx_v_s, __pyx_f_8my_bliss_empty_hook, NULL);
 
-    /* "my_bliss.pyx":328
+    /* "my_bliss.pyx":329
  *     cdef long e, f
  * 
  *     if directed:             # <<<<<<<<<<<<<<
@@ -3731,7 +3737,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
     goto __pyx_L3;
   }
 
-  /* "my_bliss.pyx":332
+  /* "my_bliss.pyx":333
  *         aut = d.canonical_form(s, empty_hook, NULL)
  *     else:
  *         g = bliss_graph_from_labelled_edges(Vnr, Lnr, Vout, Vin, labels, partition)             # <<<<<<<<<<<<<<
@@ -3741,7 +3747,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
   /*else*/ {
     __pyx_v_g = __pyx_f_8my_bliss_bliss_graph_from_labelled_edges(__pyx_v_Vnr, __pyx_v_Lnr, __pyx_v_Vout, __pyx_v_Vin, __pyx_v_labels, __pyx_v_partition);
 
-    /* "my_bliss.pyx":333
+    /* "my_bliss.pyx":334
  *     else:
  *         g = bliss_graph_from_labelled_edges(Vnr, Lnr, Vout, Vin, labels, partition)
  *         aut = g.canonical_form(s, empty_hook, NULL)             # <<<<<<<<<<<<<<
@@ -3752,7 +3758,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
   }
   __pyx_L3:;
 
-  /* "my_bliss.pyx":335
+  /* "my_bliss.pyx":336
  *         aut = g.canonical_form(s, empty_hook, NULL)
  * 
  *     for i in range(len(Vout)):             # <<<<<<<<<<<<<<
@@ -3761,14 +3767,14 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
  */
   if (unlikely(__pyx_v_Vout == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 335, __pyx_L1_error)
+    __PYX_ERR(0, 336, __pyx_L1_error)
   }
-  __pyx_t_3 = PyList_GET_SIZE(__pyx_v_Vout); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 335, __pyx_L1_error)
+  __pyx_t_3 = PyList_GET_SIZE(__pyx_v_Vout); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 336, __pyx_L1_error)
   __pyx_t_4 = __pyx_t_3;
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "my_bliss.pyx":336
+    /* "my_bliss.pyx":337
  * 
  *     for i in range(len(Vout)):
  *         x = Vout[i]             # <<<<<<<<<<<<<<
@@ -3777,14 +3783,14 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
  */
     if (unlikely(__pyx_v_Vout == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 336, __pyx_L1_error)
+      __PYX_ERR(0, 337, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_Vout, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 336, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_Vout, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 337, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "my_bliss.pyx":337
+    /* "my_bliss.pyx":338
  *     for i in range(len(Vout)):
  *         x = Vout[i]
  *         y = Vin[i]             # <<<<<<<<<<<<<<
@@ -3793,34 +3799,34 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
  */
     if (unlikely(__pyx_v_Vin == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 337, __pyx_L1_error)
+      __PYX_ERR(0, 338, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_Vin, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 337, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_Vin, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 338, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_y, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "my_bliss.pyx":338
+    /* "my_bliss.pyx":339
  *         x = Vout[i]
  *         y = Vin[i]
  *         e = aut[x]             # <<<<<<<<<<<<<<
  *         f = aut[y]
  *         if Lnr == 1:
  */
-    __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_v_x); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 338, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_v_x); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 339, __pyx_L1_error)
     __pyx_v_e = (__pyx_v_aut[__pyx_t_6]);
 
-    /* "my_bliss.pyx":339
+    /* "my_bliss.pyx":340
  *         y = Vin[i]
  *         e = aut[x]
  *         f = aut[y]             # <<<<<<<<<<<<<<
  *         if Lnr == 1:
  *             if not bool(labels):
  */
-    __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_v_y); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 339, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_v_y); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 340, __pyx_L1_error)
     __pyx_v_f = (__pyx_v_aut[__pyx_t_6]);
 
-    /* "my_bliss.pyx":340
+    /* "my_bliss.pyx":341
  *         e = aut[x]
  *         f = aut[y]
  *         if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -3830,7 +3836,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
     __pyx_t_2 = ((__pyx_v_Lnr == 1) != 0);
     if (__pyx_t_2) {
 
-      /* "my_bliss.pyx":341
+      /* "my_bliss.pyx":342
  *         f = aut[y]
  *         if Lnr == 1:
  *             if not bool(labels):             # <<<<<<<<<<<<<<
@@ -3841,7 +3847,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
       __pyx_t_7 = ((!((!(!__pyx_t_2)) != 0)) != 0);
       if (__pyx_t_7) {
 
-        /* "my_bliss.pyx":342
+        /* "my_bliss.pyx":343
  *         if Lnr == 1:
  *             if not bool(labels):
  *                 lab = None             # <<<<<<<<<<<<<<
@@ -3851,7 +3857,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
         __Pyx_INCREF(Py_None);
         __Pyx_XDECREF_SET(__pyx_v_lab, Py_None);
 
-        /* "my_bliss.pyx":341
+        /* "my_bliss.pyx":342
  *         f = aut[y]
  *         if Lnr == 1:
  *             if not bool(labels):             # <<<<<<<<<<<<<<
@@ -3861,7 +3867,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
         goto __pyx_L7;
       }
 
-      /* "my_bliss.pyx":344
+      /* "my_bliss.pyx":345
  *                 lab = None
  *             else:
  *                 lab = labels[0]             # <<<<<<<<<<<<<<
@@ -3871,16 +3877,16 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
       /*else*/ {
         if (unlikely(__pyx_v_labels == Py_None)) {
           PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-          __PYX_ERR(0, 344, __pyx_L1_error)
+          __PYX_ERR(0, 345, __pyx_L1_error)
         }
-        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_labels, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 344, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_GetItemInt_List(__pyx_v_labels, 0, long, 1, __Pyx_PyInt_From_long, 1, 0, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_XDECREF_SET(__pyx_v_lab, __pyx_t_1);
         __pyx_t_1 = 0;
       }
       __pyx_L7:;
 
-      /* "my_bliss.pyx":345
+      /* "my_bliss.pyx":346
  *             else:
  *                 lab = labels[0]
  *             if directed:             # <<<<<<<<<<<<<<
@@ -3890,18 +3896,18 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
       __pyx_t_7 = (__pyx_v_directed != 0);
       if (__pyx_t_7) {
 
-        /* "my_bliss.pyx":346
+        /* "my_bliss.pyx":347
  *                 lab = labels[0]
  *             if directed:
  *                 new_edges.append((e, f, lab))             # <<<<<<<<<<<<<<
  *             else:
  *                 new_edges.append((e, f, lab) if e > f else (f, e, lab))
  */
-        __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_e); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 346, __pyx_L1_error)
+        __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_e); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 347, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
-        __pyx_t_8 = __Pyx_PyInt_From_long(__pyx_v_f); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 346, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyInt_From_long(__pyx_v_f); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 347, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 346, __pyx_L1_error)
+        __pyx_t_9 = PyTuple_New(3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 347, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_GIVEREF(__pyx_t_1);
         PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_1);
@@ -3912,10 +3918,10 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
         PyTuple_SET_ITEM(__pyx_t_9, 2, __pyx_v_lab);
         __pyx_t_1 = 0;
         __pyx_t_8 = 0;
-        __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_new_edges, __pyx_t_9); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 346, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_new_edges, __pyx_t_9); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 347, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-        /* "my_bliss.pyx":345
+        /* "my_bliss.pyx":346
  *             else:
  *                 lab = labels[0]
  *             if directed:             # <<<<<<<<<<<<<<
@@ -3925,7 +3931,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
         goto __pyx_L8;
       }
 
-      /* "my_bliss.pyx":348
+      /* "my_bliss.pyx":349
  *                 new_edges.append((e, f, lab))
  *             else:
  *                 new_edges.append((e, f, lab) if e > f else (f, e, lab))             # <<<<<<<<<<<<<<
@@ -3934,11 +3940,11 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
  */
       /*else*/ {
         if (((__pyx_v_e > __pyx_v_f) != 0)) {
-          __pyx_t_8 = __Pyx_PyInt_From_long(__pyx_v_e); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 348, __pyx_L1_error)
+          __pyx_t_8 = __Pyx_PyInt_From_long(__pyx_v_e); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 349, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_f); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_f); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 349, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 348, __pyx_L1_error)
+          __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 349, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_GIVEREF(__pyx_t_8);
           PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_8);
@@ -3952,11 +3958,11 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
           __pyx_t_9 = __pyx_t_11;
           __pyx_t_11 = 0;
         } else {
-          __pyx_t_11 = __Pyx_PyInt_From_long(__pyx_v_f); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 348, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyInt_From_long(__pyx_v_f); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 349, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
-          __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_e); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 348, __pyx_L1_error)
+          __pyx_t_1 = __Pyx_PyInt_From_long(__pyx_v_e); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 349, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_1);
-          __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 348, __pyx_L1_error)
+          __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 349, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_GIVEREF(__pyx_t_11);
           PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_11);
@@ -3970,12 +3976,12 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
           __pyx_t_9 = __pyx_t_8;
           __pyx_t_8 = 0;
         }
-        __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_new_edges, __pyx_t_9); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 348, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_new_edges, __pyx_t_9); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 349, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
       __pyx_L8:;
 
-      /* "my_bliss.pyx":340
+      /* "my_bliss.pyx":341
  *         e = aut[x]
  *         f = aut[y]
  *         if Lnr == 1:             # <<<<<<<<<<<<<<
@@ -3985,7 +3991,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
       goto __pyx_L6;
     }
 
-    /* "my_bliss.pyx":350
+    /* "my_bliss.pyx":351
  *                 new_edges.append((e, f, lab) if e > f else (f, e, lab))
  *         else:
  *             lab = labels[i]             # <<<<<<<<<<<<<<
@@ -3995,14 +4001,14 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
     /*else*/ {
       if (unlikely(__pyx_v_labels == Py_None)) {
         PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-        __PYX_ERR(0, 350, __pyx_L1_error)
+        __PYX_ERR(0, 351, __pyx_L1_error)
       }
-      __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_labels, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 350, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_GetItemInt_List(__pyx_v_labels, __pyx_v_i, Py_ssize_t, 1, PyInt_FromSsize_t, 1, 1, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 351, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_XDECREF_SET(__pyx_v_lab, __pyx_t_9);
       __pyx_t_9 = 0;
 
-      /* "my_bliss.pyx":351
+      /* "my_bliss.pyx":352
  *         else:
  *             lab = labels[i]
  *             if directed:             # <<<<<<<<<<<<<<
@@ -4012,18 +4018,18 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
       __pyx_t_7 = (__pyx_v_directed != 0);
       if (__pyx_t_7) {
 
-        /* "my_bliss.pyx":352
+        /* "my_bliss.pyx":353
  *             lab = labels[i]
  *             if directed:
  *                 new_edges.append((e, f, lab))             # <<<<<<<<<<<<<<
  *             else:
  *                 new_edges.append((e, f, lab) if e > f else (f, e, lab))
  */
-        __pyx_t_9 = __Pyx_PyInt_From_long(__pyx_v_e); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 352, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyInt_From_long(__pyx_v_e); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 353, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_8 = __Pyx_PyInt_From_long(__pyx_v_f); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 352, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyInt_From_long(__pyx_v_f); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 353, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 352, __pyx_L1_error)
+        __pyx_t_1 = PyTuple_New(3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 353, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_1);
         __Pyx_GIVEREF(__pyx_t_9);
         PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_9);
@@ -4034,10 +4040,10 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
         PyTuple_SET_ITEM(__pyx_t_1, 2, __pyx_v_lab);
         __pyx_t_9 = 0;
         __pyx_t_8 = 0;
-        __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_new_edges, __pyx_t_1); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 352, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_new_edges, __pyx_t_1); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 353, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "my_bliss.pyx":351
+        /* "my_bliss.pyx":352
  *         else:
  *             lab = labels[i]
  *             if directed:             # <<<<<<<<<<<<<<
@@ -4047,7 +4053,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
         goto __pyx_L9;
       }
 
-      /* "my_bliss.pyx":354
+      /* "my_bliss.pyx":355
  *                 new_edges.append((e, f, lab))
  *             else:
  *                 new_edges.append((e, f, lab) if e > f else (f, e, lab))             # <<<<<<<<<<<<<<
@@ -4056,11 +4062,11 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
  */
       /*else*/ {
         if (((__pyx_v_e > __pyx_v_f) != 0)) {
-          __pyx_t_8 = __Pyx_PyInt_From_long(__pyx_v_e); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 354, __pyx_L1_error)
+          __pyx_t_8 = __Pyx_PyInt_From_long(__pyx_v_e); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 355, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
-          __pyx_t_9 = __Pyx_PyInt_From_long(__pyx_v_f); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 354, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyInt_From_long(__pyx_v_f); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 355, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 354, __pyx_L1_error)
+          __pyx_t_11 = PyTuple_New(3); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 355, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_GIVEREF(__pyx_t_8);
           PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_8);
@@ -4074,11 +4080,11 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
           __pyx_t_1 = __pyx_t_11;
           __pyx_t_11 = 0;
         } else {
-          __pyx_t_11 = __Pyx_PyInt_From_long(__pyx_v_f); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 354, __pyx_L1_error)
+          __pyx_t_11 = __Pyx_PyInt_From_long(__pyx_v_f); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 355, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_11);
-          __pyx_t_9 = __Pyx_PyInt_From_long(__pyx_v_e); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 354, __pyx_L1_error)
+          __pyx_t_9 = __Pyx_PyInt_From_long(__pyx_v_e); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 355, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_9);
-          __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 354, __pyx_L1_error)
+          __pyx_t_8 = PyTuple_New(3); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 355, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_8);
           __Pyx_GIVEREF(__pyx_t_11);
           PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_11);
@@ -4092,7 +4098,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
           __pyx_t_1 = __pyx_t_8;
           __pyx_t_8 = 0;
         }
-        __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_new_edges, __pyx_t_1); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 354, __pyx_L1_error)
+        __pyx_t_10 = __Pyx_PyList_Append(__pyx_v_new_edges, __pyx_t_1); if (unlikely(__pyx_t_10 == ((int)-1))) __PYX_ERR(0, 355, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
       }
       __pyx_L9:;
@@ -4100,7 +4106,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
     __pyx_L6:;
   }
 
-  /* "my_bliss.pyx":356
+  /* "my_bliss.pyx":357
  *                 new_edges.append((e, f, lab) if e > f else (f, e, lab))
  * 
  *     if certificate:             # <<<<<<<<<<<<<<
@@ -4110,7 +4116,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
   __pyx_t_7 = (__pyx_v_certificate != 0);
   if (__pyx_t_7) {
 
-    /* "my_bliss.pyx":357
+    /* "my_bliss.pyx":358
  * 
  *     if certificate:
  *         relabel = {v: <long>aut[v] for v in range(Vnr)}             # <<<<<<<<<<<<<<
@@ -4118,17 +4124,17 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
  *     if directed:
  */
     { /* enter inner scope */
-      __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 357, __pyx_L1_error)
+      __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 358, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __pyx_t_12 = __pyx_v_Vnr;
       __pyx_t_13 = __pyx_t_12;
       for (__pyx_t_14 = 0; __pyx_t_14 < __pyx_t_13; __pyx_t_14+=1) {
         __pyx_7genexpr__pyx_v_v = __pyx_t_14;
-        __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_7genexpr__pyx_v_v); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 357, __pyx_L1_error)
+        __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_7genexpr__pyx_v_v); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 358, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_9 = __Pyx_PyInt_From_long(((long)(__pyx_v_aut[__pyx_7genexpr__pyx_v_v]))); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 357, __pyx_L1_error)
+        __pyx_t_9 = __Pyx_PyInt_From_long(((long)(__pyx_v_aut[__pyx_7genexpr__pyx_v_v]))); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 358, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_t_8, (PyObject*)__pyx_t_9))) __PYX_ERR(0, 357, __pyx_L1_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_t_8, (PyObject*)__pyx_t_9))) __PYX_ERR(0, 358, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       }
@@ -4136,7 +4142,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
     __pyx_v_relabel = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "my_bliss.pyx":356
+    /* "my_bliss.pyx":357
  *                 new_edges.append((e, f, lab) if e > f else (f, e, lab))
  * 
  *     if certificate:             # <<<<<<<<<<<<<<
@@ -4145,7 +4151,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
  */
   }
 
-  /* "my_bliss.pyx":359
+  /* "my_bliss.pyx":360
  *         relabel = {v: <long>aut[v] for v in range(Vnr)}
  * 
  *     if directed:             # <<<<<<<<<<<<<<
@@ -4155,7 +4161,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
   __pyx_t_7 = (__pyx_v_directed != 0);
   if (__pyx_t_7) {
 
-    /* "my_bliss.pyx":360
+    /* "my_bliss.pyx":361
  * 
  *     if directed:
  *         del d             # <<<<<<<<<<<<<<
@@ -4164,7 +4170,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
  */
     delete __pyx_v_d;
 
-    /* "my_bliss.pyx":359
+    /* "my_bliss.pyx":360
  *         relabel = {v: <long>aut[v] for v in range(Vnr)}
  * 
  *     if directed:             # <<<<<<<<<<<<<<
@@ -4174,7 +4180,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
     goto __pyx_L13;
   }
 
-  /* "my_bliss.pyx":362
+  /* "my_bliss.pyx":363
  *         del d
  *     else:
  *         del g             # <<<<<<<<<<<<<<
@@ -4186,7 +4192,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
   }
   __pyx_L13:;
 
-  /* "my_bliss.pyx":364
+  /* "my_bliss.pyx":365
  *         del g
  * 
  *     if certificate:             # <<<<<<<<<<<<<<
@@ -4196,7 +4202,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
   __pyx_t_7 = (__pyx_v_certificate != 0);
   if (__pyx_t_7) {
 
-    /* "my_bliss.pyx":365
+    /* "my_bliss.pyx":366
  * 
  *     if certificate:
  *         return new_edges, relabel             # <<<<<<<<<<<<<<
@@ -4204,8 +4210,8 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
  *         return new_edges
  */
     __Pyx_XDECREF(__pyx_r);
-    if (unlikely(!__pyx_v_relabel)) { __Pyx_RaiseUnboundLocalError("relabel"); __PYX_ERR(0, 365, __pyx_L1_error) }
-    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 365, __pyx_L1_error)
+    if (unlikely(!__pyx_v_relabel)) { __Pyx_RaiseUnboundLocalError("relabel"); __PYX_ERR(0, 366, __pyx_L1_error) }
+    __pyx_t_1 = PyTuple_New(2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 366, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_INCREF(__pyx_v_new_edges);
     __Pyx_GIVEREF(__pyx_v_new_edges);
@@ -4217,7 +4223,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "my_bliss.pyx":364
+    /* "my_bliss.pyx":365
  *         del g
  * 
  *     if certificate:             # <<<<<<<<<<<<<<
@@ -4226,7 +4232,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
  */
   }
 
-  /* "my_bliss.pyx":367
+  /* "my_bliss.pyx":368
  *         return new_edges, relabel
  *     else:
  *         return new_edges             # <<<<<<<<<<<<<<
@@ -4240,7 +4246,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
     goto __pyx_L0;
   }
 
-  /* "my_bliss.pyx":287
+  /* "my_bliss.pyx":288
  * #####################################################
  * 
  * cdef canonical_form_from_edge_list(int Vnr, list Vout, list Vin, int Lnr=1, list labels=[],             # <<<<<<<<<<<<<<
@@ -4268,7 +4274,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form_from_edge_list(int __pyx_v_Vnr
   return __pyx_r;
 }
 
-/* "my_bliss.pyx":369
+/* "my_bliss.pyx":370
  *         return new_edges
  * 
  * cpdef canonical_form(G, partition=None, return_graph=False, use_edge_labels=True, certificate=False):             # <<<<<<<<<<<<<<
@@ -4335,7 +4341,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
   PyObject *__pyx_t_21 = NULL;
   int __pyx_t_22;
   __Pyx_RefNannySetupContext("canonical_form", 0);
-  __Pyx_TraceCall("canonical_form", __pyx_f[0], 369, 0, __PYX_ERR(0, 369, __pyx_L1_error));
+  __Pyx_TraceCall("canonical_form", __pyx_f[0], 370, 0, __PYX_ERR(0, 370, __pyx_L1_error));
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_partition = __pyx_optional_args->partition;
@@ -4352,14 +4358,14 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
   }
   __Pyx_INCREF(__pyx_v_partition);
 
-  /* "my_bliss.pyx":440
+  /* "my_bliss.pyx":441
  *     # We need this to convert the numbers from <unsigned int> to <long>.
  *     # This assertion should be true simply for memory reasons.
  *     cdef unsigned long Vnr = G.order()             # <<<<<<<<<<<<<<
  *     assert Vnr <= <unsigned long>LONG_MAX
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 440, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 441, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4373,14 +4379,14 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 440, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 441, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_unsigned_long(__pyx_t_1); if (unlikely((__pyx_t_4 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 440, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_unsigned_long(__pyx_t_1); if (unlikely((__pyx_t_4 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 441, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Vnr = __pyx_t_4;
 
-  /* "my_bliss.pyx":441
+  /* "my_bliss.pyx":442
  *     # This assertion should be true simply for memory reasons.
  *     cdef unsigned long Vnr = G.order()
  *     assert Vnr <= <unsigned long>LONG_MAX             # <<<<<<<<<<<<<<
@@ -4391,19 +4397,19 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_Vnr <= ((unsigned long)LONG_MAX)) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 441, __pyx_L1_error)
+      __PYX_ERR(0, 442, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "my_bliss.pyx":443
+  /* "my_bliss.pyx":444
  *     assert Vnr <= <unsigned long>LONG_MAX
  * 
  *     cdef bint directed = G.is_directed()             # <<<<<<<<<<<<<<
  * 
  *     cdef int labInd
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_is_directed); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 443, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_is_directed); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 444, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4417,62 +4423,62 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 443, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 444, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 443, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 444, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_directed = __pyx_t_5;
 
-  /* "my_bliss.pyx":446
+  /* "my_bliss.pyx":447
  * 
  *     cdef int labInd
  *     cdef list Vout   = []             # <<<<<<<<<<<<<<
  *     cdef list Vin    = []
  *     cdef list labels = []
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 446, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_Vout = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":447
+  /* "my_bliss.pyx":448
  *     cdef int labInd
  *     cdef list Vout   = []
  *     cdef list Vin    = []             # <<<<<<<<<<<<<<
  *     cdef list labels = []
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 447, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 448, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_Vin = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":448
+  /* "my_bliss.pyx":449
  *     cdef list Vout   = []
  *     cdef list Vin    = []
  *     cdef list labels = []             # <<<<<<<<<<<<<<
  * 
  *     cdef list int2vert = list(G)
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 448, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 449, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_labels = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":450
+  /* "my_bliss.pyx":451
  *     cdef list labels = []
  * 
  *     cdef list int2vert = list(G)             # <<<<<<<<<<<<<<
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
  *     cdef list edge_labels = []
  */
-  __pyx_t_1 = PySequence_List(__pyx_v_G); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 450, __pyx_L1_error)
+  __pyx_t_1 = PySequence_List(__pyx_v_G); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_int2vert = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":451
+  /* "my_bliss.pyx":452
  * 
  *     cdef list int2vert = list(G)
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}             # <<<<<<<<<<<<<<
@@ -4480,25 +4486,25 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
  *     cdef dict edge_labels_rev = {}
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 451, __pyx_L5_error)
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 452, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_6 = 0;
     __pyx_t_2 = __pyx_v_int2vert; __Pyx_INCREF(__pyx_t_2); __pyx_t_7 = 0;
     for (;;) {
       if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 451, __pyx_L5_error)
+      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 452, __pyx_L5_error)
       #else
-      __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 451, __pyx_L5_error)
+      __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 452, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
       #endif
       __Pyx_XDECREF_SET(__pyx_8genexpr1__pyx_v_v, __pyx_t_3);
       __pyx_t_3 = 0;
       __pyx_8genexpr1__pyx_v_i = __pyx_t_6;
       __pyx_t_6 = (__pyx_t_6 + 1);
-      __pyx_t_3 = PyInt_FromSsize_t(__pyx_8genexpr1__pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 451, __pyx_L5_error)
+      __pyx_t_3 = PyInt_FromSsize_t(__pyx_8genexpr1__pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 452, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_8genexpr1__pyx_v_v, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 451, __pyx_L5_error)
+      if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_8genexpr1__pyx_v_v, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 452, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4512,31 +4518,31 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
   __pyx_v_vert2int = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":452
+  /* "my_bliss.pyx":453
  *     cdef list int2vert = list(G)
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
  *     cdef list edge_labels = []             # <<<<<<<<<<<<<<
  *     cdef dict edge_labels_rev = {}
  *     cdef int Lnr = 0
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 452, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 453, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_edge_labels = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":453
+  /* "my_bliss.pyx":454
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
  *     cdef list edge_labels = []
  *     cdef dict edge_labels_rev = {}             # <<<<<<<<<<<<<<
  *     cdef int Lnr = 0
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 453, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 454, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_edge_labels_rev = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":454
+  /* "my_bliss.pyx":455
  *     cdef list edge_labels = []
  *     cdef dict edge_labels_rev = {}
  *     cdef int Lnr = 0             # <<<<<<<<<<<<<<
@@ -4545,49 +4551,49 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
  */
   __pyx_v_Lnr = 0;
 
-  /* "my_bliss.pyx":456
+  /* "my_bliss.pyx":457
  *     cdef int Lnr = 0
  * 
  *     if bool(partition):             # <<<<<<<<<<<<<<
  *         partition = [[vert2int[i] for i in part] for part in partition]
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 456, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 457, __pyx_L1_error)
   if (((!(!__pyx_t_5)) != 0)) {
 
-    /* "my_bliss.pyx":457
+    /* "my_bliss.pyx":458
  * 
  *     if bool(partition):
  *         partition = [[vert2int[i] for i in part] for part in partition]             # <<<<<<<<<<<<<<
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):
  */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 457, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 458, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (likely(PyList_CheckExact(__pyx_v_partition)) || PyTuple_CheckExact(__pyx_v_partition)) {
       __pyx_t_2 = __pyx_v_partition; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_partition); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_partition); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 458, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 458, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_8)) {
         if (likely(PyList_CheckExact(__pyx_t_2))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 457, __pyx_L1_error)
+          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 458, __pyx_L1_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 457, __pyx_L1_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 458, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 457, __pyx_L1_error)
+          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 458, __pyx_L1_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 457, __pyx_L1_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 458, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         }
@@ -4597,7 +4603,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 457, __pyx_L1_error)
+            else __PYX_ERR(0, 458, __pyx_L1_error)
           }
           break;
         }
@@ -4605,32 +4611,32 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       }
       __Pyx_XDECREF_SET(__pyx_v_part, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 457, __pyx_L1_error)
+      __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 458, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       if (likely(PyList_CheckExact(__pyx_v_part)) || PyTuple_CheckExact(__pyx_v_part)) {
         __pyx_t_9 = __pyx_v_part; __Pyx_INCREF(__pyx_t_9); __pyx_t_7 = 0;
         __pyx_t_10 = NULL;
       } else {
-        __pyx_t_7 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_v_part); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 457, __pyx_L1_error)
+        __pyx_t_7 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_v_part); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 458, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 457, __pyx_L1_error)
+        __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 458, __pyx_L1_error)
       }
       for (;;) {
         if (likely(!__pyx_t_10)) {
           if (likely(PyList_CheckExact(__pyx_t_9))) {
             if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_9)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_11 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 457, __pyx_L1_error)
+            __pyx_t_11 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 458, __pyx_L1_error)
             #else
-            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 457, __pyx_L1_error)
+            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 458, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             #endif
           } else {
             if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 457, __pyx_L1_error)
+            __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 458, __pyx_L1_error)
             #else
-            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 457, __pyx_L1_error)
+            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 458, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             #endif
           }
@@ -4640,7 +4646,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 457, __pyx_L1_error)
+              else __PYX_ERR(0, 458, __pyx_L1_error)
             }
             break;
           }
@@ -4648,20 +4654,20 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
         }
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_11);
         __pyx_t_11 = 0;
-        __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_i); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 457, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_i); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 458, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 457, __pyx_L1_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 458, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       }
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 457, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 458, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF_SET(__pyx_v_partition, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "my_bliss.pyx":456
+    /* "my_bliss.pyx":457
  *     cdef int Lnr = 0
  * 
  *     if bool(partition):             # <<<<<<<<<<<<<<
@@ -4670,19 +4676,19 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
  */
   }
 
-  /* "my_bliss.pyx":459
+  /* "my_bliss.pyx":460
  *         partition = [[vert2int[i] for i in part] for part in partition]
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):             # <<<<<<<<<<<<<<
  *         if use_edge_labels is False:
  *             lab = None
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_edge_iterator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 459, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_edge_iterator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 460, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 459, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_labels, Py_True) < 0) __PYX_ERR(0, 459, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 459, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_labels, Py_True) < 0) __PYX_ERR(0, 460, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 460, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4690,9 +4696,9 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __pyx_t_2 = __pyx_t_3; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 459, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 460, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 459, __pyx_L1_error)
+    __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 460, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -4700,17 +4706,17 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 459, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 460, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 459, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 460, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 459, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 460, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 459, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 460, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -4720,7 +4726,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 459, __pyx_L1_error)
+          else __PYX_ERR(0, 460, __pyx_L1_error)
         }
         break;
       }
@@ -4732,7 +4738,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 459, __pyx_L1_error)
+        __PYX_ERR(0, 460, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -4748,17 +4754,17 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __Pyx_INCREF(__pyx_t_9);
       __Pyx_INCREF(__pyx_t_11);
       #else
-      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 459, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 460, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 459, __pyx_L1_error)
+      __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 460, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_11 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 459, __pyx_L1_error)
+      __pyx_t_11 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 460, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 459, __pyx_L1_error)
+      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 460, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_13 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -4768,7 +4774,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __Pyx_GOTREF(__pyx_t_9);
       index = 2; __pyx_t_11 = __pyx_t_13(__pyx_t_12); if (unlikely(!__pyx_t_11)) goto __pyx_L16_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_11);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 3) < 0) __PYX_ERR(0, 459, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 3) < 0) __PYX_ERR(0, 460, __pyx_L1_error)
       __pyx_t_13 = NULL;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       goto __pyx_L17_unpacking_done;
@@ -4776,7 +4782,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_13 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 459, __pyx_L1_error)
+      __PYX_ERR(0, 460, __pyx_L1_error)
       __pyx_L17_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_1);
@@ -4786,7 +4792,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __Pyx_XDECREF_SET(__pyx_v_lab, __pyx_t_11);
     __pyx_t_11 = 0;
 
-    /* "my_bliss.pyx":460
+    /* "my_bliss.pyx":461
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):
  *         if use_edge_labels is False:             # <<<<<<<<<<<<<<
@@ -4797,7 +4803,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __pyx_t_14 = (__pyx_t_5 != 0);
     if (__pyx_t_14) {
 
-      /* "my_bliss.pyx":461
+      /* "my_bliss.pyx":462
  *     for x,y,lab in G.edge_iterator(labels=True):
  *         if use_edge_labels is False:
  *             lab = None             # <<<<<<<<<<<<<<
@@ -4807,7 +4813,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __Pyx_INCREF(Py_None);
       __Pyx_DECREF_SET(__pyx_v_lab, Py_None);
 
-      /* "my_bliss.pyx":460
+      /* "my_bliss.pyx":461
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):
  *         if use_edge_labels is False:             # <<<<<<<<<<<<<<
@@ -4816,7 +4822,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
  */
     }
 
-    /* "my_bliss.pyx":462
+    /* "my_bliss.pyx":463
  *         if use_edge_labels is False:
  *             lab = None
  *         try:             # <<<<<<<<<<<<<<
@@ -4832,20 +4838,20 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __Pyx_XGOTREF(__pyx_t_17);
       /*try:*/ {
 
-        /* "my_bliss.pyx":463
+        /* "my_bliss.pyx":464
  *             lab = None
  *         try:
  *             labInd = edge_labels_rev[lab]             # <<<<<<<<<<<<<<
  *         except KeyError:
  *             labInd = Lnr
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_edge_labels_rev, __pyx_v_lab); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 463, __pyx_L19_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_edge_labels_rev, __pyx_v_lab); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 464, __pyx_L19_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 463, __pyx_L19_error)
+        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 464, __pyx_L19_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_v_labInd = __pyx_t_18;
 
-        /* "my_bliss.pyx":462
+        /* "my_bliss.pyx":463
  *         if use_edge_labels is False:
  *             lab = None
  *         try:             # <<<<<<<<<<<<<<
@@ -4864,7 +4870,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "my_bliss.pyx":464
+      /* "my_bliss.pyx":465
  *         try:
  *             labInd = edge_labels_rev[lab]
  *         except KeyError:             # <<<<<<<<<<<<<<
@@ -4874,12 +4880,12 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __pyx_t_18 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_KeyError);
       if (__pyx_t_18) {
         __Pyx_AddTraceback("my_bliss.canonical_form", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_11, &__pyx_t_9) < 0) __PYX_ERR(0, 464, __pyx_L21_except_error)
+        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_11, &__pyx_t_9) < 0) __PYX_ERR(0, 465, __pyx_L21_except_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_GOTREF(__pyx_t_9);
 
-        /* "my_bliss.pyx":465
+        /* "my_bliss.pyx":466
  *             labInd = edge_labels_rev[lab]
  *         except KeyError:
  *             labInd = Lnr             # <<<<<<<<<<<<<<
@@ -4888,7 +4894,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
  */
         __pyx_v_labInd = __pyx_v_Lnr;
 
-        /* "my_bliss.pyx":466
+        /* "my_bliss.pyx":467
  *         except KeyError:
  *             labInd = Lnr
  *             Lnr += 1             # <<<<<<<<<<<<<<
@@ -4897,26 +4903,26 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
  */
         __pyx_v_Lnr = (__pyx_v_Lnr + 1);
 
-        /* "my_bliss.pyx":467
+        /* "my_bliss.pyx":468
  *             labInd = Lnr
  *             Lnr += 1
  *             edge_labels_rev[lab] = labInd             # <<<<<<<<<<<<<<
  *             edge_labels.append(lab)
  * 
  */
-        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 467, __pyx_L21_except_error)
+        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 468, __pyx_L21_except_error)
         __Pyx_GOTREF(__pyx_t_1);
-        if (unlikely(PyDict_SetItem(__pyx_v_edge_labels_rev, __pyx_v_lab, __pyx_t_1) < 0)) __PYX_ERR(0, 467, __pyx_L21_except_error)
+        if (unlikely(PyDict_SetItem(__pyx_v_edge_labels_rev, __pyx_v_lab, __pyx_t_1) < 0)) __PYX_ERR(0, 468, __pyx_L21_except_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "my_bliss.pyx":468
+        /* "my_bliss.pyx":469
  *             Lnr += 1
  *             edge_labels_rev[lab] = labInd
  *             edge_labels.append(lab)             # <<<<<<<<<<<<<<
  * 
  *         Vout.append(vert2int[x])
  */
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_edge_labels, __pyx_v_lab); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 468, __pyx_L21_except_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_edge_labels, __pyx_v_lab); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 469, __pyx_L21_except_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -4925,7 +4931,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       goto __pyx_L21_except_error;
       __pyx_L21_except_error:;
 
-      /* "my_bliss.pyx":462
+      /* "my_bliss.pyx":463
  *         if use_edge_labels is False:
  *             lab = None
  *         try:             # <<<<<<<<<<<<<<
@@ -4945,43 +4951,43 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __pyx_L26_try_end:;
     }
 
-    /* "my_bliss.pyx":470
+    /* "my_bliss.pyx":471
  *             edge_labels.append(lab)
  * 
  *         Vout.append(vert2int[x])             # <<<<<<<<<<<<<<
  *         Vin.append(vert2int[y])
  *         labels.append(labInd)
  */
-    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_x); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 470, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_x); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 471, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vout, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 470, __pyx_L1_error)
+    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vout, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 471, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "my_bliss.pyx":471
+    /* "my_bliss.pyx":472
  * 
  *         Vout.append(vert2int[x])
  *         Vin.append(vert2int[y])             # <<<<<<<<<<<<<<
  *         labels.append(labInd)
  * 
  */
-    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_y); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 471, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_y); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 472, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vin, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 471, __pyx_L1_error)
+    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vin, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 472, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "my_bliss.pyx":472
+    /* "my_bliss.pyx":473
  *         Vout.append(vert2int[x])
  *         Vin.append(vert2int[y])
  *         labels.append(labInd)             # <<<<<<<<<<<<<<
  * 
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]
  */
-    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 472, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 473, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_labels, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 472, __pyx_L1_error)
+    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_labels, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 473, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "my_bliss.pyx":459
+    /* "my_bliss.pyx":460
  *         partition = [[vert2int[i] for i in part] for part in partition]
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):             # <<<<<<<<<<<<<<
@@ -4991,25 +4997,25 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":474
+  /* "my_bliss.pyx":475
  *         labels.append(labInd)
  * 
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]             # <<<<<<<<<<<<<<
  *     labels = [lab_relabels[i] for i in labels]
  *     new_edges, relabel = canonical_form_from_edge_list(Vnr, Vout, Vin, Lnr, labels, partition, directed, certificate=True)
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 474, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 475, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = __Pyx_PyDict_IterItems(__pyx_v_edge_labels_rev); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 474, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_IterItems(__pyx_v_edge_labels_rev); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 475, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 474, __pyx_L1_error)
+  __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 475, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_9);
   __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 474, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 475, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_itemgetter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 474, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_itemgetter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 475, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_12 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -5023,12 +5029,12 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
   }
   __pyx_t_3 = (__pyx_t_12) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_12, __pyx_int_0) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_int_0);
   __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 474, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 475, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_key, __pyx_t_3) < 0) __PYX_ERR(0, 474, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_key, __pyx_t_3) < 0) __PYX_ERR(0, 475, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_11, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 474, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_11, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 475, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -5036,9 +5042,9 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __pyx_t_9 = __pyx_t_3; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 474, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 475, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 474, __pyx_L1_error)
+    __pyx_t_8 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 475, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -5046,17 +5052,17 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       if (likely(PyList_CheckExact(__pyx_t_9))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 474, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 475, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 474, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 475, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 474, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 475, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 474, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 475, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -5066,7 +5072,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 474, __pyx_L1_error)
+          else __PYX_ERR(0, 475, __pyx_L1_error)
         }
         break;
       }
@@ -5078,7 +5084,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 474, __pyx_L1_error)
+        __PYX_ERR(0, 475, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -5091,15 +5097,15 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __Pyx_INCREF(__pyx_t_11);
       __Pyx_INCREF(__pyx_t_1);
       #else
-      __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 474, __pyx_L1_error)
+      __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 475, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 474, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 475, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 474, __pyx_L1_error)
+      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 475, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_13 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -5107,7 +5113,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __Pyx_GOTREF(__pyx_t_11);
       index = 1; __pyx_t_1 = __pyx_t_13(__pyx_t_12); if (unlikely(!__pyx_t_1)) goto __pyx_L31_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_1);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 474, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 475, __pyx_L1_error)
       __pyx_t_13 = NULL;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       goto __pyx_L32_unpacking_done;
@@ -5115,63 +5121,63 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_13 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 474, __pyx_L1_error)
+      __PYX_ERR(0, 475, __pyx_L1_error)
       __pyx_L32_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v__, __pyx_t_11);
     __pyx_t_11 = 0;
     __Pyx_XDECREF_SET(__pyx_v_lab, __pyx_t_1);
     __pyx_t_1 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_v_lab))) __PYX_ERR(0, 474, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_v_lab))) __PYX_ERR(0, 475, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_v_lab_relabels = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":475
+  /* "my_bliss.pyx":476
  * 
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]
  *     labels = [lab_relabels[i] for i in labels]             # <<<<<<<<<<<<<<
  *     new_edges, relabel = canonical_form_from_edge_list(Vnr, Vout, Vin, Lnr, labels, partition, directed, certificate=True)
  * 
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 475, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 476, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_9 = __pyx_v_labels; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
   for (;;) {
     if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 475, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 476, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 475, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 476, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_lab_relabels, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 475, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_lab_relabels, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 476, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 475, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 476, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF_SET(__pyx_v_labels, ((PyObject*)__pyx_t_2));
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":476
+  /* "my_bliss.pyx":477
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]
  *     labels = [lab_relabels[i] for i in labels]
  *     new_edges, relabel = canonical_form_from_edge_list(Vnr, Vout, Vin, Lnr, labels, partition, directed, certificate=True)             # <<<<<<<<<<<<<<
  * 
  *     new_edges = [(x, y, edge_labels[lab]) for x, y, lab in new_edges]
  */
-  if (!(likely(PyList_CheckExact(__pyx_v_partition))||((__pyx_v_partition) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_partition)->tp_name), 0))) __PYX_ERR(0, 476, __pyx_L1_error)
+  if (!(likely(PyList_CheckExact(__pyx_v_partition))||((__pyx_v_partition) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "list", Py_TYPE(__pyx_v_partition)->tp_name), 0))) __PYX_ERR(0, 477, __pyx_L1_error)
   __pyx_t_20.__pyx_n = 5;
   __pyx_t_20.Lnr = __pyx_v_Lnr;
   __pyx_t_20.labels = __pyx_v_labels;
   __pyx_t_20.partition = ((PyObject*)__pyx_v_partition);
   __pyx_t_20.directed = __pyx_v_directed;
   __pyx_t_20.certificate = 1;
-  __pyx_t_2 = __pyx_f_8my_bliss_canonical_form_from_edge_list(__pyx_v_Vnr, __pyx_v_Vout, __pyx_v_Vin, &__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 476, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_8my_bliss_canonical_form_from_edge_list(__pyx_v_Vnr, __pyx_v_Vout, __pyx_v_Vin, &__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 477, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if ((likely(PyTuple_CheckExact(__pyx_t_2))) || (PyList_CheckExact(__pyx_t_2))) {
     PyObject* sequence = __pyx_t_2;
@@ -5179,7 +5185,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 476, __pyx_L1_error)
+      __PYX_ERR(0, 477, __pyx_L1_error)
     }
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
     if (likely(PyTuple_CheckExact(sequence))) {
@@ -5192,15 +5198,15 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __Pyx_INCREF(__pyx_t_9);
     __Pyx_INCREF(__pyx_t_3);
     #else
-    __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 476, __pyx_L1_error)
+    __pyx_t_9 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 477, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 476, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 477, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
     Py_ssize_t index = -1;
-    __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 476, __pyx_L1_error)
+    __pyx_t_1 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 477, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_13 = Py_TYPE(__pyx_t_1)->tp_iternext;
@@ -5208,7 +5214,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __Pyx_GOTREF(__pyx_t_9);
     index = 1; __pyx_t_3 = __pyx_t_13(__pyx_t_1); if (unlikely(!__pyx_t_3)) goto __pyx_L35_unpacking_failed;
     __Pyx_GOTREF(__pyx_t_3);
-    if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_1), 2) < 0) __PYX_ERR(0, 476, __pyx_L1_error)
+    if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_1), 2) < 0) __PYX_ERR(0, 477, __pyx_L1_error)
     __pyx_t_13 = NULL;
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     goto __pyx_L36_unpacking_done;
@@ -5216,7 +5222,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __pyx_t_13 = NULL;
     if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-    __PYX_ERR(0, 476, __pyx_L1_error)
+    __PYX_ERR(0, 477, __pyx_L1_error)
     __pyx_L36_unpacking_done:;
   }
   __pyx_v_new_edges = __pyx_t_9;
@@ -5224,39 +5230,39 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
   __pyx_v_relabel = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "my_bliss.pyx":478
+  /* "my_bliss.pyx":479
  *     new_edges, relabel = canonical_form_from_edge_list(Vnr, Vout, Vin, Lnr, labels, partition, directed, certificate=True)
  * 
  *     new_edges = [(x, y, edge_labels[lab]) for x, y, lab in new_edges]             # <<<<<<<<<<<<<<
  *     relabel = {int2vert[i]: j for i, j in relabel.iteritems() }
  * 
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 478, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 479, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   if (likely(PyList_CheckExact(__pyx_v_new_edges)) || PyTuple_CheckExact(__pyx_v_new_edges)) {
     __pyx_t_3 = __pyx_v_new_edges; __Pyx_INCREF(__pyx_t_3); __pyx_t_6 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_new_edges); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 478, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_v_new_edges); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 479, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_8 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 478, __pyx_L1_error)
+    __pyx_t_8 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 479, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_8)) {
       if (likely(PyList_CheckExact(__pyx_t_3))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_9 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_9); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 478, __pyx_L1_error)
+        __pyx_t_9 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_9); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 479, __pyx_L1_error)
         #else
-        __pyx_t_9 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 478, __pyx_L1_error)
+        __pyx_t_9 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 479, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_9 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_9); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 478, __pyx_L1_error)
+        __pyx_t_9 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_9); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 479, __pyx_L1_error)
         #else
-        __pyx_t_9 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 478, __pyx_L1_error)
+        __pyx_t_9 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 479, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         #endif
       }
@@ -5266,7 +5272,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 478, __pyx_L1_error)
+          else __PYX_ERR(0, 479, __pyx_L1_error)
         }
         break;
       }
@@ -5278,7 +5284,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 478, __pyx_L1_error)
+        __PYX_ERR(0, 479, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -5294,17 +5300,17 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __Pyx_INCREF(__pyx_t_11);
       __Pyx_INCREF(__pyx_t_12);
       #else
-      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 478, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 479, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 478, __pyx_L1_error)
+      __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 479, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_12 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 478, __pyx_L1_error)
+      __pyx_t_12 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 479, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       #endif
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_21 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 478, __pyx_L1_error)
+      __pyx_t_21 = PyObject_GetIter(__pyx_t_9); if (unlikely(!__pyx_t_21)) __PYX_ERR(0, 479, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_21);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_t_13 = Py_TYPE(__pyx_t_21)->tp_iternext;
@@ -5314,7 +5320,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __Pyx_GOTREF(__pyx_t_11);
       index = 2; __pyx_t_12 = __pyx_t_13(__pyx_t_21); if (unlikely(!__pyx_t_12)) goto __pyx_L39_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_12);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_21), 3) < 0) __PYX_ERR(0, 478, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_21), 3) < 0) __PYX_ERR(0, 479, __pyx_L1_error)
       __pyx_t_13 = NULL;
       __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
       goto __pyx_L40_unpacking_done;
@@ -5322,7 +5328,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       __Pyx_DECREF(__pyx_t_21); __pyx_t_21 = 0;
       __pyx_t_13 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 478, __pyx_L1_error)
+      __PYX_ERR(0, 479, __pyx_L1_error)
       __pyx_L40_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_1);
@@ -5331,9 +5337,9 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __pyx_t_11 = 0;
     __Pyx_XDECREF_SET(__pyx_v_lab, __pyx_t_12);
     __pyx_t_12 = 0;
-    __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_edge_labels, __pyx_v_lab); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 478, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_edge_labels, __pyx_v_lab); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 479, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_12 = PyTuple_New(3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 478, __pyx_L1_error)
+    __pyx_t_12 = PyTuple_New(3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 479, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_INCREF(__pyx_v_x);
     __Pyx_GIVEREF(__pyx_v_x);
@@ -5344,14 +5350,14 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __Pyx_GIVEREF(__pyx_t_9);
     PyTuple_SET_ITEM(__pyx_t_12, 2, __pyx_t_9);
     __pyx_t_9 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_12))) __PYX_ERR(0, 478, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_12))) __PYX_ERR(0, 479, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __Pyx_DECREF_SET(__pyx_v_new_edges, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":479
+  /* "my_bliss.pyx":480
  * 
  *     new_edges = [(x, y, edge_labels[lab]) for x, y, lab in new_edges]
  *     relabel = {int2vert[i]: j for i, j in relabel.iteritems() }             # <<<<<<<<<<<<<<
@@ -5359,14 +5365,14 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
  *     if return_graph:
  */
   { /* enter inner scope */
-    __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 479, __pyx_L43_error)
+    __pyx_t_2 = PyDict_New(); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 480, __pyx_L43_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_6 = 0;
     if (unlikely(__pyx_v_relabel == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%.30s'", "iteritems");
-      __PYX_ERR(0, 479, __pyx_L43_error)
+      __PYX_ERR(0, 480, __pyx_L43_error)
     }
-    __pyx_t_12 = __Pyx_dict_iterator(__pyx_v_relabel, 0, __pyx_n_s_iteritems, (&__pyx_t_7), (&__pyx_t_18)); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 479, __pyx_L43_error)
+    __pyx_t_12 = __Pyx_dict_iterator(__pyx_v_relabel, 0, __pyx_n_s_iteritems, (&__pyx_t_7), (&__pyx_t_18)); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 480, __pyx_L43_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_XDECREF(__pyx_t_3);
     __pyx_t_3 = __pyx_t_12;
@@ -5374,16 +5380,16 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     while (1) {
       __pyx_t_22 = __Pyx_dict_iter_next(__pyx_t_3, __pyx_t_7, &__pyx_t_6, &__pyx_t_12, &__pyx_t_9, NULL, __pyx_t_18);
       if (unlikely(__pyx_t_22 == 0)) break;
-      if (unlikely(__pyx_t_22 == -1)) __PYX_ERR(0, 479, __pyx_L43_error)
+      if (unlikely(__pyx_t_22 == -1)) __PYX_ERR(0, 480, __pyx_L43_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_XDECREF_SET(__pyx_8genexpr2__pyx_v_i, __pyx_t_12);
       __pyx_t_12 = 0;
       __Pyx_XDECREF_SET(__pyx_8genexpr2__pyx_v_j, __pyx_t_9);
       __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_int2vert, __pyx_8genexpr2__pyx_v_i); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 479, __pyx_L43_error)
+      __pyx_t_9 = __Pyx_PyObject_GetItem(__pyx_v_int2vert, __pyx_8genexpr2__pyx_v_i); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 480, __pyx_L43_error)
       __Pyx_GOTREF(__pyx_t_9);
-      if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_t_9, (PyObject*)__pyx_8genexpr2__pyx_v_j))) __PYX_ERR(0, 479, __pyx_L43_error)
+      if (unlikely(PyDict_SetItem(__pyx_t_2, (PyObject*)__pyx_t_9, (PyObject*)__pyx_8genexpr2__pyx_v_j))) __PYX_ERR(0, 480, __pyx_L43_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -5399,17 +5405,17 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
   __Pyx_DECREF_SET(__pyx_v_relabel, __pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":481
+  /* "my_bliss.pyx":482
  *     relabel = {int2vert[i]: j for i, j in relabel.iteritems() }
  * 
  *     if return_graph:             # <<<<<<<<<<<<<<
  *         if directed:
  *             from sage.graphs.graph import DiGraph
  */
-  __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_v_return_graph); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 481, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_v_return_graph); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 482, __pyx_L1_error)
   if (__pyx_t_14) {
 
-    /* "my_bliss.pyx":482
+    /* "my_bliss.pyx":483
  * 
  *     if return_graph:
  *         if directed:             # <<<<<<<<<<<<<<
@@ -5419,43 +5425,43 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __pyx_t_14 = (__pyx_v_directed != 0);
     if (__pyx_t_14) {
 
-      /* "my_bliss.pyx":483
+      /* "my_bliss.pyx":484
  *     if return_graph:
  *         if directed:
  *             from sage.graphs.graph import DiGraph             # <<<<<<<<<<<<<<
  *             H = DiGraph(new_edges, loops=G.allows_loops(), multiedges=G.allows_multiple_edges())
  *         else:
  */
-      __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 483, __pyx_L1_error)
+      __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 484, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_INCREF(__pyx_n_s_DiGraph);
       __Pyx_GIVEREF(__pyx_n_s_DiGraph);
       PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_DiGraph);
-      __pyx_t_3 = __Pyx_Import(__pyx_n_s_sage_graphs_graph, __pyx_t_2, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 483, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_Import(__pyx_n_s_sage_graphs_graph, __pyx_t_2, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 484, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_DiGraph); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 483, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_3, __pyx_n_s_DiGraph); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 484, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_INCREF(__pyx_t_2);
       __pyx_v_DiGraph = __pyx_t_2;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "my_bliss.pyx":484
+      /* "my_bliss.pyx":485
  *         if directed:
  *             from sage.graphs.graph import DiGraph
  *             H = DiGraph(new_edges, loops=G.allows_loops(), multiedges=G.allows_multiple_edges())             # <<<<<<<<<<<<<<
  *         else:
  *             from sage.graphs.graph import Graph
  */
-      __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 484, __pyx_L1_error)
+      __pyx_t_3 = PyTuple_New(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_INCREF(__pyx_v_new_edges);
       __Pyx_GIVEREF(__pyx_v_new_edges);
       PyTuple_SET_ITEM(__pyx_t_3, 0, __pyx_v_new_edges);
-      __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 484, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_allows_loops); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 484, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_allows_loops); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __pyx_t_11 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
@@ -5469,12 +5475,12 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       }
       __pyx_t_9 = (__pyx_t_11) ? __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_11) : __Pyx_PyObject_CallNoArg(__pyx_t_12);
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 484, __pyx_L1_error)
+      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_loops, __pyx_t_9) < 0) __PYX_ERR(0, 484, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_loops, __pyx_t_9) < 0) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_allows_multiple_edges); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 484, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_allows_multiple_edges); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __pyx_t_11 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
@@ -5488,19 +5494,19 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       }
       __pyx_t_9 = (__pyx_t_11) ? __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_11) : __Pyx_PyObject_CallNoArg(__pyx_t_12);
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 484, __pyx_L1_error)
+      if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_multiedges, __pyx_t_9) < 0) __PYX_ERR(0, 484, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_multiedges, __pyx_t_9) < 0) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_v_DiGraph, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 484, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_v_DiGraph, __pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 485, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __pyx_v_H = __pyx_t_9;
       __pyx_t_9 = 0;
 
-      /* "my_bliss.pyx":482
+      /* "my_bliss.pyx":483
  * 
  *     if return_graph:
  *         if directed:             # <<<<<<<<<<<<<<
@@ -5510,7 +5516,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       goto __pyx_L48;
     }
 
-    /* "my_bliss.pyx":486
+    /* "my_bliss.pyx":487
  *             H = DiGraph(new_edges, loops=G.allows_loops(), multiedges=G.allows_multiple_edges())
  *         else:
  *             from sage.graphs.graph import Graph             # <<<<<<<<<<<<<<
@@ -5518,36 +5524,36 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
  * 
  */
     /*else*/ {
-      __pyx_t_9 = PyList_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 486, __pyx_L1_error)
+      __pyx_t_9 = PyList_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 487, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_INCREF(__pyx_n_s_Graph);
       __Pyx_GIVEREF(__pyx_n_s_Graph);
       PyList_SET_ITEM(__pyx_t_9, 0, __pyx_n_s_Graph);
-      __pyx_t_2 = __Pyx_Import(__pyx_n_s_sage_graphs_graph, __pyx_t_9, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 486, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_Import(__pyx_n_s_sage_graphs_graph, __pyx_t_9, -1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 487, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __pyx_t_9 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Graph); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 486, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_ImportFrom(__pyx_t_2, __pyx_n_s_Graph); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 487, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_INCREF(__pyx_t_9);
       __pyx_v_Graph = __pyx_t_9;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "my_bliss.pyx":487
+      /* "my_bliss.pyx":488
  *         else:
  *             from sage.graphs.graph import Graph
  *             H = Graph(new_edges, loops=G.allows_loops(), multiedges=G.allows_multiple_edges())             # <<<<<<<<<<<<<<
  * 
  *         H.add_vertices(range(G.order()))
  */
-      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 487, __pyx_L1_error)
+      __pyx_t_2 = PyTuple_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 488, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_INCREF(__pyx_v_new_edges);
       __Pyx_GIVEREF(__pyx_v_new_edges);
       PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_new_edges);
-      __pyx_t_9 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 487, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 488, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_allows_loops); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 487, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_allows_loops); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 488, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __pyx_t_11 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
@@ -5561,12 +5567,12 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       }
       __pyx_t_3 = (__pyx_t_11) ? __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_11) : __Pyx_PyObject_CallNoArg(__pyx_t_12);
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 487, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 488, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_loops, __pyx_t_3) < 0) __PYX_ERR(0, 487, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_loops, __pyx_t_3) < 0) __PYX_ERR(0, 488, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_allows_multiple_edges); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 487, __pyx_L1_error)
+      __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_allows_multiple_edges); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 488, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __pyx_t_11 = NULL;
       if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
@@ -5580,12 +5586,12 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
       }
       __pyx_t_3 = (__pyx_t_11) ? __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_11) : __Pyx_PyObject_CallNoArg(__pyx_t_12);
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 487, __pyx_L1_error)
+      if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 488, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_multiedges, __pyx_t_3) < 0) __PYX_ERR(0, 487, __pyx_L1_error)
+      if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_multiedges, __pyx_t_3) < 0) __PYX_ERR(0, 488, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_v_Graph, __pyx_t_2, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 487, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_v_Graph, __pyx_t_2, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 488, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -5594,16 +5600,16 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     }
     __pyx_L48:;
 
-    /* "my_bliss.pyx":489
+    /* "my_bliss.pyx":490
  *             H = Graph(new_edges, loops=G.allows_loops(), multiedges=G.allows_multiple_edges())
  * 
  *         H.add_vertices(range(G.order()))             # <<<<<<<<<<<<<<
  *         return (H, relabel) if certificate else H
  * 
  */
-    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_H, __pyx_n_s_add_vertices); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 489, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_v_H, __pyx_n_s_add_vertices); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 490, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 489, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 490, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __pyx_t_11 = NULL;
     if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_12))) {
@@ -5617,10 +5623,10 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     }
     __pyx_t_2 = (__pyx_t_11) ? __Pyx_PyObject_CallOneArg(__pyx_t_12, __pyx_t_11) : __Pyx_PyObject_CallNoArg(__pyx_t_12);
     __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 489, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 490, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 489, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 490, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __pyx_t_2 = NULL;
@@ -5636,12 +5642,12 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __pyx_t_3 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_9, __pyx_t_2, __pyx_t_12) : __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_t_12);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 489, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 490, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "my_bliss.pyx":490
+    /* "my_bliss.pyx":491
  * 
  *         H.add_vertices(range(G.order()))
  *         return (H, relabel) if certificate else H             # <<<<<<<<<<<<<<
@@ -5649,9 +5655,9 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
  *     return (sorted(new_edges), relabel) if certificate else sorted(new_edges)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_v_certificate); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 490, __pyx_L1_error)
+    __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_v_certificate); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 491, __pyx_L1_error)
     if (__pyx_t_14) {
-      __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 490, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 491, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_INCREF(__pyx_v_H);
       __Pyx_GIVEREF(__pyx_v_H);
@@ -5669,7 +5675,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "my_bliss.pyx":481
+    /* "my_bliss.pyx":482
  *     relabel = {int2vert[i]: j for i, j in relabel.iteritems() }
  * 
  *     if return_graph:             # <<<<<<<<<<<<<<
@@ -5678,7 +5684,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
  */
   }
 
-  /* "my_bliss.pyx":492
+  /* "my_bliss.pyx":493
  *         return (H, relabel) if certificate else H
  * 
  *     return (sorted(new_edges), relabel) if certificate else sorted(new_edges)             # <<<<<<<<<<<<<<
@@ -5686,14 +5692,14 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
  * #####################################################
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_v_certificate); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 492, __pyx_L1_error)
+  __pyx_t_14 = __Pyx_PyObject_IsTrue(__pyx_v_certificate); if (unlikely(__pyx_t_14 < 0)) __PYX_ERR(0, 493, __pyx_L1_error)
   if (__pyx_t_14) {
-    __pyx_t_12 = PySequence_List(__pyx_v_new_edges); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 492, __pyx_L1_error)
+    __pyx_t_12 = PySequence_List(__pyx_v_new_edges); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 493, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __pyx_t_9 = ((PyObject*)__pyx_t_12);
     __pyx_t_12 = 0;
-    __pyx_t_19 = PyList_Sort(__pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 492, __pyx_L1_error)
-    __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 492, __pyx_L1_error)
+    __pyx_t_19 = PyList_Sort(__pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 493, __pyx_L1_error)
+    __pyx_t_12 = PyTuple_New(2); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 493, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __Pyx_GIVEREF(__pyx_t_9);
     PyTuple_SET_ITEM(__pyx_t_12, 0, __pyx_t_9);
@@ -5704,11 +5710,11 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
     __pyx_t_3 = __pyx_t_12;
     __pyx_t_12 = 0;
   } else {
-    __pyx_t_9 = PySequence_List(__pyx_v_new_edges); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 492, __pyx_L1_error)
+    __pyx_t_9 = PySequence_List(__pyx_v_new_edges); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 493, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
     __pyx_t_12 = ((PyObject*)__pyx_t_9);
     __pyx_t_9 = 0;
-    __pyx_t_19 = PyList_Sort(__pyx_t_12); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 492, __pyx_L1_error)
+    __pyx_t_19 = PyList_Sort(__pyx_t_12); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 493, __pyx_L1_error)
     __pyx_t_3 = __pyx_t_12;
     __pyx_t_12 = 0;
   }
@@ -5716,7 +5722,7 @@ static PyObject *__pyx_f_8my_bliss_canonical_form(PyObject *__pyx_v_G, CYTHON_UN
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "my_bliss.pyx":369
+  /* "my_bliss.pyx":370
  *         return new_edges
  * 
  * cpdef canonical_form(G, partition=None, return_graph=False, use_edge_labels=True, certificate=False):             # <<<<<<<<<<<<<<
@@ -5832,7 +5838,7 @@ static PyObject *__pyx_pw_8my_bliss_1canonical_form(PyObject *__pyx_self, PyObje
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "canonical_form") < 0)) __PYX_ERR(0, 369, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "canonical_form") < 0)) __PYX_ERR(0, 370, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -5857,7 +5863,7 @@ static PyObject *__pyx_pw_8my_bliss_1canonical_form(PyObject *__pyx_self, PyObje
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("canonical_form", 0, 1, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 369, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("canonical_form", 0, 1, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 370, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("my_bliss.canonical_form", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -5877,14 +5883,14 @@ static PyObject *__pyx_pf_8my_bliss_canonical_form(CYTHON_UNUSED PyObject *__pyx
   PyObject *__pyx_t_1 = NULL;
   struct __pyx_opt_args_8my_bliss_canonical_form __pyx_t_2;
   __Pyx_RefNannySetupContext("canonical_form", 0);
-  __Pyx_TraceCall("canonical_form (wrapper)", __pyx_f[0], 369, 0, __PYX_ERR(0, 369, __pyx_L1_error));
+  __Pyx_TraceCall("canonical_form (wrapper)", __pyx_f[0], 370, 0, __PYX_ERR(0, 370, __pyx_L1_error));
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 4;
   __pyx_t_2.partition = __pyx_v_partition;
   __pyx_t_2.return_graph = __pyx_v_return_graph;
   __pyx_t_2.use_edge_labels = __pyx_v_use_edge_labels;
   __pyx_t_2.certificate = __pyx_v_certificate;
-  __pyx_t_1 = __pyx_f_8my_bliss_canonical_form(__pyx_v_G, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 369, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8my_bliss_canonical_form(__pyx_v_G, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 370, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -5902,7 +5908,7 @@ static PyObject *__pyx_pf_8my_bliss_canonical_form(CYTHON_UNUSED PyObject *__pyx
   return __pyx_r;
 }
 
-/* "my_bliss.pyx":498
+/* "my_bliss.pyx":499
  * #####################################################
  * 
  * cdef automorphism_group_gens_from_edge_list(int Vnr, Vout, Vin, int Lnr=1, labels=[],             # <<<<<<<<<<<<<<
@@ -5915,7 +5921,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
   PyObject *__pyx_v_labels = __pyx_k__3;
   PyObject *__pyx_v_int2vert = __pyx_k__4;
 
-  /* "my_bliss.pyx":499
+  /* "my_bliss.pyx":500
  * 
  * cdef automorphism_group_gens_from_edge_list(int Vnr, Vout, Vin, int Lnr=1, labels=[],
  *                                                 int2vert=[], partition=None, bint directed=False):             # <<<<<<<<<<<<<<
@@ -5946,7 +5952,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
   Py_ssize_t __pyx_t_9;
   PyObject *(*__pyx_t_10)(PyObject *);
   __Pyx_RefNannySetupContext("automorphism_group_gens_from_edge_list", 0);
-  __Pyx_TraceCall("automorphism_group_gens_from_edge_list", __pyx_f[0], 498, 0, __PYX_ERR(0, 498, __pyx_L1_error));
+  __Pyx_TraceCall("automorphism_group_gens_from_edge_list", __pyx_f[0], 499, 0, __PYX_ERR(0, 499, __pyx_L1_error));
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_Lnr = __pyx_optional_args->Lnr;
@@ -5966,7 +5972,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
   }
   __Pyx_INCREF(__pyx_v_int2vert);
 
-  /* "my_bliss.pyx":527
+  /* "my_bliss.pyx":528
  *     # We need this to convert the numbers from <unsigned int> to
  *     # <long>. This assertion should be true simply for memory reasons.
  *     assert <unsigned long>(Vnr) <= <unsigned long>LONG_MAX             # <<<<<<<<<<<<<<
@@ -5977,41 +5983,41 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((((unsigned long)__pyx_v_Vnr) <= ((unsigned long)LONG_MAX)) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 527, __pyx_L1_error)
+      __PYX_ERR(0, 528, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "my_bliss.pyx":535
+  /* "my_bliss.pyx":536
  *     cdef dict relabel
  * 
  *     if not int2vert:             # <<<<<<<<<<<<<<
  *         int2vert = list(range(Vnr))
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_int2vert); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 535, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_int2vert); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 536, __pyx_L1_error)
   __pyx_t_2 = ((!__pyx_t_1) != 0);
   if (__pyx_t_2) {
 
-    /* "my_bliss.pyx":536
+    /* "my_bliss.pyx":537
  * 
  *     if not int2vert:
  *         int2vert = list(range(Vnr))             # <<<<<<<<<<<<<<
  * 
  *     # the following is needed because the internal graph has size Vnr*logLnr for
  */
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_Vnr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 536, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_Vnr); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 537, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 536, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_range, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 537, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PySequence_List(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 536, __pyx_L1_error)
+    __pyx_t_3 = PySequence_List(__pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 537, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF_SET(__pyx_v_int2vert, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "my_bliss.pyx":535
+    /* "my_bliss.pyx":536
  *     cdef dict relabel
  * 
  *     if not int2vert:             # <<<<<<<<<<<<<<
@@ -6020,7 +6026,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
  */
   }
 
-  /* "my_bliss.pyx":540
+  /* "my_bliss.pyx":541
  *     # the following is needed because the internal graph has size Vnr*logLnr for
  *     # labelled graphs
  *     if Lnr != 1:             # <<<<<<<<<<<<<<
@@ -6030,19 +6036,19 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
   __pyx_t_2 = ((__pyx_v_Lnr != 1) != 0);
   if (__pyx_t_2) {
 
-    /* "my_bliss.pyx":541
+    /* "my_bliss.pyx":542
  *     # labelled graphs
  *     if Lnr != 1:
  *         logLnr = len(numpy.binary_repr(Lnr))             # <<<<<<<<<<<<<<
  *         int2vert.extend([None] * (Vnr * (logLnr - 1)))
  * 
  */
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 541, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_numpy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 542, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_binary_repr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 541, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_binary_repr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 542, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_Lnr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 541, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_Lnr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 542, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_5))) {
@@ -6057,39 +6063,39 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
     __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_6, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_4);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 541, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 542, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __pyx_t_7 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 541, __pyx_L1_error)
+    __pyx_t_7 = PyObject_Length(__pyx_t_3); if (unlikely(__pyx_t_7 == ((Py_ssize_t)-1))) __PYX_ERR(0, 542, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 541, __pyx_L1_error)
+    __pyx_t_3 = PyInt_FromSsize_t(__pyx_t_7); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 542, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_v_logLnr = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "my_bliss.pyx":542
+    /* "my_bliss.pyx":543
  *     if Lnr != 1:
  *         logLnr = len(numpy.binary_repr(Lnr))
  *         int2vert.extend([None] * (Vnr * (logLnr - 1)))             # <<<<<<<<<<<<<<
  * 
  *     cdef list gens = []
  */
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_int2vert, __pyx_n_s_extend); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 542, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_v_int2vert, __pyx_n_s_extend); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 543, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_Vnr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 542, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_Vnr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 543, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_6 = __Pyx_PyInt_SubtractObjC(__pyx_v_logLnr, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 542, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyInt_SubtractObjC(__pyx_v_logLnr, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 543, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_8 = PyNumber_Multiply(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 542, __pyx_L1_error)
+    __pyx_t_8 = PyNumber_Multiply(__pyx_t_4, __pyx_t_6); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 543, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 542, __pyx_L1_error)
+    __pyx_t_6 = PyList_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 543, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __Pyx_INCREF(Py_None);
     __Pyx_GIVEREF(Py_None);
     PyList_SET_ITEM(__pyx_t_6, 0, Py_None);
-    { PyObject* __pyx_temp = PyNumber_InPlaceMultiply(__pyx_t_6, __pyx_t_8); if (unlikely(!__pyx_temp)) __PYX_ERR(0, 542, __pyx_L1_error)
+    { PyObject* __pyx_temp = PyNumber_InPlaceMultiply(__pyx_t_6, __pyx_t_8); if (unlikely(!__pyx_temp)) __PYX_ERR(0, 543, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_temp);
       __Pyx_DECREF(__pyx_t_6);
       __pyx_t_6 = __pyx_temp;
@@ -6108,12 +6114,12 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
     __pyx_t_3 = (__pyx_t_8) ? __Pyx_PyObject_Call2Args(__pyx_t_5, __pyx_t_8, __pyx_t_6) : __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6);
     __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 542, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 543, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "my_bliss.pyx":540
+    /* "my_bliss.pyx":541
  *     # the following is needed because the internal graph has size Vnr*logLnr for
  *     # labelled graphs
  *     if Lnr != 1:             # <<<<<<<<<<<<<<
@@ -6122,26 +6128,26 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
  */
   }
 
-  /* "my_bliss.pyx":544
+  /* "my_bliss.pyx":545
  *         int2vert.extend([None] * (Vnr * (logLnr - 1)))
  * 
  *     cdef list gens = []             # <<<<<<<<<<<<<<
  *     cdef tuple data = (gens, int2vert)
  * 
  */
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 544, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 545, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_gens = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "my_bliss.pyx":545
+  /* "my_bliss.pyx":546
  * 
  *     cdef list gens = []
  *     cdef tuple data = (gens, int2vert)             # <<<<<<<<<<<<<<
  * 
  *     if directed:
  */
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 545, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 546, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_gens);
   __Pyx_GIVEREF(__pyx_v_gens);
@@ -6152,7 +6158,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
   __pyx_v_data = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "my_bliss.pyx":547
+  /* "my_bliss.pyx":548
  *     cdef tuple data = (gens, int2vert)
  * 
  *     if directed:             # <<<<<<<<<<<<<<
@@ -6162,7 +6168,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
   __pyx_t_2 = (__pyx_v_directed != 0);
   if (__pyx_t_2) {
 
-    /* "my_bliss.pyx":548
+    /* "my_bliss.pyx":549
  * 
  *     if directed:
  *         d = bliss_digraph_from_labelled_edges(Vnr, Lnr, Vout, Vin, labels, partition)             # <<<<<<<<<<<<<<
@@ -6171,7 +6177,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
  */
     __pyx_v_d = __pyx_f_8my_bliss_bliss_digraph_from_labelled_edges(__pyx_v_Vnr, __pyx_v_Lnr, __pyx_v_Vout, __pyx_v_Vin, __pyx_v_labels, __pyx_v_partition);
 
-    /* "my_bliss.pyx":549
+    /* "my_bliss.pyx":550
  *     if directed:
  *         d = bliss_digraph_from_labelled_edges(Vnr, Lnr, Vout, Vin, labels, partition)
  *         d.find_automorphisms(s, add_gen, <PyObject *> data)             # <<<<<<<<<<<<<<
@@ -6180,7 +6186,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
  */
     __pyx_v_d->find_automorphisms(__pyx_v_s, __pyx_f_8my_bliss_add_gen, ((PyObject *)__pyx_v_data));
 
-    /* "my_bliss.pyx":550
+    /* "my_bliss.pyx":551
  *         d = bliss_digraph_from_labelled_edges(Vnr, Lnr, Vout, Vin, labels, partition)
  *         d.find_automorphisms(s, add_gen, <PyObject *> data)
  *         del d             # <<<<<<<<<<<<<<
@@ -6189,7 +6195,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
  */
     delete __pyx_v_d;
 
-    /* "my_bliss.pyx":547
+    /* "my_bliss.pyx":548
  *     cdef tuple data = (gens, int2vert)
  * 
  *     if directed:             # <<<<<<<<<<<<<<
@@ -6199,7 +6205,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
     goto __pyx_L5;
   }
 
-  /* "my_bliss.pyx":552
+  /* "my_bliss.pyx":553
  *         del d
  *     else:
  *         g = bliss_graph_from_labelled_edges(Vnr, Lnr, Vout, Vin, labels, partition)             # <<<<<<<<<<<<<<
@@ -6209,7 +6215,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
   /*else*/ {
     __pyx_v_g = __pyx_f_8my_bliss_bliss_graph_from_labelled_edges(__pyx_v_Vnr, __pyx_v_Lnr, __pyx_v_Vout, __pyx_v_Vin, __pyx_v_labels, __pyx_v_partition);
 
-    /* "my_bliss.pyx":553
+    /* "my_bliss.pyx":554
  *     else:
  *         g = bliss_graph_from_labelled_edges(Vnr, Lnr, Vout, Vin, labels, partition)
  *         g.find_automorphisms(s, add_gen, <PyObject *> data)             # <<<<<<<<<<<<<<
@@ -6218,7 +6224,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
  */
     __pyx_v_g->find_automorphisms(__pyx_v_s, __pyx_f_8my_bliss_add_gen, ((PyObject *)__pyx_v_data));
 
-    /* "my_bliss.pyx":554
+    /* "my_bliss.pyx":555
  *         g = bliss_graph_from_labelled_edges(Vnr, Lnr, Vout, Vin, labels, partition)
  *         g.find_automorphisms(s, add_gen, <PyObject *> data)
  *         del g             # <<<<<<<<<<<<<<
@@ -6229,7 +6235,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
   }
   __pyx_L5:;
 
-  /* "my_bliss.pyx":556
+  /* "my_bliss.pyx":557
  *         del g
  * 
  *     return [[cyc for cyc in gen if cyc[0] is not None] for gen in gens]             # <<<<<<<<<<<<<<
@@ -6237,45 +6243,45 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 556, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 557, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = __pyx_v_gens; __Pyx_INCREF(__pyx_t_5); __pyx_t_7 = 0;
   for (;;) {
     if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_5)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_6 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_6); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 556, __pyx_L1_error)
+    __pyx_t_6 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_7); __Pyx_INCREF(__pyx_t_6); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 557, __pyx_L1_error)
     #else
-    __pyx_t_6 = PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 556, __pyx_L1_error)
+    __pyx_t_6 = PySequence_ITEM(__pyx_t_5, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 557, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_gen, __pyx_t_6);
     __pyx_t_6 = 0;
-    __pyx_t_6 = PyList_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 556, __pyx_L1_error)
+    __pyx_t_6 = PyList_New(0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 557, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     if (likely(PyList_CheckExact(__pyx_v_gen)) || PyTuple_CheckExact(__pyx_v_gen)) {
       __pyx_t_8 = __pyx_v_gen; __Pyx_INCREF(__pyx_t_8); __pyx_t_9 = 0;
       __pyx_t_10 = NULL;
     } else {
-      __pyx_t_9 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_v_gen); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 556, __pyx_L1_error)
+      __pyx_t_9 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_v_gen); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 557, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
-      __pyx_t_10 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 556, __pyx_L1_error)
+      __pyx_t_10 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 557, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_10)) {
         if (likely(PyList_CheckExact(__pyx_t_8))) {
           if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_8)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 556, __pyx_L1_error)
+          __pyx_t_4 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 557, __pyx_L1_error)
           #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_8, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 556, __pyx_L1_error)
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_8, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 557, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         } else {
           if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 556, __pyx_L1_error)
+          __pyx_t_4 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_9); __Pyx_INCREF(__pyx_t_4); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 557, __pyx_L1_error)
           #else
-          __pyx_t_4 = PySequence_ITEM(__pyx_t_8, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 556, __pyx_L1_error)
+          __pyx_t_4 = PySequence_ITEM(__pyx_t_8, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 557, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
           #endif
         }
@@ -6285,7 +6291,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 556, __pyx_L1_error)
+            else __PYX_ERR(0, 557, __pyx_L1_error)
           }
           break;
         }
@@ -6293,17 +6299,17 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
       }
       __Pyx_XDECREF_SET(__pyx_v_cyc, __pyx_t_4);
       __pyx_t_4 = 0;
-      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_cyc, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 556, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_cyc, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 557, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_2 = (__pyx_t_4 != Py_None);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __pyx_t_1 = (__pyx_t_2 != 0);
       if (__pyx_t_1) {
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_6, (PyObject*)__pyx_v_cyc))) __PYX_ERR(0, 556, __pyx_L1_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_6, (PyObject*)__pyx_v_cyc))) __PYX_ERR(0, 557, __pyx_L1_error)
       }
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 556, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_6))) __PYX_ERR(0, 557, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
   }
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6311,7 +6317,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "my_bliss.pyx":498
+  /* "my_bliss.pyx":499
  * #####################################################
  * 
  * cdef automorphism_group_gens_from_edge_list(int Vnr, Vout, Vin, int Lnr=1, labels=[],             # <<<<<<<<<<<<<<
@@ -6341,7 +6347,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(int __
   return __pyx_r;
 }
 
-/* "my_bliss.pyx":559
+/* "my_bliss.pyx":560
  * 
  * 
  * cpdef automorphism_group(G, partition=None, use_edge_labels=True):             # <<<<<<<<<<<<<<
@@ -6399,7 +6405,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
   int __pyx_t_19;
   struct __pyx_opt_args_8my_bliss_automorphism_group_gens_from_edge_list __pyx_t_20;
   __Pyx_RefNannySetupContext("automorphism_group", 0);
-  __Pyx_TraceCall("automorphism_group", __pyx_f[0], 559, 0, __PYX_ERR(0, 559, __pyx_L1_error));
+  __Pyx_TraceCall("automorphism_group", __pyx_f[0], 560, 0, __PYX_ERR(0, 560, __pyx_L1_error));
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_partition = __pyx_optional_args->partition;
@@ -6410,14 +6416,14 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
   }
   __Pyx_INCREF(__pyx_v_partition);
 
-  /* "my_bliss.pyx":706
+  /* "my_bliss.pyx":707
  *     # We need this to convert the numbers from <unsigned int> to
  *     # <long>. This assertion should be true simply for memory reasons.
  *     cdef unsigned long Vnr = G.order()             # <<<<<<<<<<<<<<
  *     assert Vnr <= <unsigned long>LONG_MAX
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 706, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 707, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -6431,14 +6437,14 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 706, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 707, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_unsigned_long(__pyx_t_1); if (unlikely((__pyx_t_4 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 706, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_unsigned_long(__pyx_t_1); if (unlikely((__pyx_t_4 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 707, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Vnr = __pyx_t_4;
 
-  /* "my_bliss.pyx":707
+  /* "my_bliss.pyx":708
  *     # <long>. This assertion should be true simply for memory reasons.
  *     cdef unsigned long Vnr = G.order()
  *     assert Vnr <= <unsigned long>LONG_MAX             # <<<<<<<<<<<<<<
@@ -6449,19 +6455,19 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_Vnr <= ((unsigned long)LONG_MAX)) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 707, __pyx_L1_error)
+      __PYX_ERR(0, 708, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "my_bliss.pyx":709
+  /* "my_bliss.pyx":710
  *     assert Vnr <= <unsigned long>LONG_MAX
  * 
  *     cdef bint directed = G.is_directed()             # <<<<<<<<<<<<<<
  * 
  *     cdef int labInd
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_is_directed); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 709, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_is_directed); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 710, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -6475,62 +6481,62 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 709, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 710, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 709, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 710, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_directed = __pyx_t_5;
 
-  /* "my_bliss.pyx":712
+  /* "my_bliss.pyx":713
  * 
  *     cdef int labInd
  *     cdef list Vout   = []             # <<<<<<<<<<<<<<
  *     cdef list Vin    = []
  *     cdef list labels = []
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 712, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 713, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_Vout = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":713
+  /* "my_bliss.pyx":714
  *     cdef int labInd
  *     cdef list Vout   = []
  *     cdef list Vin    = []             # <<<<<<<<<<<<<<
  *     cdef list labels = []
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 713, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 714, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_Vin = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":714
+  /* "my_bliss.pyx":715
  *     cdef list Vout   = []
  *     cdef list Vin    = []
  *     cdef list labels = []             # <<<<<<<<<<<<<<
  * 
  *     cdef list int2vert = list(G)
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 714, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 715, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_labels = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":716
+  /* "my_bliss.pyx":717
  *     cdef list labels = []
  * 
  *     cdef list int2vert = list(G)             # <<<<<<<<<<<<<<
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
  *     cdef list edge_labels = []
  */
-  __pyx_t_1 = PySequence_List(__pyx_v_G); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 716, __pyx_L1_error)
+  __pyx_t_1 = PySequence_List(__pyx_v_G); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 717, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_int2vert = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":717
+  /* "my_bliss.pyx":718
  * 
  *     cdef list int2vert = list(G)
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}             # <<<<<<<<<<<<<<
@@ -6538,25 +6544,25 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
  *     cdef dict edge_labels_rev = {}
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 717, __pyx_L5_error)
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 718, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_6 = 0;
     __pyx_t_2 = __pyx_v_int2vert; __Pyx_INCREF(__pyx_t_2); __pyx_t_7 = 0;
     for (;;) {
       if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 717, __pyx_L5_error)
+      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 718, __pyx_L5_error)
       #else
-      __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 717, __pyx_L5_error)
+      __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 718, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
       #endif
       __Pyx_XDECREF_SET(__pyx_8genexpr3__pyx_v_v, __pyx_t_3);
       __pyx_t_3 = 0;
       __pyx_8genexpr3__pyx_v_i = __pyx_t_6;
       __pyx_t_6 = (__pyx_t_6 + 1);
-      __pyx_t_3 = PyInt_FromSsize_t(__pyx_8genexpr3__pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 717, __pyx_L5_error)
+      __pyx_t_3 = PyInt_FromSsize_t(__pyx_8genexpr3__pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 718, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_8genexpr3__pyx_v_v, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 717, __pyx_L5_error)
+      if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_8genexpr3__pyx_v_v, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 718, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6570,31 +6576,31 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
   __pyx_v_vert2int = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":718
+  /* "my_bliss.pyx":719
  *     cdef list int2vert = list(G)
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
  *     cdef list edge_labels = []             # <<<<<<<<<<<<<<
  *     cdef dict edge_labels_rev = {}
  *     cdef int Lnr = 0
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 718, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 719, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_edge_labels = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":719
+  /* "my_bliss.pyx":720
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
  *     cdef list edge_labels = []
  *     cdef dict edge_labels_rev = {}             # <<<<<<<<<<<<<<
  *     cdef int Lnr = 0
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 719, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 720, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_edge_labels_rev = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":720
+  /* "my_bliss.pyx":721
  *     cdef list edge_labels = []
  *     cdef dict edge_labels_rev = {}
  *     cdef int Lnr = 0             # <<<<<<<<<<<<<<
@@ -6603,49 +6609,49 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
  */
   __pyx_v_Lnr = 0;
 
-  /* "my_bliss.pyx":722
+  /* "my_bliss.pyx":723
  *     cdef int Lnr = 0
  * 
  *     if bool(partition):             # <<<<<<<<<<<<<<
  *         partition = [[ vert2int[i] for i in part] for part in partition]
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 722, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 723, __pyx_L1_error)
   if (((!(!__pyx_t_5)) != 0)) {
 
-    /* "my_bliss.pyx":723
+    /* "my_bliss.pyx":724
  * 
  *     if bool(partition):
  *         partition = [[ vert2int[i] for i in part] for part in partition]             # <<<<<<<<<<<<<<
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):
  */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 723, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 724, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (likely(PyList_CheckExact(__pyx_v_partition)) || PyTuple_CheckExact(__pyx_v_partition)) {
       __pyx_t_2 = __pyx_v_partition; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_partition); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 723, __pyx_L1_error)
+      __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_partition); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 724, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 723, __pyx_L1_error)
+      __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 724, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_8)) {
         if (likely(PyList_CheckExact(__pyx_t_2))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 723, __pyx_L1_error)
+          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 724, __pyx_L1_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 723, __pyx_L1_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 724, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 723, __pyx_L1_error)
+          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 724, __pyx_L1_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 723, __pyx_L1_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 724, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         }
@@ -6655,7 +6661,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 723, __pyx_L1_error)
+            else __PYX_ERR(0, 724, __pyx_L1_error)
           }
           break;
         }
@@ -6663,32 +6669,32 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       }
       __Pyx_XDECREF_SET(__pyx_v_part, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 723, __pyx_L1_error)
+      __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 724, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       if (likely(PyList_CheckExact(__pyx_v_part)) || PyTuple_CheckExact(__pyx_v_part)) {
         __pyx_t_9 = __pyx_v_part; __Pyx_INCREF(__pyx_t_9); __pyx_t_7 = 0;
         __pyx_t_10 = NULL;
       } else {
-        __pyx_t_7 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_v_part); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 723, __pyx_L1_error)
+        __pyx_t_7 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_v_part); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 724, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 723, __pyx_L1_error)
+        __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 724, __pyx_L1_error)
       }
       for (;;) {
         if (likely(!__pyx_t_10)) {
           if (likely(PyList_CheckExact(__pyx_t_9))) {
             if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_9)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_11 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 723, __pyx_L1_error)
+            __pyx_t_11 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 724, __pyx_L1_error)
             #else
-            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 723, __pyx_L1_error)
+            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 724, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             #endif
           } else {
             if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 723, __pyx_L1_error)
+            __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 724, __pyx_L1_error)
             #else
-            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 723, __pyx_L1_error)
+            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 724, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             #endif
           }
@@ -6698,7 +6704,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 723, __pyx_L1_error)
+              else __PYX_ERR(0, 724, __pyx_L1_error)
             }
             break;
           }
@@ -6706,20 +6712,20 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
         }
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_11);
         __pyx_t_11 = 0;
-        __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_i); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 723, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_i); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 724, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 723, __pyx_L1_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 724, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       }
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 723, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 724, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF_SET(__pyx_v_partition, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "my_bliss.pyx":722
+    /* "my_bliss.pyx":723
  *     cdef int Lnr = 0
  * 
  *     if bool(partition):             # <<<<<<<<<<<<<<
@@ -6728,19 +6734,19 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
  */
   }
 
-  /* "my_bliss.pyx":725
+  /* "my_bliss.pyx":726
  *         partition = [[ vert2int[i] for i in part] for part in partition]
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):             # <<<<<<<<<<<<<<
  *         if use_edge_labels is False:
  *             lab = None
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_edge_iterator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 725, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_edge_iterator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 726, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 725, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 726, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_labels, Py_True) < 0) __PYX_ERR(0, 725, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 725, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_labels, Py_True) < 0) __PYX_ERR(0, 726, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 726, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6748,9 +6754,9 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
     __pyx_t_2 = __pyx_t_3; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 725, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 726, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 725, __pyx_L1_error)
+    __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 726, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -6758,17 +6764,17 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 725, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 726, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 725, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 726, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 725, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 726, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 725, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 726, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -6778,7 +6784,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 725, __pyx_L1_error)
+          else __PYX_ERR(0, 726, __pyx_L1_error)
         }
         break;
       }
@@ -6790,7 +6796,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 725, __pyx_L1_error)
+        __PYX_ERR(0, 726, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -6806,17 +6812,17 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       __Pyx_INCREF(__pyx_t_9);
       __Pyx_INCREF(__pyx_t_11);
       #else
-      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 725, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 725, __pyx_L1_error)
+      __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_11 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 725, __pyx_L1_error)
+      __pyx_t_11 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 725, __pyx_L1_error)
+      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 726, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_13 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -6826,7 +6832,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       __Pyx_GOTREF(__pyx_t_9);
       index = 2; __pyx_t_11 = __pyx_t_13(__pyx_t_12); if (unlikely(!__pyx_t_11)) goto __pyx_L16_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_11);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 3) < 0) __PYX_ERR(0, 725, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 3) < 0) __PYX_ERR(0, 726, __pyx_L1_error)
       __pyx_t_13 = NULL;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       goto __pyx_L17_unpacking_done;
@@ -6834,7 +6840,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_13 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 725, __pyx_L1_error)
+      __PYX_ERR(0, 726, __pyx_L1_error)
       __pyx_L17_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_1);
@@ -6844,7 +6850,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
     __Pyx_XDECREF_SET(__pyx_v_lab, __pyx_t_11);
     __pyx_t_11 = 0;
 
-    /* "my_bliss.pyx":726
+    /* "my_bliss.pyx":727
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):
  *         if use_edge_labels is False:             # <<<<<<<<<<<<<<
@@ -6855,7 +6861,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
     __pyx_t_14 = (__pyx_t_5 != 0);
     if (__pyx_t_14) {
 
-      /* "my_bliss.pyx":727
+      /* "my_bliss.pyx":728
  *     for x,y,lab in G.edge_iterator(labels=True):
  *         if use_edge_labels is False:
  *             lab = None             # <<<<<<<<<<<<<<
@@ -6865,7 +6871,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       __Pyx_INCREF(Py_None);
       __Pyx_DECREF_SET(__pyx_v_lab, Py_None);
 
-      /* "my_bliss.pyx":726
+      /* "my_bliss.pyx":727
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):
  *         if use_edge_labels is False:             # <<<<<<<<<<<<<<
@@ -6874,7 +6880,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
  */
     }
 
-    /* "my_bliss.pyx":728
+    /* "my_bliss.pyx":729
  *         if use_edge_labels is False:
  *             lab = None
  *         try:             # <<<<<<<<<<<<<<
@@ -6890,20 +6896,20 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       __Pyx_XGOTREF(__pyx_t_17);
       /*try:*/ {
 
-        /* "my_bliss.pyx":729
+        /* "my_bliss.pyx":730
  *             lab = None
  *         try:
  *             labInd = edge_labels_rev[lab]             # <<<<<<<<<<<<<<
  *         except KeyError:
  *             labInd = Lnr
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_edge_labels_rev, __pyx_v_lab); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 729, __pyx_L19_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_edge_labels_rev, __pyx_v_lab); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 730, __pyx_L19_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 729, __pyx_L19_error)
+        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 730, __pyx_L19_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_v_labInd = __pyx_t_18;
 
-        /* "my_bliss.pyx":728
+        /* "my_bliss.pyx":729
  *         if use_edge_labels is False:
  *             lab = None
  *         try:             # <<<<<<<<<<<<<<
@@ -6922,7 +6928,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "my_bliss.pyx":730
+      /* "my_bliss.pyx":731
  *         try:
  *             labInd = edge_labels_rev[lab]
  *         except KeyError:             # <<<<<<<<<<<<<<
@@ -6932,12 +6938,12 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       __pyx_t_18 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_KeyError);
       if (__pyx_t_18) {
         __Pyx_AddTraceback("my_bliss.automorphism_group", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_11, &__pyx_t_9) < 0) __PYX_ERR(0, 730, __pyx_L21_except_error)
+        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_11, &__pyx_t_9) < 0) __PYX_ERR(0, 731, __pyx_L21_except_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_GOTREF(__pyx_t_9);
 
-        /* "my_bliss.pyx":731
+        /* "my_bliss.pyx":732
  *             labInd = edge_labels_rev[lab]
  *         except KeyError:
  *             labInd = Lnr             # <<<<<<<<<<<<<<
@@ -6946,7 +6952,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
  */
         __pyx_v_labInd = __pyx_v_Lnr;
 
-        /* "my_bliss.pyx":732
+        /* "my_bliss.pyx":733
  *         except KeyError:
  *             labInd = Lnr
  *             Lnr += 1             # <<<<<<<<<<<<<<
@@ -6955,26 +6961,26 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
  */
         __pyx_v_Lnr = (__pyx_v_Lnr + 1);
 
-        /* "my_bliss.pyx":733
+        /* "my_bliss.pyx":734
  *             labInd = Lnr
  *             Lnr += 1
  *             edge_labels_rev[lab] = labInd             # <<<<<<<<<<<<<<
  *             edge_labels.append(lab)
  * 
  */
-        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 733, __pyx_L21_except_error)
+        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 734, __pyx_L21_except_error)
         __Pyx_GOTREF(__pyx_t_1);
-        if (unlikely(PyDict_SetItem(__pyx_v_edge_labels_rev, __pyx_v_lab, __pyx_t_1) < 0)) __PYX_ERR(0, 733, __pyx_L21_except_error)
+        if (unlikely(PyDict_SetItem(__pyx_v_edge_labels_rev, __pyx_v_lab, __pyx_t_1) < 0)) __PYX_ERR(0, 734, __pyx_L21_except_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "my_bliss.pyx":734
+        /* "my_bliss.pyx":735
  *             Lnr += 1
  *             edge_labels_rev[lab] = labInd
  *             edge_labels.append(lab)             # <<<<<<<<<<<<<<
  * 
  *         Vout.append(vert2int[x])
  */
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_edge_labels, __pyx_v_lab); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 734, __pyx_L21_except_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_edge_labels, __pyx_v_lab); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 735, __pyx_L21_except_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -6983,7 +6989,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       goto __pyx_L21_except_error;
       __pyx_L21_except_error:;
 
-      /* "my_bliss.pyx":728
+      /* "my_bliss.pyx":729
  *         if use_edge_labels is False:
  *             lab = None
  *         try:             # <<<<<<<<<<<<<<
@@ -7003,43 +7009,43 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       __pyx_L26_try_end:;
     }
 
-    /* "my_bliss.pyx":736
+    /* "my_bliss.pyx":737
  *             edge_labels.append(lab)
  * 
  *         Vout.append(vert2int[x])             # <<<<<<<<<<<<<<
  *         Vin.append(vert2int[y])
  *         labels.append(labInd)
  */
-    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_x); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 736, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_x); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 737, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vout, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 736, __pyx_L1_error)
+    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vout, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 737, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "my_bliss.pyx":737
+    /* "my_bliss.pyx":738
  * 
  *         Vout.append(vert2int[x])
  *         Vin.append(vert2int[y])             # <<<<<<<<<<<<<<
  *         labels.append(labInd)
  * 
  */
-    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_y); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 737, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_y); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 738, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vin, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 737, __pyx_L1_error)
+    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vin, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 738, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "my_bliss.pyx":738
+    /* "my_bliss.pyx":739
  *         Vout.append(vert2int[x])
  *         Vin.append(vert2int[y])
  *         labels.append(labInd)             # <<<<<<<<<<<<<<
  * 
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]
  */
-    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 738, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 739, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_labels, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 738, __pyx_L1_error)
+    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_labels, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 739, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "my_bliss.pyx":725
+    /* "my_bliss.pyx":726
  *         partition = [[ vert2int[i] for i in part] for part in partition]
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):             # <<<<<<<<<<<<<<
@@ -7049,25 +7055,25 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":740
+  /* "my_bliss.pyx":741
  *         labels.append(labInd)
  * 
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]             # <<<<<<<<<<<<<<
  *     labels = [lab_relabels[i] for i in labels]
  * 
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 740, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 741, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = __Pyx_PyDict_IterItems(__pyx_v_edge_labels_rev); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 740, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_IterItems(__pyx_v_edge_labels_rev); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 741, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 740, __pyx_L1_error)
+  __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 741, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_9);
   __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 740, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 741, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_itemgetter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 740, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_itemgetter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 741, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_12 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -7081,12 +7087,12 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
   }
   __pyx_t_3 = (__pyx_t_12) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_12, __pyx_int_0) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_int_0);
   __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 740, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 741, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_key, __pyx_t_3) < 0) __PYX_ERR(0, 740, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_key, __pyx_t_3) < 0) __PYX_ERR(0, 741, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_11, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 740, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_11, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 741, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -7094,9 +7100,9 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
     __pyx_t_9 = __pyx_t_3; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 740, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 741, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 740, __pyx_L1_error)
+    __pyx_t_8 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 741, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -7104,17 +7110,17 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       if (likely(PyList_CheckExact(__pyx_t_9))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 740, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 741, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 740, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 741, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 740, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 741, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 740, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 741, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -7124,7 +7130,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 740, __pyx_L1_error)
+          else __PYX_ERR(0, 741, __pyx_L1_error)
         }
         break;
       }
@@ -7136,7 +7142,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 740, __pyx_L1_error)
+        __PYX_ERR(0, 741, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -7149,15 +7155,15 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       __Pyx_INCREF(__pyx_t_11);
       __Pyx_INCREF(__pyx_t_1);
       #else
-      __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 740, __pyx_L1_error)
+      __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 741, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 740, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 741, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 740, __pyx_L1_error)
+      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 741, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_13 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -7165,7 +7171,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       __Pyx_GOTREF(__pyx_t_11);
       index = 1; __pyx_t_1 = __pyx_t_13(__pyx_t_12); if (unlikely(!__pyx_t_1)) goto __pyx_L31_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_1);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 740, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 741, __pyx_L1_error)
       __pyx_t_13 = NULL;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       goto __pyx_L32_unpacking_done;
@@ -7173,49 +7179,49 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_13 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 740, __pyx_L1_error)
+      __PYX_ERR(0, 741, __pyx_L1_error)
       __pyx_L32_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v__, __pyx_t_11);
     __pyx_t_11 = 0;
     __Pyx_XDECREF_SET(__pyx_v_lab, __pyx_t_1);
     __pyx_t_1 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_v_lab))) __PYX_ERR(0, 740, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_v_lab))) __PYX_ERR(0, 741, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_v_lab_relabels = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":741
+  /* "my_bliss.pyx":742
  * 
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]
  *     labels = [lab_relabels[i] for i in labels]             # <<<<<<<<<<<<<<
  * 
  *     gens = automorphism_group_gens_from_edge_list(Vnr, Vout, Vin, Lnr, labels, int2vert, partition, directed)
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 741, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 742, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_9 = __pyx_v_labels; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
   for (;;) {
     if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 741, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 742, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 741, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 742, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_lab_relabels, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 741, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_lab_relabels, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 742, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 741, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 742, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF_SET(__pyx_v_labels, ((PyObject*)__pyx_t_2));
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":743
+  /* "my_bliss.pyx":744
  *     labels = [lab_relabels[i] for i in labels]
  * 
  *     gens = automorphism_group_gens_from_edge_list(Vnr, Vout, Vin, Lnr, labels, int2vert, partition, directed)             # <<<<<<<<<<<<<<
@@ -7228,34 +7234,34 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
   __pyx_t_20.int2vert = __pyx_v_int2vert;
   __pyx_t_20.partition = __pyx_v_partition;
   __pyx_t_20.directed = __pyx_v_directed;
-  __pyx_t_2 = __pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(__pyx_v_Vnr, __pyx_v_Vout, __pyx_v_Vin, &__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 743, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(__pyx_v_Vnr, __pyx_v_Vout, __pyx_v_Vin, &__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 744, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_gens = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":746
+  /* "my_bliss.pyx":747
  * 
  *     # computing this permutation group may not be necessary for my application
  *     from sage.groups.perm_gps.permgroup import PermutationGroup             # <<<<<<<<<<<<<<
  *     return PermutationGroup(gens, domain=sorted(G))
  * 
  */
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 746, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 747, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_PermutationGroup);
   __Pyx_GIVEREF(__pyx_n_s_PermutationGroup);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_PermutationGroup);
-  __pyx_t_9 = __Pyx_Import(__pyx_n_s_sage_groups_perm_gps_permgroup, __pyx_t_2, -1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 746, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_Import(__pyx_n_s_sage_groups_perm_gps_permgroup, __pyx_t_2, -1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 747, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_9, __pyx_n_s_PermutationGroup); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 746, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_9, __pyx_n_s_PermutationGroup); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 747, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_t_2);
   __pyx_v_PermutationGroup = __pyx_t_2;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "my_bliss.pyx":747
+  /* "my_bliss.pyx":748
  *     # computing this permutation group may not be necessary for my application
  *     from sage.groups.perm_gps.permgroup import PermutationGroup
  *     return PermutationGroup(gens, domain=sorted(G))             # <<<<<<<<<<<<<<
@@ -7263,21 +7269,21 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 747, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 748, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_INCREF(__pyx_v_gens);
   __Pyx_GIVEREF(__pyx_v_gens);
   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_v_gens);
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 747, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 748, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PySequence_List(__pyx_v_G); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 747, __pyx_L1_error)
+  __pyx_t_1 = PySequence_List(__pyx_v_G); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 748, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_19 = PyList_Sort(__pyx_t_3); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 747, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_domain, __pyx_t_3) < 0) __PYX_ERR(0, 747, __pyx_L1_error)
+  __pyx_t_19 = PyList_Sort(__pyx_t_3); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 748, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_domain, __pyx_t_3) < 0) __PYX_ERR(0, 748, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_v_PermutationGroup, __pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 747, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_v_PermutationGroup, __pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 748, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7285,7 +7291,7 @@ static PyObject *__pyx_f_8my_bliss_automorphism_group(PyObject *__pyx_v_G, CYTHO
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "my_bliss.pyx":559
+  /* "my_bliss.pyx":560
  * 
  * 
  * cpdef automorphism_group(G, partition=None, use_edge_labels=True):             # <<<<<<<<<<<<<<
@@ -7375,7 +7381,7 @@ static PyObject *__pyx_pw_8my_bliss_3automorphism_group(PyObject *__pyx_self, Py
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "automorphism_group") < 0)) __PYX_ERR(0, 559, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "automorphism_group") < 0)) __PYX_ERR(0, 560, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -7394,7 +7400,7 @@ static PyObject *__pyx_pw_8my_bliss_3automorphism_group(PyObject *__pyx_self, Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("automorphism_group", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 559, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("automorphism_group", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 560, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("my_bliss.automorphism_group", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -7414,12 +7420,12 @@ static PyObject *__pyx_pf_8my_bliss_2automorphism_group(CYTHON_UNUSED PyObject *
   PyObject *__pyx_t_1 = NULL;
   struct __pyx_opt_args_8my_bliss_automorphism_group __pyx_t_2;
   __Pyx_RefNannySetupContext("automorphism_group", 0);
-  __Pyx_TraceCall("automorphism_group (wrapper)", __pyx_f[0], 559, 0, __PYX_ERR(0, 559, __pyx_L1_error));
+  __Pyx_TraceCall("automorphism_group (wrapper)", __pyx_f[0], 560, 0, __PYX_ERR(0, 560, __pyx_L1_error));
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.partition = __pyx_v_partition;
   __pyx_t_2.use_edge_labels = __pyx_v_use_edge_labels;
-  __pyx_t_1 = __pyx_f_8my_bliss_automorphism_group(__pyx_v_G, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 559, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8my_bliss_automorphism_group(__pyx_v_G, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 560, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -7437,7 +7443,7 @@ static PyObject *__pyx_pf_8my_bliss_2automorphism_group(CYTHON_UNUSED PyObject *
   return __pyx_r;
 }
 
-/* "my_bliss.pyx":750
+/* "my_bliss.pyx":751
  * 
  * 
  * cpdef orbits_and_canonical_labeling(G, partition=None, use_edge_labels=True):             # <<<<<<<<<<<<<<
@@ -7495,7 +7501,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
   int __pyx_t_19;
   struct __pyx_opt_args_8my_bliss_automorphism_group_gens_from_edge_list __pyx_t_20;
   __Pyx_RefNannySetupContext("orbits_and_canonical_labeling", 0);
-  __Pyx_TraceCall("orbits_and_canonical_labeling", __pyx_f[0], 750, 0, __PYX_ERR(0, 750, __pyx_L1_error));
+  __Pyx_TraceCall("orbits_and_canonical_labeling", __pyx_f[0], 751, 0, __PYX_ERR(0, 751, __pyx_L1_error));
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_partition = __pyx_optional_args->partition;
@@ -7506,14 +7512,14 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
   }
   __Pyx_INCREF(__pyx_v_partition);
 
-  /* "my_bliss.pyx":753
+  /* "my_bliss.pyx":754
  *     # We need this to convert the numbers from <unsigned int> to
  *     # <long>. This assertion should be true simply for memory reasons.
  *     cdef unsigned long Vnr = G.order()             # <<<<<<<<<<<<<<
  *     assert Vnr <= <unsigned long>LONG_MAX
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 753, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 754, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -7527,14 +7533,14 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 753, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 754, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_unsigned_long(__pyx_t_1); if (unlikely((__pyx_t_4 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 753, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_unsigned_long(__pyx_t_1); if (unlikely((__pyx_t_4 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 754, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Vnr = __pyx_t_4;
 
-  /* "my_bliss.pyx":754
+  /* "my_bliss.pyx":755
  *     # <long>. This assertion should be true simply for memory reasons.
  *     cdef unsigned long Vnr = G.order()
  *     assert Vnr <= <unsigned long>LONG_MAX             # <<<<<<<<<<<<<<
@@ -7545,19 +7551,19 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_Vnr <= ((unsigned long)LONG_MAX)) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 754, __pyx_L1_error)
+      __PYX_ERR(0, 755, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "my_bliss.pyx":756
+  /* "my_bliss.pyx":757
  *     assert Vnr <= <unsigned long>LONG_MAX
  * 
  *     cdef bint directed = G.is_directed()             # <<<<<<<<<<<<<<
  * 
  *     cdef int labInd
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_is_directed); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 756, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_is_directed); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 757, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -7571,62 +7577,62 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 756, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 757, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 756, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 757, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_directed = __pyx_t_5;
 
-  /* "my_bliss.pyx":759
+  /* "my_bliss.pyx":760
  * 
  *     cdef int labInd
  *     cdef list Vout   = []             # <<<<<<<<<<<<<<
  *     cdef list Vin    = []
  *     cdef list labels = []
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 759, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 760, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_Vout = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":760
+  /* "my_bliss.pyx":761
  *     cdef int labInd
  *     cdef list Vout   = []
  *     cdef list Vin    = []             # <<<<<<<<<<<<<<
  *     cdef list labels = []
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 760, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 761, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_Vin = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":761
+  /* "my_bliss.pyx":762
  *     cdef list Vout   = []
  *     cdef list Vin    = []
  *     cdef list labels = []             # <<<<<<<<<<<<<<
  * 
  *     cdef list int2vert = list(G)
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 761, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 762, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_labels = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":763
+  /* "my_bliss.pyx":764
  *     cdef list labels = []
  * 
  *     cdef list int2vert = list(G)             # <<<<<<<<<<<<<<
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
  *     cdef list edge_labels = []
  */
-  __pyx_t_1 = PySequence_List(__pyx_v_G); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 763, __pyx_L1_error)
+  __pyx_t_1 = PySequence_List(__pyx_v_G); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 764, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_int2vert = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":764
+  /* "my_bliss.pyx":765
  * 
  *     cdef list int2vert = list(G)
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}             # <<<<<<<<<<<<<<
@@ -7634,25 +7640,25 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
  *     cdef dict edge_labels_rev = {}
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 764, __pyx_L5_error)
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 765, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_6 = 0;
     __pyx_t_2 = __pyx_v_int2vert; __Pyx_INCREF(__pyx_t_2); __pyx_t_7 = 0;
     for (;;) {
       if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 764, __pyx_L5_error)
+      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 765, __pyx_L5_error)
       #else
-      __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 764, __pyx_L5_error)
+      __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 765, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
       #endif
       __Pyx_XDECREF_SET(__pyx_8genexpr4__pyx_v_v, __pyx_t_3);
       __pyx_t_3 = 0;
       __pyx_8genexpr4__pyx_v_i = __pyx_t_6;
       __pyx_t_6 = (__pyx_t_6 + 1);
-      __pyx_t_3 = PyInt_FromSsize_t(__pyx_8genexpr4__pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 764, __pyx_L5_error)
+      __pyx_t_3 = PyInt_FromSsize_t(__pyx_8genexpr4__pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 765, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_8genexpr4__pyx_v_v, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 764, __pyx_L5_error)
+      if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_8genexpr4__pyx_v_v, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 765, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7666,31 +7672,31 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
   __pyx_v_vert2int = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":765
+  /* "my_bliss.pyx":766
  *     cdef list int2vert = list(G)
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
  *     cdef list edge_labels = []             # <<<<<<<<<<<<<<
  *     cdef dict edge_labels_rev = {}
  *     cdef int Lnr = 0
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 765, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 766, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_edge_labels = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":766
+  /* "my_bliss.pyx":767
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
  *     cdef list edge_labels = []
  *     cdef dict edge_labels_rev = {}             # <<<<<<<<<<<<<<
  *     cdef int Lnr = 0
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 766, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 767, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_edge_labels_rev = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":767
+  /* "my_bliss.pyx":768
  *     cdef list edge_labels = []
  *     cdef dict edge_labels_rev = {}
  *     cdef int Lnr = 0             # <<<<<<<<<<<<<<
@@ -7699,49 +7705,49 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
  */
   __pyx_v_Lnr = 0;
 
-  /* "my_bliss.pyx":769
+  /* "my_bliss.pyx":770
  *     cdef int Lnr = 0
  * 
  *     if bool(partition):             # <<<<<<<<<<<<<<
  *         partition = [[ vert2int[i] for i in part] for part in partition]
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 769, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 770, __pyx_L1_error)
   if (((!(!__pyx_t_5)) != 0)) {
 
-    /* "my_bliss.pyx":770
+    /* "my_bliss.pyx":771
  * 
  *     if bool(partition):
  *         partition = [[ vert2int[i] for i in part] for part in partition]             # <<<<<<<<<<<<<<
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):
  */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 770, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 771, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (likely(PyList_CheckExact(__pyx_v_partition)) || PyTuple_CheckExact(__pyx_v_partition)) {
       __pyx_t_2 = __pyx_v_partition; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_partition); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 770, __pyx_L1_error)
+      __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_partition); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 771, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 770, __pyx_L1_error)
+      __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 771, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_8)) {
         if (likely(PyList_CheckExact(__pyx_t_2))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 770, __pyx_L1_error)
+          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 771, __pyx_L1_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 770, __pyx_L1_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 771, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 770, __pyx_L1_error)
+          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 771, __pyx_L1_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 770, __pyx_L1_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 771, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         }
@@ -7751,7 +7757,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 770, __pyx_L1_error)
+            else __PYX_ERR(0, 771, __pyx_L1_error)
           }
           break;
         }
@@ -7759,32 +7765,32 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       }
       __Pyx_XDECREF_SET(__pyx_v_part, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 770, __pyx_L1_error)
+      __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 771, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       if (likely(PyList_CheckExact(__pyx_v_part)) || PyTuple_CheckExact(__pyx_v_part)) {
         __pyx_t_9 = __pyx_v_part; __Pyx_INCREF(__pyx_t_9); __pyx_t_7 = 0;
         __pyx_t_10 = NULL;
       } else {
-        __pyx_t_7 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_v_part); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 770, __pyx_L1_error)
+        __pyx_t_7 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_v_part); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 771, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 770, __pyx_L1_error)
+        __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 771, __pyx_L1_error)
       }
       for (;;) {
         if (likely(!__pyx_t_10)) {
           if (likely(PyList_CheckExact(__pyx_t_9))) {
             if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_9)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_11 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 770, __pyx_L1_error)
+            __pyx_t_11 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 771, __pyx_L1_error)
             #else
-            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 770, __pyx_L1_error)
+            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 771, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             #endif
           } else {
             if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 770, __pyx_L1_error)
+            __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 771, __pyx_L1_error)
             #else
-            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 770, __pyx_L1_error)
+            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 771, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             #endif
           }
@@ -7794,7 +7800,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 770, __pyx_L1_error)
+              else __PYX_ERR(0, 771, __pyx_L1_error)
             }
             break;
           }
@@ -7802,20 +7808,20 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
         }
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_11);
         __pyx_t_11 = 0;
-        __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_i); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 770, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_i); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 771, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 770, __pyx_L1_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 771, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       }
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 770, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 771, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF_SET(__pyx_v_partition, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "my_bliss.pyx":769
+    /* "my_bliss.pyx":770
  *     cdef int Lnr = 0
  * 
  *     if bool(partition):             # <<<<<<<<<<<<<<
@@ -7824,19 +7830,19 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
  */
   }
 
-  /* "my_bliss.pyx":772
+  /* "my_bliss.pyx":773
  *         partition = [[ vert2int[i] for i in part] for part in partition]
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):             # <<<<<<<<<<<<<<
  *         if use_edge_labels is False:
  *             lab = None
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_edge_iterator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 772, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_edge_iterator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 773, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 772, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 773, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_labels, Py_True) < 0) __PYX_ERR(0, 772, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 772, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_labels, Py_True) < 0) __PYX_ERR(0, 773, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 773, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -7844,9 +7850,9 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
     __pyx_t_2 = __pyx_t_3; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 772, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 773, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 772, __pyx_L1_error)
+    __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 773, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -7854,17 +7860,17 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 772, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 773, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 772, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 773, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 772, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 773, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 772, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 773, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -7874,7 +7880,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 772, __pyx_L1_error)
+          else __PYX_ERR(0, 773, __pyx_L1_error)
         }
         break;
       }
@@ -7886,7 +7892,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 772, __pyx_L1_error)
+        __PYX_ERR(0, 773, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -7902,17 +7908,17 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       __Pyx_INCREF(__pyx_t_9);
       __Pyx_INCREF(__pyx_t_11);
       #else
-      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 772, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 773, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 772, __pyx_L1_error)
+      __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 773, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_11 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 772, __pyx_L1_error)
+      __pyx_t_11 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 773, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 772, __pyx_L1_error)
+      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 773, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_13 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -7922,7 +7928,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       __Pyx_GOTREF(__pyx_t_9);
       index = 2; __pyx_t_11 = __pyx_t_13(__pyx_t_12); if (unlikely(!__pyx_t_11)) goto __pyx_L16_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_11);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 3) < 0) __PYX_ERR(0, 772, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 3) < 0) __PYX_ERR(0, 773, __pyx_L1_error)
       __pyx_t_13 = NULL;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       goto __pyx_L17_unpacking_done;
@@ -7930,7 +7936,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_13 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 772, __pyx_L1_error)
+      __PYX_ERR(0, 773, __pyx_L1_error)
       __pyx_L17_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_1);
@@ -7940,7 +7946,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
     __Pyx_XDECREF_SET(__pyx_v_lab, __pyx_t_11);
     __pyx_t_11 = 0;
 
-    /* "my_bliss.pyx":773
+    /* "my_bliss.pyx":774
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):
  *         if use_edge_labels is False:             # <<<<<<<<<<<<<<
@@ -7951,7 +7957,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
     __pyx_t_14 = (__pyx_t_5 != 0);
     if (__pyx_t_14) {
 
-      /* "my_bliss.pyx":774
+      /* "my_bliss.pyx":775
  *     for x,y,lab in G.edge_iterator(labels=True):
  *         if use_edge_labels is False:
  *             lab = None             # <<<<<<<<<<<<<<
@@ -7961,7 +7967,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       __Pyx_INCREF(Py_None);
       __Pyx_DECREF_SET(__pyx_v_lab, Py_None);
 
-      /* "my_bliss.pyx":773
+      /* "my_bliss.pyx":774
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):
  *         if use_edge_labels is False:             # <<<<<<<<<<<<<<
@@ -7970,7 +7976,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
  */
     }
 
-    /* "my_bliss.pyx":775
+    /* "my_bliss.pyx":776
  *         if use_edge_labels is False:
  *             lab = None
  *         try:             # <<<<<<<<<<<<<<
@@ -7986,20 +7992,20 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       __Pyx_XGOTREF(__pyx_t_17);
       /*try:*/ {
 
-        /* "my_bliss.pyx":776
+        /* "my_bliss.pyx":777
  *             lab = None
  *         try:
  *             labInd = edge_labels_rev[lab]             # <<<<<<<<<<<<<<
  *         except KeyError:
  *             labInd = Lnr
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_edge_labels_rev, __pyx_v_lab); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 776, __pyx_L19_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_edge_labels_rev, __pyx_v_lab); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 777, __pyx_L19_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 776, __pyx_L19_error)
+        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 777, __pyx_L19_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_v_labInd = __pyx_t_18;
 
-        /* "my_bliss.pyx":775
+        /* "my_bliss.pyx":776
  *         if use_edge_labels is False:
  *             lab = None
  *         try:             # <<<<<<<<<<<<<<
@@ -8018,7 +8024,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "my_bliss.pyx":777
+      /* "my_bliss.pyx":778
  *         try:
  *             labInd = edge_labels_rev[lab]
  *         except KeyError:             # <<<<<<<<<<<<<<
@@ -8028,12 +8034,12 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       __pyx_t_18 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_KeyError);
       if (__pyx_t_18) {
         __Pyx_AddTraceback("my_bliss.orbits_and_canonical_labeling", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_11, &__pyx_t_9) < 0) __PYX_ERR(0, 777, __pyx_L21_except_error)
+        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_11, &__pyx_t_9) < 0) __PYX_ERR(0, 778, __pyx_L21_except_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_GOTREF(__pyx_t_9);
 
-        /* "my_bliss.pyx":778
+        /* "my_bliss.pyx":779
  *             labInd = edge_labels_rev[lab]
  *         except KeyError:
  *             labInd = Lnr             # <<<<<<<<<<<<<<
@@ -8042,7 +8048,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
  */
         __pyx_v_labInd = __pyx_v_Lnr;
 
-        /* "my_bliss.pyx":779
+        /* "my_bliss.pyx":780
  *         except KeyError:
  *             labInd = Lnr
  *             Lnr += 1             # <<<<<<<<<<<<<<
@@ -8051,26 +8057,26 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
  */
         __pyx_v_Lnr = (__pyx_v_Lnr + 1);
 
-        /* "my_bliss.pyx":780
+        /* "my_bliss.pyx":781
  *             labInd = Lnr
  *             Lnr += 1
  *             edge_labels_rev[lab] = labInd             # <<<<<<<<<<<<<<
  *             edge_labels.append(lab)
  * 
  */
-        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 780, __pyx_L21_except_error)
+        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 781, __pyx_L21_except_error)
         __Pyx_GOTREF(__pyx_t_1);
-        if (unlikely(PyDict_SetItem(__pyx_v_edge_labels_rev, __pyx_v_lab, __pyx_t_1) < 0)) __PYX_ERR(0, 780, __pyx_L21_except_error)
+        if (unlikely(PyDict_SetItem(__pyx_v_edge_labels_rev, __pyx_v_lab, __pyx_t_1) < 0)) __PYX_ERR(0, 781, __pyx_L21_except_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "my_bliss.pyx":781
+        /* "my_bliss.pyx":782
  *             Lnr += 1
  *             edge_labels_rev[lab] = labInd
  *             edge_labels.append(lab)             # <<<<<<<<<<<<<<
  * 
  *         Vout.append(vert2int[x])
  */
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_edge_labels, __pyx_v_lab); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 781, __pyx_L21_except_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_edge_labels, __pyx_v_lab); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 782, __pyx_L21_except_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -8079,7 +8085,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       goto __pyx_L21_except_error;
       __pyx_L21_except_error:;
 
-      /* "my_bliss.pyx":775
+      /* "my_bliss.pyx":776
  *         if use_edge_labels is False:
  *             lab = None
  *         try:             # <<<<<<<<<<<<<<
@@ -8099,43 +8105,43 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       __pyx_L26_try_end:;
     }
 
-    /* "my_bliss.pyx":783
+    /* "my_bliss.pyx":784
  *             edge_labels.append(lab)
  * 
  *         Vout.append(vert2int[x])             # <<<<<<<<<<<<<<
  *         Vin.append(vert2int[y])
  *         labels.append(labInd)
  */
-    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_x); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 783, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_x); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 784, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vout, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 783, __pyx_L1_error)
+    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vout, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 784, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "my_bliss.pyx":784
+    /* "my_bliss.pyx":785
  * 
  *         Vout.append(vert2int[x])
  *         Vin.append(vert2int[y])             # <<<<<<<<<<<<<<
  *         labels.append(labInd)
  * 
  */
-    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_y); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 784, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_y); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 785, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vin, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 784, __pyx_L1_error)
+    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vin, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 785, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "my_bliss.pyx":785
+    /* "my_bliss.pyx":786
  *         Vout.append(vert2int[x])
  *         Vin.append(vert2int[y])
  *         labels.append(labInd)             # <<<<<<<<<<<<<<
  * 
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]
  */
-    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 785, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 786, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_labels, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 785, __pyx_L1_error)
+    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_labels, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 786, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "my_bliss.pyx":772
+    /* "my_bliss.pyx":773
  *         partition = [[ vert2int[i] for i in part] for part in partition]
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):             # <<<<<<<<<<<<<<
@@ -8145,25 +8151,25 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":787
+  /* "my_bliss.pyx":788
  *         labels.append(labInd)
  * 
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]             # <<<<<<<<<<<<<<
  *     labels = [lab_relabels[i] for i in labels]
  * 
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 787, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 788, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = __Pyx_PyDict_IterItems(__pyx_v_edge_labels_rev); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 787, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_IterItems(__pyx_v_edge_labels_rev); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 788, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 787, __pyx_L1_error)
+  __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 788, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_9);
   __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 787, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 788, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_itemgetter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 787, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_itemgetter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 788, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_12 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -8177,12 +8183,12 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
   }
   __pyx_t_3 = (__pyx_t_12) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_12, __pyx_int_0) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_int_0);
   __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 787, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 788, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_key, __pyx_t_3) < 0) __PYX_ERR(0, 787, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_key, __pyx_t_3) < 0) __PYX_ERR(0, 788, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_11, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 787, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_11, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 788, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -8190,9 +8196,9 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
     __pyx_t_9 = __pyx_t_3; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 787, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 788, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 787, __pyx_L1_error)
+    __pyx_t_8 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 788, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -8200,17 +8206,17 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       if (likely(PyList_CheckExact(__pyx_t_9))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 787, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 788, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 787, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 788, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 787, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 788, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 787, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 788, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -8220,7 +8226,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 787, __pyx_L1_error)
+          else __PYX_ERR(0, 788, __pyx_L1_error)
         }
         break;
       }
@@ -8232,7 +8238,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 787, __pyx_L1_error)
+        __PYX_ERR(0, 788, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -8245,15 +8251,15 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       __Pyx_INCREF(__pyx_t_11);
       __Pyx_INCREF(__pyx_t_1);
       #else
-      __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 787, __pyx_L1_error)
+      __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 788, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 787, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 788, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 787, __pyx_L1_error)
+      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 788, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_13 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -8261,7 +8267,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       __Pyx_GOTREF(__pyx_t_11);
       index = 1; __pyx_t_1 = __pyx_t_13(__pyx_t_12); if (unlikely(!__pyx_t_1)) goto __pyx_L31_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_1);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 787, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 788, __pyx_L1_error)
       __pyx_t_13 = NULL;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       goto __pyx_L32_unpacking_done;
@@ -8269,49 +8275,49 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_13 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 787, __pyx_L1_error)
+      __PYX_ERR(0, 788, __pyx_L1_error)
       __pyx_L32_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v__, __pyx_t_11);
     __pyx_t_11 = 0;
     __Pyx_XDECREF_SET(__pyx_v_lab, __pyx_t_1);
     __pyx_t_1 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_v_lab))) __PYX_ERR(0, 787, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_v_lab))) __PYX_ERR(0, 788, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_v_lab_relabels = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":788
+  /* "my_bliss.pyx":789
  * 
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]
  *     labels = [lab_relabels[i] for i in labels]             # <<<<<<<<<<<<<<
  * 
  *     gens = automorphism_group_gens_from_edge_list(Vnr, Vout, Vin, Lnr, labels, int2vert, partition, directed)
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 788, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 789, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_9 = __pyx_v_labels; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
   for (;;) {
     if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 788, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 789, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 788, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 789, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_lab_relabels, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 788, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_lab_relabels, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 789, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 788, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 789, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF_SET(__pyx_v_labels, ((PyObject*)__pyx_t_2));
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":790
+  /* "my_bliss.pyx":791
  *     labels = [lab_relabels[i] for i in labels]
  * 
  *     gens = automorphism_group_gens_from_edge_list(Vnr, Vout, Vin, Lnr, labels, int2vert, partition, directed)             # <<<<<<<<<<<<<<
@@ -8324,34 +8330,34 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
   __pyx_t_20.int2vert = __pyx_v_int2vert;
   __pyx_t_20.partition = __pyx_v_partition;
   __pyx_t_20.directed = __pyx_v_directed;
-  __pyx_t_2 = __pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(__pyx_v_Vnr, __pyx_v_Vout, __pyx_v_Vin, &__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 790, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(__pyx_v_Vnr, __pyx_v_Vout, __pyx_v_Vin, &__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 791, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_gens = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":793
+  /* "my_bliss.pyx":794
  * 
  *     # computing this permutation group may not be necessary for my application
  *     from sage.groups.perm_gps.permgroup import PermutationGroup             # <<<<<<<<<<<<<<
  *     return PermutationGroup(gens, domain=sorted(G))
  * 
  */
-  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 793, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 794, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_s_PermutationGroup);
   __Pyx_GIVEREF(__pyx_n_s_PermutationGroup);
   PyList_SET_ITEM(__pyx_t_2, 0, __pyx_n_s_PermutationGroup);
-  __pyx_t_9 = __Pyx_Import(__pyx_n_s_sage_groups_perm_gps_permgroup, __pyx_t_2, -1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 793, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_Import(__pyx_n_s_sage_groups_perm_gps_permgroup, __pyx_t_2, -1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 794, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_9, __pyx_n_s_PermutationGroup); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 793, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_ImportFrom(__pyx_t_9, __pyx_n_s_PermutationGroup); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 794, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_t_2);
   __pyx_v_PermutationGroup = __pyx_t_2;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-  /* "my_bliss.pyx":794
+  /* "my_bliss.pyx":795
  *     # computing this permutation group may not be necessary for my application
  *     from sage.groups.perm_gps.permgroup import PermutationGroup
  *     return PermutationGroup(gens, domain=sorted(G))             # <<<<<<<<<<<<<<
@@ -8359,21 +8365,21 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
  * #####################################################
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 794, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 795, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_INCREF(__pyx_v_gens);
   __Pyx_GIVEREF(__pyx_v_gens);
   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_v_gens);
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 794, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 795, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = PySequence_List(__pyx_v_G); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 794, __pyx_L1_error)
+  __pyx_t_1 = PySequence_List(__pyx_v_G); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 795, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_3 = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_19 = PyList_Sort(__pyx_t_3); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 794, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_domain, __pyx_t_3) < 0) __PYX_ERR(0, 794, __pyx_L1_error)
+  __pyx_t_19 = PyList_Sort(__pyx_t_3); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 795, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_domain, __pyx_t_3) < 0) __PYX_ERR(0, 795, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_v_PermutationGroup, __pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 794, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_v_PermutationGroup, __pyx_t_9, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 795, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8381,7 +8387,7 @@ static PyObject *__pyx_f_8my_bliss_orbits_and_canonical_labeling(PyObject *__pyx
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "my_bliss.pyx":750
+  /* "my_bliss.pyx":751
  * 
  * 
  * cpdef orbits_and_canonical_labeling(G, partition=None, use_edge_labels=True):             # <<<<<<<<<<<<<<
@@ -8470,7 +8476,7 @@ static PyObject *__pyx_pw_8my_bliss_5orbits_and_canonical_labeling(PyObject *__p
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "orbits_and_canonical_labeling") < 0)) __PYX_ERR(0, 750, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "orbits_and_canonical_labeling") < 0)) __PYX_ERR(0, 751, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -8489,7 +8495,7 @@ static PyObject *__pyx_pw_8my_bliss_5orbits_and_canonical_labeling(PyObject *__p
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("orbits_and_canonical_labeling", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 750, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("orbits_and_canonical_labeling", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 751, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("my_bliss.orbits_and_canonical_labeling", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -8509,12 +8515,12 @@ static PyObject *__pyx_pf_8my_bliss_4orbits_and_canonical_labeling(CYTHON_UNUSED
   PyObject *__pyx_t_1 = NULL;
   struct __pyx_opt_args_8my_bliss_orbits_and_canonical_labeling __pyx_t_2;
   __Pyx_RefNannySetupContext("orbits_and_canonical_labeling", 0);
-  __Pyx_TraceCall("orbits_and_canonical_labeling (wrapper)", __pyx_f[0], 750, 0, __PYX_ERR(0, 750, __pyx_L1_error));
+  __Pyx_TraceCall("orbits_and_canonical_labeling (wrapper)", __pyx_f[0], 751, 0, __PYX_ERR(0, 751, __pyx_L1_error));
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.partition = __pyx_v_partition;
   __pyx_t_2.use_edge_labels = __pyx_v_use_edge_labels;
-  __pyx_t_1 = __pyx_f_8my_bliss_orbits_and_canonical_labeling(__pyx_v_G, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 750, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8my_bliss_orbits_and_canonical_labeling(__pyx_v_G, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 751, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -8532,21 +8538,22 @@ static PyObject *__pyx_pf_8my_bliss_4orbits_and_canonical_labeling(CYTHON_UNUSED
   return __pyx_r;
 }
 
-/* "my_bliss.pyx":800
+/* "my_bliss.pyx":801
  * #####################################################
  * 
- * cdef Graph *bliss_graph(G, partition, vert2int, int2vert):             # <<<<<<<<<<<<<<
+ * cpdef object bliss_graph(G, partition, vert2int, int2vert):             # <<<<<<<<<<<<<<
  *     r"""
  *     Return a bliss copy of a graph G
  */
 
-static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject *__pyx_v_partition, PyObject *__pyx_v_vert2int, PyObject *__pyx_v_int2vert) {
+static PyObject *__pyx_pw_8my_bliss_7bliss_graph(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject *__pyx_v_partition, PyObject *__pyx_v_vert2int, PyObject *__pyx_v_int2vert, CYTHON_UNUSED int __pyx_skip_dispatch) {
   bliss::Graph *__pyx_v_g;
   PyObject *__pyx_v_i = NULL;
   PyObject *__pyx_v_v = NULL;
   PyObject *__pyx_v_x = NULL;
   PyObject *__pyx_v_y = NULL;
-  bliss::Graph *__pyx_r;
+  PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -8563,16 +8570,16 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
   Py_ssize_t __pyx_t_12;
   PyObject *(*__pyx_t_13)(PyObject *);
   __Pyx_RefNannySetupContext("bliss_graph", 0);
-  __Pyx_TraceCall("bliss_graph", __pyx_f[0], 800, 0, __PYX_ERR(0, 800, __pyx_L1_error));
+  __Pyx_TraceCall("bliss_graph", __pyx_f[0], 801, 0, __PYX_ERR(0, 801, __pyx_L1_error));
 
-  /* "my_bliss.pyx":815
+  /* "my_bliss.pyx":816
  *       Python objects in Cython functions.
  *     """
  *     cdef Graph *g = new Graph(G.order())             # <<<<<<<<<<<<<<
  * 
  *     if not g:
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 815, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 816, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -8586,14 +8593,14 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 815, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 816, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 815, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 816, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_g = new bliss::Graph(__pyx_t_4);
 
-  /* "my_bliss.pyx":817
+  /* "my_bliss.pyx":818
  *     cdef Graph *g = new Graph(G.order())
  * 
  *     if not g:             # <<<<<<<<<<<<<<
@@ -8603,20 +8610,20 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
   __pyx_t_5 = ((!(__pyx_v_g != 0)) != 0);
   if (unlikely(__pyx_t_5)) {
 
-    /* "my_bliss.pyx":818
+    /* "my_bliss.pyx":819
  * 
  *     if not g:
  *         raise MemoryError("allocation failed")             # <<<<<<<<<<<<<<
  * 
  *     for i, v in enumerate(G):
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 818, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 819, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 818, __pyx_L1_error)
+    __PYX_ERR(0, 819, __pyx_L1_error)
 
-    /* "my_bliss.pyx":817
+    /* "my_bliss.pyx":818
  *     cdef Graph *g = new Graph(G.order())
  * 
  *     if not g:             # <<<<<<<<<<<<<<
@@ -8625,7 +8632,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
  */
   }
 
-  /* "my_bliss.pyx":820
+  /* "my_bliss.pyx":821
  *         raise MemoryError("allocation failed")
  * 
  *     for i, v in enumerate(G):             # <<<<<<<<<<<<<<
@@ -8638,26 +8645,26 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
     __pyx_t_2 = __pyx_v_G; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
     __pyx_t_7 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_G); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 820, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_G); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 821, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 820, __pyx_L1_error)
+    __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 821, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_7)) {
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 820, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 821, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 820, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 821, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 820, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 821, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 820, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 821, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -8667,7 +8674,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 820, __pyx_L1_error)
+          else __PYX_ERR(0, 821, __pyx_L1_error)
         }
         break;
       }
@@ -8677,31 +8684,31 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
     __pyx_t_3 = 0;
     __Pyx_INCREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
-    __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 820, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 821, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1);
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "my_bliss.pyx":821
+    /* "my_bliss.pyx":822
  * 
  *     for i, v in enumerate(G):
  *         vert2int[v] = i             # <<<<<<<<<<<<<<
  *         int2vert[i] = v
  * 
  */
-    if (unlikely(PyObject_SetItem(__pyx_v_vert2int, __pyx_v_v, __pyx_v_i) < 0)) __PYX_ERR(0, 821, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_v_vert2int, __pyx_v_v, __pyx_v_i) < 0)) __PYX_ERR(0, 822, __pyx_L1_error)
 
-    /* "my_bliss.pyx":822
+    /* "my_bliss.pyx":823
  *     for i, v in enumerate(G):
  *         vert2int[v] = i
  *         int2vert[i] = v             # <<<<<<<<<<<<<<
  * 
  *     for x,y in G.edge_iterator(labels=False):
  */
-    if (unlikely(PyObject_SetItem(__pyx_v_int2vert, __pyx_v_i, __pyx_v_v) < 0)) __PYX_ERR(0, 822, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_v_int2vert, __pyx_v_i, __pyx_v_v) < 0)) __PYX_ERR(0, 823, __pyx_L1_error)
 
-    /* "my_bliss.pyx":820
+    /* "my_bliss.pyx":821
  *         raise MemoryError("allocation failed")
  * 
  *     for i, v in enumerate(G):             # <<<<<<<<<<<<<<
@@ -8712,19 +8719,19 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":824
+  /* "my_bliss.pyx":825
  *         int2vert[i] = v
  * 
  *     for x,y in G.edge_iterator(labels=False):             # <<<<<<<<<<<<<<
  *        g.add_edge(vert2int[x], vert2int[y])
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_edge_iterator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 824, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_edge_iterator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 825, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 824, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 825, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_labels, Py_False) < 0) __PYX_ERR(0, 824, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 824, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_labels, Py_False) < 0) __PYX_ERR(0, 825, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 825, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -8732,9 +8739,9 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
     __pyx_t_2 = __pyx_t_3; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
     __pyx_t_7 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 824, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 825, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 824, __pyx_L1_error)
+    __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 825, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -8742,17 +8749,17 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 824, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 825, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 824, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 825, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 824, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 825, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 824, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 825, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -8762,7 +8769,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 824, __pyx_L1_error)
+          else __PYX_ERR(0, 825, __pyx_L1_error)
         }
         break;
       }
@@ -8774,7 +8781,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 824, __pyx_L1_error)
+        __PYX_ERR(0, 825, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -8787,15 +8794,15 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
       __Pyx_INCREF(__pyx_t_1);
       __Pyx_INCREF(__pyx_t_8);
       #else
-      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 824, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 825, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 824, __pyx_L1_error)
+      __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 825, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 824, __pyx_L1_error)
+      __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 825, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext;
@@ -8803,7 +8810,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
       __Pyx_GOTREF(__pyx_t_1);
       index = 1; __pyx_t_8 = __pyx_t_10(__pyx_t_9); if (unlikely(!__pyx_t_8)) goto __pyx_L8_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_8);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) __PYX_ERR(0, 824, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) __PYX_ERR(0, 825, __pyx_L1_error)
       __pyx_t_10 = NULL;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       goto __pyx_L9_unpacking_done;
@@ -8811,7 +8818,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_t_10 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 824, __pyx_L1_error)
+      __PYX_ERR(0, 825, __pyx_L1_error)
       __pyx_L9_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_1);
@@ -8819,24 +8826,24 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
     __Pyx_XDECREF_SET(__pyx_v_y, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "my_bliss.pyx":825
+    /* "my_bliss.pyx":826
  * 
  *     for x,y in G.edge_iterator(labels=False):
  *        g.add_edge(vert2int[x], vert2int[y])             # <<<<<<<<<<<<<<
  * 
  *     if partition:
  */
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_vert2int, __pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 825, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_vert2int, __pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 826, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 825, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 826, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_vert2int, __pyx_v_y); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 825, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_vert2int, __pyx_v_y); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 826, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_11 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_11 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 825, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_11 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 826, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_g->add_edge(__pyx_t_4, __pyx_t_11);
 
-    /* "my_bliss.pyx":824
+    /* "my_bliss.pyx":825
  *         int2vert[i] = v
  * 
  *     for x,y in G.edge_iterator(labels=False):             # <<<<<<<<<<<<<<
@@ -8846,27 +8853,27 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":827
+  /* "my_bliss.pyx":828
  *        g.add_edge(vert2int[x], vert2int[y])
  * 
  *     if partition:             # <<<<<<<<<<<<<<
  *         for i in range(1, len(partition)):
  *             for v in partition[i]:
  */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 827, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 828, __pyx_L1_error)
   if (__pyx_t_5) {
 
-    /* "my_bliss.pyx":828
+    /* "my_bliss.pyx":829
  * 
  *     if partition:
  *         for i in range(1, len(partition)):             # <<<<<<<<<<<<<<
  *             for v in partition[i]:
  *                 g.change_color(vert2int[v], i)
  */
-    __pyx_t_6 = PyObject_Length(__pyx_v_partition); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 828, __pyx_L1_error)
-    __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 828, __pyx_L1_error)
+    __pyx_t_6 = PyObject_Length(__pyx_v_partition); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 829, __pyx_L1_error)
+    __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 829, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 828, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 829, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_int_1);
     __Pyx_GIVEREF(__pyx_int_1);
@@ -8874,16 +8881,16 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 828, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 829, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
       __pyx_t_3 = __pyx_t_2; __Pyx_INCREF(__pyx_t_3); __pyx_t_6 = 0;
       __pyx_t_7 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 828, __pyx_L1_error)
+      __pyx_t_6 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 829, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 828, __pyx_L1_error)
+      __pyx_t_7 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 829, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     for (;;) {
@@ -8891,17 +8898,17 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
         if (likely(PyList_CheckExact(__pyx_t_3))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 828, __pyx_L1_error)
+          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 829, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 828, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 829, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 828, __pyx_L1_error)
+          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 829, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 828, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 829, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         }
@@ -8911,7 +8918,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 828, __pyx_L1_error)
+            else __PYX_ERR(0, 829, __pyx_L1_error)
           }
           break;
         }
@@ -8920,22 +8927,22 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
       __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "my_bliss.pyx":829
+      /* "my_bliss.pyx":830
  *     if partition:
  *         for i in range(1, len(partition)):
  *             for v in partition[i]:             # <<<<<<<<<<<<<<
  *                 g.change_color(vert2int[v], i)
- *     return g
+ *     return <Py_ssize_t> g;
  */
-      __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_partition, __pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 829, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_partition, __pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 830, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
         __pyx_t_8 = __pyx_t_2; __Pyx_INCREF(__pyx_t_8); __pyx_t_12 = 0;
         __pyx_t_13 = NULL;
       } else {
-        __pyx_t_12 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 829, __pyx_L1_error)
+        __pyx_t_12 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 830, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_13 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 829, __pyx_L1_error)
+        __pyx_t_13 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 830, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       for (;;) {
@@ -8943,17 +8950,17 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
           if (likely(PyList_CheckExact(__pyx_t_8))) {
             if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_2 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_12); __Pyx_INCREF(__pyx_t_2); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 829, __pyx_L1_error)
+            __pyx_t_2 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_12); __Pyx_INCREF(__pyx_t_2); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 830, __pyx_L1_error)
             #else
-            __pyx_t_2 = PySequence_ITEM(__pyx_t_8, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 829, __pyx_L1_error)
+            __pyx_t_2 = PySequence_ITEM(__pyx_t_8, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 830, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             #endif
           } else {
             if (__pyx_t_12 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_12); __Pyx_INCREF(__pyx_t_2); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 829, __pyx_L1_error)
+            __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_12); __Pyx_INCREF(__pyx_t_2); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 830, __pyx_L1_error)
             #else
-            __pyx_t_2 = PySequence_ITEM(__pyx_t_8, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 829, __pyx_L1_error)
+            __pyx_t_2 = PySequence_ITEM(__pyx_t_8, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 830, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             #endif
           }
@@ -8963,7 +8970,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 829, __pyx_L1_error)
+              else __PYX_ERR(0, 830, __pyx_L1_error)
             }
             break;
           }
@@ -8972,31 +8979,31 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
         __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "my_bliss.pyx":830
+        /* "my_bliss.pyx":831
  *         for i in range(1, len(partition)):
  *             for v in partition[i]:
  *                 g.change_color(vert2int[v], i)             # <<<<<<<<<<<<<<
- *     return g
+ *     return <Py_ssize_t> g;
  * 
  */
-        __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_vert2int, __pyx_v_v); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 830, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_vert2int, __pyx_v_v); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 831, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_11 = __Pyx_PyInt_As_unsigned_int(__pyx_t_2); if (unlikely((__pyx_t_11 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 830, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyInt_As_unsigned_int(__pyx_t_2); if (unlikely((__pyx_t_11 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 831, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_v_i); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 830, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_v_i); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 831, __pyx_L1_error)
         __pyx_v_g->change_color(__pyx_t_11, __pyx_t_4);
 
-        /* "my_bliss.pyx":829
+        /* "my_bliss.pyx":830
  *     if partition:
  *         for i in range(1, len(partition)):
  *             for v in partition[i]:             # <<<<<<<<<<<<<<
  *                 g.change_color(vert2int[v], i)
- *     return g
+ *     return <Py_ssize_t> g;
  */
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "my_bliss.pyx":828
+      /* "my_bliss.pyx":829
  * 
  *     if partition:
  *         for i in range(1, len(partition)):             # <<<<<<<<<<<<<<
@@ -9006,7 +9013,7 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "my_bliss.pyx":827
+    /* "my_bliss.pyx":828
  *        g.add_edge(vert2int[x], vert2int[y])
  * 
  *     if partition:             # <<<<<<<<<<<<<<
@@ -9015,20 +9022,24 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
  */
   }
 
-  /* "my_bliss.pyx":831
+  /* "my_bliss.pyx":832
  *             for v in partition[i]:
  *                 g.change_color(vert2int[v], i)
- *     return g             # <<<<<<<<<<<<<<
+ *     return <Py_ssize_t> g;             # <<<<<<<<<<<<<<
  * 
  * cdef Digraph *bliss_digraph(G, partition, vert2int, int2vert):
  */
-  __pyx_r = __pyx_v_g;
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_3 = PyInt_FromSsize_t(((Py_ssize_t)__pyx_v_g)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 832, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "my_bliss.pyx":800
+  /* "my_bliss.pyx":801
  * #####################################################
  * 
- * cdef Graph *bliss_graph(G, partition, vert2int, int2vert):             # <<<<<<<<<<<<<<
+ * cpdef object bliss_graph(G, partition, vert2int, int2vert):             # <<<<<<<<<<<<<<
  *     r"""
  *     Return a bliss copy of a graph G
  */
@@ -9040,20 +9051,131 @@ static bliss::Graph *__pyx_f_8my_bliss_bliss_graph(PyObject *__pyx_v_G, PyObject
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_8);
   __Pyx_XDECREF(__pyx_t_9);
-  __Pyx_WriteUnraisable("my_bliss.bliss_graph", __pyx_clineno, __pyx_lineno, __pyx_filename, 1, 0);
+  __Pyx_AddTraceback("my_bliss.bliss_graph", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_i);
   __Pyx_XDECREF(__pyx_v_v);
   __Pyx_XDECREF(__pyx_v_x);
   __Pyx_XDECREF(__pyx_v_y);
-  __Pyx_TraceReturn(Py_None, 0);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_TraceReturn(__pyx_r, 0);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "my_bliss.pyx":833
- *     return g
+/* Python wrapper */
+static PyObject *__pyx_pw_8my_bliss_7bliss_graph(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_8my_bliss_6bliss_graph[] = "\n    Return a bliss copy of a graph G\n\n    INPUT:\n\n    - ``G`` -- a Sage Graph\n\n    - ``partition`` -- ``list``; a partition of the vertex set\n\n    - ``vert2int, int2vert`` -- a empty ``dict`` and a empty ``list``; the\n      entries of the dictionary are later set to record the labeling of our\n      graph. They are taken as arguments to avoid technicalities of returning\n      Python objects in Cython functions.\n    ";
+static PyObject *__pyx_pw_8my_bliss_7bliss_graph(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_G = 0;
+  PyObject *__pyx_v_partition = 0;
+  PyObject *__pyx_v_vert2int = 0;
+  PyObject *__pyx_v_int2vert = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("bliss_graph (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_G,&__pyx_n_s_partition,&__pyx_n_s_vert2int,&__pyx_n_s_int2vert,0};
+    PyObject* values[4] = {0,0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_G)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_partition)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("bliss_graph", 1, 4, 4, 1); __PYX_ERR(0, 801, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_vert2int)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("bliss_graph", 1, 4, 4, 2); __PYX_ERR(0, 801, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_int2vert)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("bliss_graph", 1, 4, 4, 3); __PYX_ERR(0, 801, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "bliss_graph") < 0)) __PYX_ERR(0, 801, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 4) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+      values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+    }
+    __pyx_v_G = values[0];
+    __pyx_v_partition = values[1];
+    __pyx_v_vert2int = values[2];
+    __pyx_v_int2vert = values[3];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("bliss_graph", 1, 4, 4, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 801, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("my_bliss.bliss_graph", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_8my_bliss_6bliss_graph(__pyx_self, __pyx_v_G, __pyx_v_partition, __pyx_v_vert2int, __pyx_v_int2vert);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_8my_bliss_6bliss_graph(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_partition, PyObject *__pyx_v_vert2int, PyObject *__pyx_v_int2vert) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_TraceDeclarations
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("bliss_graph", 0);
+  __Pyx_TraceCall("bliss_graph (wrapper)", __pyx_f[0], 801, 0, __PYX_ERR(0, 801, __pyx_L1_error));
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_8my_bliss_bliss_graph(__pyx_v_G, __pyx_v_partition, __pyx_v_vert2int, __pyx_v_int2vert, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 801, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("my_bliss.bliss_graph", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_TraceReturn(__pyx_r, 0);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "my_bliss.pyx":834
+ *     return <Py_ssize_t> g;
  * 
  * cdef Digraph *bliss_digraph(G, partition, vert2int, int2vert):             # <<<<<<<<<<<<<<
  *     r"""
@@ -9083,16 +9205,16 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
   Py_ssize_t __pyx_t_12;
   PyObject *(*__pyx_t_13)(PyObject *);
   __Pyx_RefNannySetupContext("bliss_digraph", 0);
-  __Pyx_TraceCall("bliss_digraph", __pyx_f[0], 833, 0, __PYX_ERR(0, 833, __pyx_L1_error));
+  __Pyx_TraceCall("bliss_digraph", __pyx_f[0], 834, 0, __PYX_ERR(0, 834, __pyx_L1_error));
 
-  /* "my_bliss.pyx":848
+  /* "my_bliss.pyx":849
  *       Python objects in Cython functions.
  *     """
  *     cdef Digraph *g = new Digraph(G.order())             # <<<<<<<<<<<<<<
  * 
  *     if not g:
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 848, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 849, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -9106,14 +9228,14 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 848, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 849, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 848, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_t_1); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 849, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_g = new bliss::Digraph(__pyx_t_4);
 
-  /* "my_bliss.pyx":850
+  /* "my_bliss.pyx":851
  *     cdef Digraph *g = new Digraph(G.order())
  * 
  *     if not g:             # <<<<<<<<<<<<<<
@@ -9123,20 +9245,20 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
   __pyx_t_5 = ((!(__pyx_v_g != 0)) != 0);
   if (unlikely(__pyx_t_5)) {
 
-    /* "my_bliss.pyx":851
+    /* "my_bliss.pyx":852
  * 
  *     if not g:
  *         raise MemoryError("allocation failed")             # <<<<<<<<<<<<<<
  * 
  *     for i, v in enumerate(G):
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 851, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_MemoryError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 852, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 851, __pyx_L1_error)
+    __PYX_ERR(0, 852, __pyx_L1_error)
 
-    /* "my_bliss.pyx":850
+    /* "my_bliss.pyx":851
  *     cdef Digraph *g = new Digraph(G.order())
  * 
  *     if not g:             # <<<<<<<<<<<<<<
@@ -9145,7 +9267,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
  */
   }
 
-  /* "my_bliss.pyx":853
+  /* "my_bliss.pyx":854
  *         raise MemoryError("allocation failed")
  * 
  *     for i, v in enumerate(G):             # <<<<<<<<<<<<<<
@@ -9158,26 +9280,26 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
     __pyx_t_2 = __pyx_v_G; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
     __pyx_t_7 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_G); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 853, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_G); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 854, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 853, __pyx_L1_error)
+    __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 854, __pyx_L1_error)
   }
   for (;;) {
     if (likely(!__pyx_t_7)) {
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 853, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 854, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 853, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 854, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 853, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 854, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 853, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 854, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -9187,7 +9309,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 853, __pyx_L1_error)
+          else __PYX_ERR(0, 854, __pyx_L1_error)
         }
         break;
       }
@@ -9197,31 +9319,31 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
     __pyx_t_3 = 0;
     __Pyx_INCREF(__pyx_t_1);
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_1);
-    __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 853, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_AddObjC(__pyx_t_1, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 854, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1);
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "my_bliss.pyx":854
+    /* "my_bliss.pyx":855
  * 
  *     for i, v in enumerate(G):
  *         vert2int[v] = i             # <<<<<<<<<<<<<<
  *         int2vert[i] = v
  * 
  */
-    if (unlikely(PyObject_SetItem(__pyx_v_vert2int, __pyx_v_v, __pyx_v_i) < 0)) __PYX_ERR(0, 854, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_v_vert2int, __pyx_v_v, __pyx_v_i) < 0)) __PYX_ERR(0, 855, __pyx_L1_error)
 
-    /* "my_bliss.pyx":855
+    /* "my_bliss.pyx":856
  *     for i, v in enumerate(G):
  *         vert2int[v] = i
  *         int2vert[i] = v             # <<<<<<<<<<<<<<
  * 
  *     for x,y in G.edge_iterator(labels=False):
  */
-    if (unlikely(PyObject_SetItem(__pyx_v_int2vert, __pyx_v_i, __pyx_v_v) < 0)) __PYX_ERR(0, 855, __pyx_L1_error)
+    if (unlikely(PyObject_SetItem(__pyx_v_int2vert, __pyx_v_i, __pyx_v_v) < 0)) __PYX_ERR(0, 856, __pyx_L1_error)
 
-    /* "my_bliss.pyx":853
+    /* "my_bliss.pyx":854
  *         raise MemoryError("allocation failed")
  * 
  *     for i, v in enumerate(G):             # <<<<<<<<<<<<<<
@@ -9232,19 +9354,19 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":857
+  /* "my_bliss.pyx":858
  *         int2vert[i] = v
  * 
  *     for x,y in G.edge_iterator(labels=False):             # <<<<<<<<<<<<<<
  *         g.add_edge(vert2int[x], vert2int[y])
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_edge_iterator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_edge_iterator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 858, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 857, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 858, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_labels, Py_False) < 0) __PYX_ERR(0, 857, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 857, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_labels, Py_False) < 0) __PYX_ERR(0, 858, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 858, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9252,9 +9374,9 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
     __pyx_t_2 = __pyx_t_3; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
     __pyx_t_7 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 857, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 858, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 857, __pyx_L1_error)
+    __pyx_t_7 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 858, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -9262,17 +9384,17 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 857, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 858, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 857, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 858, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 857, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 858, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 857, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 858, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -9282,7 +9404,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 857, __pyx_L1_error)
+          else __PYX_ERR(0, 858, __pyx_L1_error)
         }
         break;
       }
@@ -9294,7 +9416,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 857, __pyx_L1_error)
+        __PYX_ERR(0, 858, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -9307,15 +9429,15 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
       __Pyx_INCREF(__pyx_t_1);
       __Pyx_INCREF(__pyx_t_8);
       #else
-      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 857, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 858, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 857, __pyx_L1_error)
+      __pyx_t_8 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 858, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_8);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 857, __pyx_L1_error)
+      __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 858, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext;
@@ -9323,7 +9445,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
       __Pyx_GOTREF(__pyx_t_1);
       index = 1; __pyx_t_8 = __pyx_t_10(__pyx_t_9); if (unlikely(!__pyx_t_8)) goto __pyx_L8_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_8);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) __PYX_ERR(0, 857, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) __PYX_ERR(0, 858, __pyx_L1_error)
       __pyx_t_10 = NULL;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       goto __pyx_L9_unpacking_done;
@@ -9331,7 +9453,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __pyx_t_10 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 857, __pyx_L1_error)
+      __PYX_ERR(0, 858, __pyx_L1_error)
       __pyx_L9_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_1);
@@ -9339,24 +9461,24 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
     __Pyx_XDECREF_SET(__pyx_v_y, __pyx_t_8);
     __pyx_t_8 = 0;
 
-    /* "my_bliss.pyx":858
+    /* "my_bliss.pyx":859
  * 
  *     for x,y in G.edge_iterator(labels=False):
  *         g.add_edge(vert2int[x], vert2int[y])             # <<<<<<<<<<<<<<
  * 
  *     if partition:
  */
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_vert2int, __pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 858, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_vert2int, __pyx_v_x); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 859, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 858, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 859, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_vert2int, __pyx_v_y); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 858, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_vert2int, __pyx_v_y); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 859, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_11 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_11 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 858, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyInt_As_unsigned_int(__pyx_t_3); if (unlikely((__pyx_t_11 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 859, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_v_g->add_edge(__pyx_t_4, __pyx_t_11);
 
-    /* "my_bliss.pyx":857
+    /* "my_bliss.pyx":858
  *         int2vert[i] = v
  * 
  *     for x,y in G.edge_iterator(labels=False):             # <<<<<<<<<<<<<<
@@ -9366,27 +9488,27 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":860
+  /* "my_bliss.pyx":861
  *         g.add_edge(vert2int[x], vert2int[y])
  * 
  *     if partition:             # <<<<<<<<<<<<<<
  *         for i in range(1, len(partition)):
  *             for v in partition[i]:
  */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 860, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 861, __pyx_L1_error)
   if (__pyx_t_5) {
 
-    /* "my_bliss.pyx":861
+    /* "my_bliss.pyx":862
  * 
  *     if partition:
  *         for i in range(1, len(partition)):             # <<<<<<<<<<<<<<
  *             for v in partition[i]:
  *                 g.change_color(vert2int[v], i)
  */
-    __pyx_t_6 = PyObject_Length(__pyx_v_partition); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 861, __pyx_L1_error)
-    __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 861, __pyx_L1_error)
+    __pyx_t_6 = PyObject_Length(__pyx_v_partition); if (unlikely(__pyx_t_6 == ((Py_ssize_t)-1))) __PYX_ERR(0, 862, __pyx_L1_error)
+    __pyx_t_2 = PyInt_FromSsize_t(__pyx_t_6); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 862, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 861, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 862, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_int_1);
     __Pyx_GIVEREF(__pyx_int_1);
@@ -9394,16 +9516,16 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
     __Pyx_GIVEREF(__pyx_t_2);
     PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_2);
     __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 861, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_builtin_range, __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 862, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
       __pyx_t_3 = __pyx_t_2; __Pyx_INCREF(__pyx_t_3); __pyx_t_6 = 0;
       __pyx_t_7 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 861, __pyx_L1_error)
+      __pyx_t_6 = -1; __pyx_t_3 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 862, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_7 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 861, __pyx_L1_error)
+      __pyx_t_7 = Py_TYPE(__pyx_t_3)->tp_iternext; if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 862, __pyx_L1_error)
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     for (;;) {
@@ -9411,17 +9533,17 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
         if (likely(PyList_CheckExact(__pyx_t_3))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 861, __pyx_L1_error)
+          __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 862, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 861, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 862, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 861, __pyx_L1_error)
+          __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_6); __Pyx_INCREF(__pyx_t_2); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 862, __pyx_L1_error)
           #else
-          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 861, __pyx_L1_error)
+          __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 862, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         }
@@ -9431,7 +9553,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 861, __pyx_L1_error)
+            else __PYX_ERR(0, 862, __pyx_L1_error)
           }
           break;
         }
@@ -9440,22 +9562,22 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
       __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_2);
       __pyx_t_2 = 0;
 
-      /* "my_bliss.pyx":862
+      /* "my_bliss.pyx":863
  *     if partition:
  *         for i in range(1, len(partition)):
  *             for v in partition[i]:             # <<<<<<<<<<<<<<
  *                 g.change_color(vert2int[v], i)
  *     return g
  */
-      __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_partition, __pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 862, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_partition, __pyx_v_i); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 863, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       if (likely(PyList_CheckExact(__pyx_t_2)) || PyTuple_CheckExact(__pyx_t_2)) {
         __pyx_t_8 = __pyx_t_2; __Pyx_INCREF(__pyx_t_8); __pyx_t_12 = 0;
         __pyx_t_13 = NULL;
       } else {
-        __pyx_t_12 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 862, __pyx_L1_error)
+        __pyx_t_12 = -1; __pyx_t_8 = PyObject_GetIter(__pyx_t_2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 863, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
-        __pyx_t_13 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 862, __pyx_L1_error)
+        __pyx_t_13 = Py_TYPE(__pyx_t_8)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 863, __pyx_L1_error)
       }
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
       for (;;) {
@@ -9463,17 +9585,17 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
           if (likely(PyList_CheckExact(__pyx_t_8))) {
             if (__pyx_t_12 >= PyList_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_2 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_12); __Pyx_INCREF(__pyx_t_2); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 862, __pyx_L1_error)
+            __pyx_t_2 = PyList_GET_ITEM(__pyx_t_8, __pyx_t_12); __Pyx_INCREF(__pyx_t_2); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 863, __pyx_L1_error)
             #else
-            __pyx_t_2 = PySequence_ITEM(__pyx_t_8, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 862, __pyx_L1_error)
+            __pyx_t_2 = PySequence_ITEM(__pyx_t_8, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 863, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             #endif
           } else {
             if (__pyx_t_12 >= PyTuple_GET_SIZE(__pyx_t_8)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_12); __Pyx_INCREF(__pyx_t_2); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 862, __pyx_L1_error)
+            __pyx_t_2 = PyTuple_GET_ITEM(__pyx_t_8, __pyx_t_12); __Pyx_INCREF(__pyx_t_2); __pyx_t_12++; if (unlikely(0 < 0)) __PYX_ERR(0, 863, __pyx_L1_error)
             #else
-            __pyx_t_2 = PySequence_ITEM(__pyx_t_8, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 862, __pyx_L1_error)
+            __pyx_t_2 = PySequence_ITEM(__pyx_t_8, __pyx_t_12); __pyx_t_12++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 863, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_2);
             #endif
           }
@@ -9483,7 +9605,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 862, __pyx_L1_error)
+              else __PYX_ERR(0, 863, __pyx_L1_error)
             }
             break;
           }
@@ -9492,21 +9614,21 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
         __Pyx_XDECREF_SET(__pyx_v_v, __pyx_t_2);
         __pyx_t_2 = 0;
 
-        /* "my_bliss.pyx":863
+        /* "my_bliss.pyx":864
  *         for i in range(1, len(partition)):
  *             for v in partition[i]:
  *                 g.change_color(vert2int[v], i)             # <<<<<<<<<<<<<<
  *     return g
  * 
  */
-        __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_vert2int, __pyx_v_v); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 863, __pyx_L1_error)
+        __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_vert2int, __pyx_v_v); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 864, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
-        __pyx_t_11 = __Pyx_PyInt_As_unsigned_int(__pyx_t_2); if (unlikely((__pyx_t_11 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 863, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyInt_As_unsigned_int(__pyx_t_2); if (unlikely((__pyx_t_11 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 864, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-        __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_v_i); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 863, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyInt_As_unsigned_int(__pyx_v_i); if (unlikely((__pyx_t_4 == (unsigned int)-1) && PyErr_Occurred())) __PYX_ERR(0, 864, __pyx_L1_error)
         __pyx_v_g->change_color(__pyx_t_11, __pyx_t_4);
 
-        /* "my_bliss.pyx":862
+        /* "my_bliss.pyx":863
  *     if partition:
  *         for i in range(1, len(partition)):
  *             for v in partition[i]:             # <<<<<<<<<<<<<<
@@ -9516,7 +9638,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
       }
       __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-      /* "my_bliss.pyx":861
+      /* "my_bliss.pyx":862
  * 
  *     if partition:
  *         for i in range(1, len(partition)):             # <<<<<<<<<<<<<<
@@ -9526,7 +9648,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "my_bliss.pyx":860
+    /* "my_bliss.pyx":861
  *         g.add_edge(vert2int[x], vert2int[y])
  * 
  *     if partition:             # <<<<<<<<<<<<<<
@@ -9535,7 +9657,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
  */
   }
 
-  /* "my_bliss.pyx":864
+  /* "my_bliss.pyx":865
  *             for v in partition[i]:
  *                 g.change_color(vert2int[v], i)
  *     return g             # <<<<<<<<<<<<<<
@@ -9545,8 +9667,8 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
   __pyx_r = __pyx_v_g;
   goto __pyx_L0;
 
-  /* "my_bliss.pyx":833
- *     return g
+  /* "my_bliss.pyx":834
+ *     return <Py_ssize_t> g;
  * 
  * cdef Digraph *bliss_digraph(G, partition, vert2int, int2vert):             # <<<<<<<<<<<<<<
  *     r"""
@@ -9572,7 +9694,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
   return __pyx_r;
 }
 
-/* "my_bliss.pyx":866
+/* "my_bliss.pyx":867
  *     return g
  * 
  * cpdef raw_automorphism_generators(G, partition=None, use_edge_labels=True):             # <<<<<<<<<<<<<<
@@ -9580,7 +9702,7 @@ static bliss::Digraph *__pyx_f_8my_bliss_bliss_digraph(PyObject *__pyx_v_G, PyOb
  *     cdef unsigned long Vnr = G.order()
  */
 
-static PyObject *__pyx_pw_8my_bliss_7raw_automorphism_generators(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_8my_bliss_9raw_automorphism_generators(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v_G, CYTHON_UNUSED int __pyx_skip_dispatch, struct __pyx_opt_args_8my_bliss_raw_automorphism_generators *__pyx_optional_args) {
   PyObject *__pyx_v_partition = ((PyObject *)Py_None);
   PyObject *__pyx_v_use_edge_labels = ((PyObject *)Py_True);
@@ -9629,7 +9751,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
   int __pyx_t_19;
   struct __pyx_opt_args_8my_bliss_automorphism_group_gens_from_edge_list __pyx_t_20;
   __Pyx_RefNannySetupContext("raw_automorphism_generators", 0);
-  __Pyx_TraceCall("raw_automorphism_generators", __pyx_f[0], 866, 0, __PYX_ERR(0, 866, __pyx_L1_error));
+  __Pyx_TraceCall("raw_automorphism_generators", __pyx_f[0], 867, 0, __PYX_ERR(0, 867, __pyx_L1_error));
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_partition = __pyx_optional_args->partition;
@@ -9640,14 +9762,14 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
   }
   __Pyx_INCREF(__pyx_v_partition);
 
-  /* "my_bliss.pyx":868
+  /* "my_bliss.pyx":869
  * cpdef raw_automorphism_generators(G, partition=None, use_edge_labels=True):
  *     # compute the automorphism group, and then use this to compute orbits
  *     cdef unsigned long Vnr = G.order()             # <<<<<<<<<<<<<<
  *     assert Vnr <= <unsigned long>LONG_MAX
  * 
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 868, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_order); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 869, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -9661,14 +9783,14 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 868, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 869, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyInt_As_unsigned_long(__pyx_t_1); if (unlikely((__pyx_t_4 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 868, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyInt_As_unsigned_long(__pyx_t_1); if (unlikely((__pyx_t_4 == (unsigned long)-1) && PyErr_Occurred())) __PYX_ERR(0, 869, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_Vnr = __pyx_t_4;
 
-  /* "my_bliss.pyx":869
+  /* "my_bliss.pyx":870
  *     # compute the automorphism group, and then use this to compute orbits
  *     cdef unsigned long Vnr = G.order()
  *     assert Vnr <= <unsigned long>LONG_MAX             # <<<<<<<<<<<<<<
@@ -9679,19 +9801,19 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_Vnr <= ((unsigned long)LONG_MAX)) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 869, __pyx_L1_error)
+      __PYX_ERR(0, 870, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "my_bliss.pyx":871
+  /* "my_bliss.pyx":872
  *     assert Vnr <= <unsigned long>LONG_MAX
  * 
  *     cdef bint directed = G.is_directed()             # <<<<<<<<<<<<<<
  * 
  *     cdef int labInd
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_is_directed); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 871, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_is_directed); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 872, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -9705,62 +9827,62 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3) : __Pyx_PyObject_CallNoArg(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 871, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 872, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 871, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 872, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_directed = __pyx_t_5;
 
-  /* "my_bliss.pyx":874
+  /* "my_bliss.pyx":875
  * 
  *     cdef int labInd
  *     cdef list Vout   = []             # <<<<<<<<<<<<<<
  *     cdef list Vin    = []
  *     cdef list labels = []
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 874, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 875, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_Vout = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":875
+  /* "my_bliss.pyx":876
  *     cdef int labInd
  *     cdef list Vout   = []
  *     cdef list Vin    = []             # <<<<<<<<<<<<<<
  *     cdef list labels = []
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 875, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 876, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_Vin = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":876
+  /* "my_bliss.pyx":877
  *     cdef list Vout   = []
  *     cdef list Vin    = []
  *     cdef list labels = []             # <<<<<<<<<<<<<<
  * 
  *     cdef list int2vert = list(G)
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 876, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 877, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_labels = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":878
+  /* "my_bliss.pyx":879
  *     cdef list labels = []
  * 
  *     cdef list int2vert = list(G)             # <<<<<<<<<<<<<<
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
  *     cdef list edge_labels = []
  */
-  __pyx_t_1 = PySequence_List(__pyx_v_G); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 878, __pyx_L1_error)
+  __pyx_t_1 = PySequence_List(__pyx_v_G); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 879, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_int2vert = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":879
+  /* "my_bliss.pyx":880
  * 
  *     cdef list int2vert = list(G)
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}             # <<<<<<<<<<<<<<
@@ -9768,25 +9890,25 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
  *     cdef dict edge_labels_rev = {}
  */
   { /* enter inner scope */
-    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 879, __pyx_L5_error)
+    __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 880, __pyx_L5_error)
     __Pyx_GOTREF(__pyx_t_1);
     __pyx_t_6 = 0;
     __pyx_t_2 = __pyx_v_int2vert; __Pyx_INCREF(__pyx_t_2); __pyx_t_7 = 0;
     for (;;) {
       if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_2)) break;
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 879, __pyx_L5_error)
+      __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_7); __Pyx_INCREF(__pyx_t_3); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 880, __pyx_L5_error)
       #else
-      __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 879, __pyx_L5_error)
+      __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 880, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
       #endif
       __Pyx_XDECREF_SET(__pyx_8genexpr5__pyx_v_v, __pyx_t_3);
       __pyx_t_3 = 0;
       __pyx_8genexpr5__pyx_v_i = __pyx_t_6;
       __pyx_t_6 = (__pyx_t_6 + 1);
-      __pyx_t_3 = PyInt_FromSsize_t(__pyx_8genexpr5__pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 879, __pyx_L5_error)
+      __pyx_t_3 = PyInt_FromSsize_t(__pyx_8genexpr5__pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 880, __pyx_L5_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_8genexpr5__pyx_v_v, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 879, __pyx_L5_error)
+      if (unlikely(PyDict_SetItem(__pyx_t_1, (PyObject*)__pyx_8genexpr5__pyx_v_v, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 880, __pyx_L5_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9800,31 +9922,31 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
   __pyx_v_vert2int = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":880
+  /* "my_bliss.pyx":881
  *     cdef list int2vert = list(G)
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
  *     cdef list edge_labels = []             # <<<<<<<<<<<<<<
  *     cdef dict edge_labels_rev = {}
  *     cdef int Lnr = 0
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 880, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 881, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_edge_labels = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":881
+  /* "my_bliss.pyx":882
  *     cdef dict vert2int = {v: i for i, v in enumerate(int2vert)}
  *     cdef list edge_labels = []
  *     cdef dict edge_labels_rev = {}             # <<<<<<<<<<<<<<
  *     cdef int Lnr = 0
  * 
  */
-  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 881, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 882, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_edge_labels_rev = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "my_bliss.pyx":882
+  /* "my_bliss.pyx":883
  *     cdef list edge_labels = []
  *     cdef dict edge_labels_rev = {}
  *     cdef int Lnr = 0             # <<<<<<<<<<<<<<
@@ -9833,49 +9955,49 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
  */
   __pyx_v_Lnr = 0;
 
-  /* "my_bliss.pyx":884
+  /* "my_bliss.pyx":885
  *     cdef int Lnr = 0
  * 
  *     if bool(partition):             # <<<<<<<<<<<<<<
  *         partition = [[ vert2int[i] for i in part] for part in partition]
  * 
  */
-  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 884, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_IsTrue(__pyx_v_partition); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 885, __pyx_L1_error)
   if (((!(!__pyx_t_5)) != 0)) {
 
-    /* "my_bliss.pyx":885
+    /* "my_bliss.pyx":886
  * 
  *     if bool(partition):
  *         partition = [[ vert2int[i] for i in part] for part in partition]             # <<<<<<<<<<<<<<
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):
  */
-    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 885, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 886, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     if (likely(PyList_CheckExact(__pyx_v_partition)) || PyTuple_CheckExact(__pyx_v_partition)) {
       __pyx_t_2 = __pyx_v_partition; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
       __pyx_t_8 = NULL;
     } else {
-      __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_partition); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 885, __pyx_L1_error)
+      __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_partition); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 886, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
-      __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 885, __pyx_L1_error)
+      __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 886, __pyx_L1_error)
     }
     for (;;) {
       if (likely(!__pyx_t_8)) {
         if (likely(PyList_CheckExact(__pyx_t_2))) {
           if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 885, __pyx_L1_error)
+          __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 886, __pyx_L1_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 885, __pyx_L1_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 886, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         } else {
           if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
           #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 885, __pyx_L1_error)
+          __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 886, __pyx_L1_error)
           #else
-          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 885, __pyx_L1_error)
+          __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 886, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_3);
           #endif
         }
@@ -9885,7 +10007,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 885, __pyx_L1_error)
+            else __PYX_ERR(0, 886, __pyx_L1_error)
           }
           break;
         }
@@ -9893,32 +10015,32 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       }
       __Pyx_XDECREF_SET(__pyx_v_part, __pyx_t_3);
       __pyx_t_3 = 0;
-      __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 885, __pyx_L1_error)
+      __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 886, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       if (likely(PyList_CheckExact(__pyx_v_part)) || PyTuple_CheckExact(__pyx_v_part)) {
         __pyx_t_9 = __pyx_v_part; __Pyx_INCREF(__pyx_t_9); __pyx_t_7 = 0;
         __pyx_t_10 = NULL;
       } else {
-        __pyx_t_7 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_v_part); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 885, __pyx_L1_error)
+        __pyx_t_7 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_v_part); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 886, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
-        __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 885, __pyx_L1_error)
+        __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 886, __pyx_L1_error)
       }
       for (;;) {
         if (likely(!__pyx_t_10)) {
           if (likely(PyList_CheckExact(__pyx_t_9))) {
             if (__pyx_t_7 >= PyList_GET_SIZE(__pyx_t_9)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_11 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 885, __pyx_L1_error)
+            __pyx_t_11 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 886, __pyx_L1_error)
             #else
-            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 885, __pyx_L1_error)
+            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 886, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             #endif
           } else {
             if (__pyx_t_7 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
             #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-            __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 885, __pyx_L1_error)
+            __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_7); __Pyx_INCREF(__pyx_t_11); __pyx_t_7++; if (unlikely(0 < 0)) __PYX_ERR(0, 886, __pyx_L1_error)
             #else
-            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 885, __pyx_L1_error)
+            __pyx_t_11 = PySequence_ITEM(__pyx_t_9, __pyx_t_7); __pyx_t_7++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 886, __pyx_L1_error)
             __Pyx_GOTREF(__pyx_t_11);
             #endif
           }
@@ -9928,7 +10050,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
             PyObject* exc_type = PyErr_Occurred();
             if (exc_type) {
               if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-              else __PYX_ERR(0, 885, __pyx_L1_error)
+              else __PYX_ERR(0, 886, __pyx_L1_error)
             }
             break;
           }
@@ -9936,20 +10058,20 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
         }
         __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_11);
         __pyx_t_11 = 0;
-        __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_i); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 885, __pyx_L1_error)
+        __pyx_t_11 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_i); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 886, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_11);
-        if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 885, __pyx_L1_error)
+        if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_11))) __PYX_ERR(0, 886, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       }
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 885, __pyx_L1_error)
+      if (unlikely(__Pyx_ListComp_Append(__pyx_t_1, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 886, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF_SET(__pyx_v_partition, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "my_bliss.pyx":884
+    /* "my_bliss.pyx":885
  *     cdef int Lnr = 0
  * 
  *     if bool(partition):             # <<<<<<<<<<<<<<
@@ -9958,19 +10080,19 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
  */
   }
 
-  /* "my_bliss.pyx":887
+  /* "my_bliss.pyx":888
  *         partition = [[ vert2int[i] for i in part] for part in partition]
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):             # <<<<<<<<<<<<<<
  *         if use_edge_labels is False:
  *             lab = None
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_edge_iterator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 887, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_G, __pyx_n_s_edge_iterator); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 888, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 887, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 888, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_labels, Py_True) < 0) __PYX_ERR(0, 887, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 887, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_n_s_labels, Py_True) < 0) __PYX_ERR(0, 888, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_empty_tuple, __pyx_t_2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 888, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -9978,9 +10100,9 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
     __pyx_t_2 = __pyx_t_3; __Pyx_INCREF(__pyx_t_2); __pyx_t_6 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 887, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 888, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 887, __pyx_L1_error)
+    __pyx_t_8 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 888, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -9988,17 +10110,17 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       if (likely(PyList_CheckExact(__pyx_t_2))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 887, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 888, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 887, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 888, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 887, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 888, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 887, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_2, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 888, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -10008,7 +10130,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 887, __pyx_L1_error)
+          else __PYX_ERR(0, 888, __pyx_L1_error)
         }
         break;
       }
@@ -10020,7 +10142,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       if (unlikely(size != 3)) {
         if (size > 3) __Pyx_RaiseTooManyValuesError(3);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 887, __pyx_L1_error)
+        __PYX_ERR(0, 888, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -10036,17 +10158,17 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       __Pyx_INCREF(__pyx_t_9);
       __Pyx_INCREF(__pyx_t_11);
       #else
-      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 887, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 888, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 887, __pyx_L1_error)
+      __pyx_t_9 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 888, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_11 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 887, __pyx_L1_error)
+      __pyx_t_11 = PySequence_ITEM(sequence, 2); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 888, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 887, __pyx_L1_error)
+      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 888, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_13 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -10056,7 +10178,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       __Pyx_GOTREF(__pyx_t_9);
       index = 2; __pyx_t_11 = __pyx_t_13(__pyx_t_12); if (unlikely(!__pyx_t_11)) goto __pyx_L16_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_11);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 3) < 0) __PYX_ERR(0, 887, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 3) < 0) __PYX_ERR(0, 888, __pyx_L1_error)
       __pyx_t_13 = NULL;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       goto __pyx_L17_unpacking_done;
@@ -10064,7 +10186,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_13 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 887, __pyx_L1_error)
+      __PYX_ERR(0, 888, __pyx_L1_error)
       __pyx_L17_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v_x, __pyx_t_1);
@@ -10074,7 +10196,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
     __Pyx_XDECREF_SET(__pyx_v_lab, __pyx_t_11);
     __pyx_t_11 = 0;
 
-    /* "my_bliss.pyx":888
+    /* "my_bliss.pyx":889
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):
  *         if use_edge_labels is False:             # <<<<<<<<<<<<<<
@@ -10085,7 +10207,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
     __pyx_t_14 = (__pyx_t_5 != 0);
     if (__pyx_t_14) {
 
-      /* "my_bliss.pyx":889
+      /* "my_bliss.pyx":890
  *     for x,y,lab in G.edge_iterator(labels=True):
  *         if use_edge_labels is False:
  *             lab = None             # <<<<<<<<<<<<<<
@@ -10095,7 +10217,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       __Pyx_INCREF(Py_None);
       __Pyx_DECREF_SET(__pyx_v_lab, Py_None);
 
-      /* "my_bliss.pyx":888
+      /* "my_bliss.pyx":889
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):
  *         if use_edge_labels is False:             # <<<<<<<<<<<<<<
@@ -10104,7 +10226,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
  */
     }
 
-    /* "my_bliss.pyx":890
+    /* "my_bliss.pyx":891
  *         if use_edge_labels is False:
  *             lab = None
  *         try:             # <<<<<<<<<<<<<<
@@ -10120,20 +10242,20 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       __Pyx_XGOTREF(__pyx_t_17);
       /*try:*/ {
 
-        /* "my_bliss.pyx":891
+        /* "my_bliss.pyx":892
  *             lab = None
  *         try:
  *             labInd = edge_labels_rev[lab]             # <<<<<<<<<<<<<<
  *         except KeyError:
  *             labInd = Lnr
  */
-        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_edge_labels_rev, __pyx_v_lab); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 891, __pyx_L19_error)
+        __pyx_t_3 = __Pyx_PyDict_GetItem(__pyx_v_edge_labels_rev, __pyx_v_lab); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 892, __pyx_L19_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 891, __pyx_L19_error)
+        __pyx_t_18 = __Pyx_PyInt_As_int(__pyx_t_3); if (unlikely((__pyx_t_18 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 892, __pyx_L19_error)
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_v_labInd = __pyx_t_18;
 
-        /* "my_bliss.pyx":890
+        /* "my_bliss.pyx":891
  *         if use_edge_labels is False:
  *             lab = None
  *         try:             # <<<<<<<<<<<<<<
@@ -10152,7 +10274,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "my_bliss.pyx":892
+      /* "my_bliss.pyx":893
  *         try:
  *             labInd = edge_labels_rev[lab]
  *         except KeyError:             # <<<<<<<<<<<<<<
@@ -10162,12 +10284,12 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       __pyx_t_18 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_KeyError);
       if (__pyx_t_18) {
         __Pyx_AddTraceback("my_bliss.raw_automorphism_generators", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_11, &__pyx_t_9) < 0) __PYX_ERR(0, 892, __pyx_L21_except_error)
+        if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_11, &__pyx_t_9) < 0) __PYX_ERR(0, 893, __pyx_L21_except_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GOTREF(__pyx_t_11);
         __Pyx_GOTREF(__pyx_t_9);
 
-        /* "my_bliss.pyx":893
+        /* "my_bliss.pyx":894
  *             labInd = edge_labels_rev[lab]
  *         except KeyError:
  *             labInd = Lnr             # <<<<<<<<<<<<<<
@@ -10176,7 +10298,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
  */
         __pyx_v_labInd = __pyx_v_Lnr;
 
-        /* "my_bliss.pyx":894
+        /* "my_bliss.pyx":895
  *         except KeyError:
  *             labInd = Lnr
  *             Lnr += 1             # <<<<<<<<<<<<<<
@@ -10185,26 +10307,26 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
  */
         __pyx_v_Lnr = (__pyx_v_Lnr + 1);
 
-        /* "my_bliss.pyx":895
+        /* "my_bliss.pyx":896
  *             labInd = Lnr
  *             Lnr += 1
  *             edge_labels_rev[lab] = labInd             # <<<<<<<<<<<<<<
  *             edge_labels.append(lab)
  * 
  */
-        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 895, __pyx_L21_except_error)
+        __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 896, __pyx_L21_except_error)
         __Pyx_GOTREF(__pyx_t_1);
-        if (unlikely(PyDict_SetItem(__pyx_v_edge_labels_rev, __pyx_v_lab, __pyx_t_1) < 0)) __PYX_ERR(0, 895, __pyx_L21_except_error)
+        if (unlikely(PyDict_SetItem(__pyx_v_edge_labels_rev, __pyx_v_lab, __pyx_t_1) < 0)) __PYX_ERR(0, 896, __pyx_L21_except_error)
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-        /* "my_bliss.pyx":896
+        /* "my_bliss.pyx":897
  *             Lnr += 1
  *             edge_labels_rev[lab] = labInd
  *             edge_labels.append(lab)             # <<<<<<<<<<<<<<
  * 
  *         Vout.append(vert2int[x])
  */
-        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_edge_labels, __pyx_v_lab); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 896, __pyx_L21_except_error)
+        __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_edge_labels, __pyx_v_lab); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 897, __pyx_L21_except_error)
         __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
         __Pyx_XDECREF(__pyx_t_11); __pyx_t_11 = 0;
         __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -10213,7 +10335,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       goto __pyx_L21_except_error;
       __pyx_L21_except_error:;
 
-      /* "my_bliss.pyx":890
+      /* "my_bliss.pyx":891
  *         if use_edge_labels is False:
  *             lab = None
  *         try:             # <<<<<<<<<<<<<<
@@ -10233,43 +10355,43 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       __pyx_L26_try_end:;
     }
 
-    /* "my_bliss.pyx":898
+    /* "my_bliss.pyx":899
  *             edge_labels.append(lab)
  * 
  *         Vout.append(vert2int[x])             # <<<<<<<<<<<<<<
  *         Vin.append(vert2int[y])
  *         labels.append(labInd)
  */
-    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_x); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 898, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_x); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 899, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vout, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 898, __pyx_L1_error)
+    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vout, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 899, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "my_bliss.pyx":899
+    /* "my_bliss.pyx":900
  * 
  *         Vout.append(vert2int[x])
  *         Vin.append(vert2int[y])             # <<<<<<<<<<<<<<
  *         labels.append(labInd)
  * 
  */
-    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_y); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 899, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyDict_GetItem(__pyx_v_vert2int, __pyx_v_y); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 900, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vin, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 899, __pyx_L1_error)
+    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_Vin, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 900, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "my_bliss.pyx":900
+    /* "my_bliss.pyx":901
  *         Vout.append(vert2int[x])
  *         Vin.append(vert2int[y])
  *         labels.append(labInd)             # <<<<<<<<<<<<<<
  * 
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]
  */
-    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 900, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyInt_From_int(__pyx_v_labInd); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 901, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_labels, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 900, __pyx_L1_error)
+    __pyx_t_19 = __Pyx_PyList_Append(__pyx_v_labels, __pyx_t_9); if (unlikely(__pyx_t_19 == ((int)-1))) __PYX_ERR(0, 901, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-    /* "my_bliss.pyx":887
+    /* "my_bliss.pyx":888
  *         partition = [[ vert2int[i] for i in part] for part in partition]
  * 
  *     for x,y,lab in G.edge_iterator(labels=True):             # <<<<<<<<<<<<<<
@@ -10279,25 +10401,25 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":902
+  /* "my_bliss.pyx":903
  *         labels.append(labInd)
  * 
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]             # <<<<<<<<<<<<<<
  *     labels = [lab_relabels[i] for i in labels]
  * 
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 902, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 903, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_9 = __Pyx_PyDict_IterItems(__pyx_v_edge_labels_rev); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 902, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_IterItems(__pyx_v_edge_labels_rev); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 903, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 902, __pyx_L1_error)
+  __pyx_t_11 = PyTuple_New(1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 903, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_11);
   __Pyx_GIVEREF(__pyx_t_9);
   PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_9);
   __pyx_t_9 = 0;
-  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 902, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 903, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
-  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_itemgetter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 902, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_n_s_itemgetter); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 903, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_t_12 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_1))) {
@@ -10311,12 +10433,12 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
   }
   __pyx_t_3 = (__pyx_t_12) ? __Pyx_PyObject_Call2Args(__pyx_t_1, __pyx_t_12, __pyx_int_0) : __Pyx_PyObject_CallOneArg(__pyx_t_1, __pyx_int_0);
   __Pyx_XDECREF(__pyx_t_12); __pyx_t_12 = 0;
-  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 902, __pyx_L1_error)
+  if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 903, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_key, __pyx_t_3) < 0) __PYX_ERR(0, 902, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_9, __pyx_n_s_key, __pyx_t_3) < 0) __PYX_ERR(0, 903, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_11, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 902, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_sorted, __pyx_t_11, __pyx_t_9); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 903, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
@@ -10324,9 +10446,9 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
     __pyx_t_9 = __pyx_t_3; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
     __pyx_t_8 = NULL;
   } else {
-    __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 902, __pyx_L1_error)
+    __pyx_t_6 = -1; __pyx_t_9 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 903, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_8 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 902, __pyx_L1_error)
+    __pyx_t_8 = Py_TYPE(__pyx_t_9)->tp_iternext; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 903, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   for (;;) {
@@ -10334,17 +10456,17 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       if (likely(PyList_CheckExact(__pyx_t_9))) {
         if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 902, __pyx_L1_error)
+        __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 903, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 902, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 903, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       } else {
         if (__pyx_t_6 >= PyTuple_GET_SIZE(__pyx_t_9)) break;
         #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 902, __pyx_L1_error)
+        __pyx_t_3 = PyTuple_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 903, __pyx_L1_error)
         #else
-        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 902, __pyx_L1_error)
+        __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 903, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         #endif
       }
@@ -10354,7 +10476,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
         PyObject* exc_type = PyErr_Occurred();
         if (exc_type) {
           if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-          else __PYX_ERR(0, 902, __pyx_L1_error)
+          else __PYX_ERR(0, 903, __pyx_L1_error)
         }
         break;
       }
@@ -10366,7 +10488,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       if (unlikely(size != 2)) {
         if (size > 2) __Pyx_RaiseTooManyValuesError(2);
         else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-        __PYX_ERR(0, 902, __pyx_L1_error)
+        __PYX_ERR(0, 903, __pyx_L1_error)
       }
       #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
       if (likely(PyTuple_CheckExact(sequence))) {
@@ -10379,15 +10501,15 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       __Pyx_INCREF(__pyx_t_11);
       __Pyx_INCREF(__pyx_t_1);
       #else
-      __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 902, __pyx_L1_error)
+      __pyx_t_11 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 903, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_11);
-      __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 902, __pyx_L1_error)
+      __pyx_t_1 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 903, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       #endif
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     } else {
       Py_ssize_t index = -1;
-      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 902, __pyx_L1_error)
+      __pyx_t_12 = PyObject_GetIter(__pyx_t_3); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 903, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_12);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __pyx_t_13 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -10395,7 +10517,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       __Pyx_GOTREF(__pyx_t_11);
       index = 1; __pyx_t_1 = __pyx_t_13(__pyx_t_12); if (unlikely(!__pyx_t_1)) goto __pyx_L31_unpacking_failed;
       __Pyx_GOTREF(__pyx_t_1);
-      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 902, __pyx_L1_error)
+      if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 903, __pyx_L1_error)
       __pyx_t_13 = NULL;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       goto __pyx_L32_unpacking_done;
@@ -10403,49 +10525,49 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __pyx_t_13 = NULL;
       if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-      __PYX_ERR(0, 902, __pyx_L1_error)
+      __PYX_ERR(0, 903, __pyx_L1_error)
       __pyx_L32_unpacking_done:;
     }
     __Pyx_XDECREF_SET(__pyx_v__, __pyx_t_11);
     __pyx_t_11 = 0;
     __Pyx_XDECREF_SET(__pyx_v_lab, __pyx_t_1);
     __pyx_t_1 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_v_lab))) __PYX_ERR(0, 902, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_v_lab))) __PYX_ERR(0, 903, __pyx_L1_error)
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __pyx_v_lab_relabels = ((PyObject*)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":903
+  /* "my_bliss.pyx":904
  * 
  *     lab_relabels = [lab for _,lab in sorted(edge_labels_rev.iteritems(), key=itemgetter(0))]
  *     labels = [lab_relabels[i] for i in labels]             # <<<<<<<<<<<<<<
  * 
  *     gens = automorphism_group_gens_from_edge_list(Vnr, Vout, Vin, Lnr, labels, int2vert, partition, directed)
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 903, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 904, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_9 = __pyx_v_labels; __Pyx_INCREF(__pyx_t_9); __pyx_t_6 = 0;
   for (;;) {
     if (__pyx_t_6 >= PyList_GET_SIZE(__pyx_t_9)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 903, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_ITEM(__pyx_t_9, __pyx_t_6); __Pyx_INCREF(__pyx_t_3); __pyx_t_6++; if (unlikely(0 < 0)) __PYX_ERR(0, 904, __pyx_L1_error)
     #else
-    __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 903, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(__pyx_t_9, __pyx_t_6); __pyx_t_6++; if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 904, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_i, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_lab_relabels, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 903, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_GetItem(__pyx_v_lab_relabels, __pyx_v_i); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 904, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 903, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_2, (PyObject*)__pyx_t_3))) __PYX_ERR(0, 904, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   }
   __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
   __Pyx_DECREF_SET(__pyx_v_labels, ((PyObject*)__pyx_t_2));
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":905
+  /* "my_bliss.pyx":906
  *     labels = [lab_relabels[i] for i in labels]
  * 
  *     gens = automorphism_group_gens_from_edge_list(Vnr, Vout, Vin, Lnr, labels, int2vert, partition, directed)             # <<<<<<<<<<<<<<
@@ -10458,12 +10580,12 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
   __pyx_t_20.int2vert = __pyx_v_int2vert;
   __pyx_t_20.partition = __pyx_v_partition;
   __pyx_t_20.directed = __pyx_v_directed;
-  __pyx_t_2 = __pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(__pyx_v_Vnr, __pyx_v_Vout, __pyx_v_Vin, &__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 905, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_8my_bliss_automorphism_group_gens_from_edge_list(__pyx_v_Vnr, __pyx_v_Vout, __pyx_v_Vin, &__pyx_t_20); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 906, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_v_gens = __pyx_t_2;
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":907
+  /* "my_bliss.pyx":908
  *     gens = automorphism_group_gens_from_edge_list(Vnr, Vout, Vin, Lnr, labels, int2vert, partition, directed)
  * 
  *     return gens             # <<<<<<<<<<<<<<
@@ -10474,7 +10596,7 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
   __pyx_r = __pyx_v_gens;
   goto __pyx_L0;
 
-  /* "my_bliss.pyx":866
+  /* "my_bliss.pyx":867
  *     return g
  * 
  * cpdef raw_automorphism_generators(G, partition=None, use_edge_labels=True):             # <<<<<<<<<<<<<<
@@ -10517,8 +10639,8 @@ static PyObject *__pyx_f_8my_bliss_raw_automorphism_generators(PyObject *__pyx_v
 }
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8my_bliss_7raw_automorphism_generators(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyObject *__pyx_pw_8my_bliss_7raw_automorphism_generators(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_8my_bliss_9raw_automorphism_generators(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_pw_8my_bliss_9raw_automorphism_generators(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyObject *__pyx_v_G = 0;
   PyObject *__pyx_v_partition = 0;
   PyObject *__pyx_v_use_edge_labels = 0;
@@ -10562,7 +10684,7 @@ static PyObject *__pyx_pw_8my_bliss_7raw_automorphism_generators(PyObject *__pyx
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "raw_automorphism_generators") < 0)) __PYX_ERR(0, 866, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "raw_automorphism_generators") < 0)) __PYX_ERR(0, 867, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -10581,32 +10703,32 @@ static PyObject *__pyx_pw_8my_bliss_7raw_automorphism_generators(PyObject *__pyx
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("raw_automorphism_generators", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 866, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("raw_automorphism_generators", 0, 1, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 867, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("my_bliss.raw_automorphism_generators", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  __pyx_r = __pyx_pf_8my_bliss_6raw_automorphism_generators(__pyx_self, __pyx_v_G, __pyx_v_partition, __pyx_v_use_edge_labels);
+  __pyx_r = __pyx_pf_8my_bliss_8raw_automorphism_generators(__pyx_self, __pyx_v_G, __pyx_v_partition, __pyx_v_use_edge_labels);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8my_bliss_6raw_automorphism_generators(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_partition, PyObject *__pyx_v_use_edge_labels) {
+static PyObject *__pyx_pf_8my_bliss_8raw_automorphism_generators(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_G, PyObject *__pyx_v_partition, PyObject *__pyx_v_use_edge_labels) {
   PyObject *__pyx_r = NULL;
   __Pyx_TraceDeclarations
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   struct __pyx_opt_args_8my_bliss_raw_automorphism_generators __pyx_t_2;
   __Pyx_RefNannySetupContext("raw_automorphism_generators", 0);
-  __Pyx_TraceCall("raw_automorphism_generators (wrapper)", __pyx_f[0], 866, 0, __PYX_ERR(0, 866, __pyx_L1_error));
+  __Pyx_TraceCall("raw_automorphism_generators (wrapper)", __pyx_f[0], 867, 0, __PYX_ERR(0, 867, __pyx_L1_error));
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2.__pyx_n = 2;
   __pyx_t_2.partition = __pyx_v_partition;
   __pyx_t_2.use_edge_labels = __pyx_v_use_edge_labels;
-  __pyx_t_1 = __pyx_f_8my_bliss_raw_automorphism_generators(__pyx_v_G, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 866, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_8my_bliss_raw_automorphism_generators(__pyx_v_G, 0, &__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 867, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -11864,7 +11986,8 @@ static PyMethodDef __pyx_methods[] = {
   {"canonical_form", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8my_bliss_1canonical_form, METH_VARARGS|METH_KEYWORDS, __pyx_doc_8my_bliss_canonical_form},
   {"automorphism_group", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8my_bliss_3automorphism_group, METH_VARARGS|METH_KEYWORDS, __pyx_doc_8my_bliss_2automorphism_group},
   {"orbits_and_canonical_labeling", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8my_bliss_5orbits_and_canonical_labeling, METH_VARARGS|METH_KEYWORDS, 0},
-  {"raw_automorphism_generators", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8my_bliss_7raw_automorphism_generators, METH_VARARGS|METH_KEYWORDS, 0},
+  {"bliss_graph", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8my_bliss_7bliss_graph, METH_VARARGS|METH_KEYWORDS, __pyx_doc_8my_bliss_6bliss_graph},
+  {"raw_automorphism_generators", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_8my_bliss_9raw_automorphism_generators, METH_VARARGS|METH_KEYWORDS, 0},
   {0, 0, 0, 0}
 };
 
@@ -11931,6 +12054,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_failed_to_allocate_s_bytes, __pyx_k_failed_to_allocate_s_bytes, sizeof(__pyx_k_failed_to_allocate_s_bytes), 0, 0, 1, 0},
   {&__pyx_kp_s_failed_to_allocate_s_s_bytes, __pyx_k_failed_to_allocate_s_s_bytes, sizeof(__pyx_k_failed_to_allocate_s_s_bytes), 0, 0, 1, 0},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
+  {&__pyx_n_s_int2vert, __pyx_k_int2vert, sizeof(__pyx_k_int2vert), 0, 0, 1, 1},
   {&__pyx_n_s_is_directed, __pyx_k_is_directed, sizeof(__pyx_k_is_directed), 0, 0, 1, 1},
   {&__pyx_n_s_itemgetter, __pyx_k_itemgetter, sizeof(__pyx_k_itemgetter), 0, 0, 1, 1},
   {&__pyx_n_s_items, __pyx_k_items, sizeof(__pyx_k_items), 0, 0, 1, 1},
@@ -11952,14 +12076,15 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_sorted, __pyx_k_sorted, sizeof(__pyx_k_sorted), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {&__pyx_n_s_use_edge_labels, __pyx_k_use_edge_labels, sizeof(__pyx_k_use_edge_labels), 0, 0, 1, 1},
+  {&__pyx_n_s_vert2int, __pyx_k_vert2int, sizeof(__pyx_k_vert2int), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 93, __pyx_L1_error)
-  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 164, __pyx_L1_error)
-  __pyx_builtin_KeyError = __Pyx_GetBuiltinName(__pyx_n_s_KeyError); if (!__pyx_builtin_KeyError) __PYX_ERR(0, 464, __pyx_L1_error)
-  __pyx_builtin_sorted = __Pyx_GetBuiltinName(__pyx_n_s_sorted); if (!__pyx_builtin_sorted) __PYX_ERR(0, 474, __pyx_L1_error)
-  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 451, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 94, __pyx_L1_error)
+  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_builtin_KeyError = __Pyx_GetBuiltinName(__pyx_n_s_KeyError); if (!__pyx_builtin_KeyError) __PYX_ERR(0, 465, __pyx_L1_error)
+  __pyx_builtin_sorted = __Pyx_GetBuiltinName(__pyx_n_s_sorted); if (!__pyx_builtin_sorted) __PYX_ERR(0, 475, __pyx_L1_error)
+  __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(0, 452, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
   return -1;
@@ -11969,69 +12094,69 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "my_bliss.pyx":164
+  /* "my_bliss.pyx":165
  *         g = new Graph(Vnr)
  *         if not g:
  *             raise MemoryError("allocation failed")             # <<<<<<<<<<<<<<
  *     else:
  *         logLnr = len(numpy.binary_repr(Lnr))
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_allocation_failed); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_allocation_failed); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 165, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "my_bliss.pyx":169
+  /* "my_bliss.pyx":170
  *         g = new Graph(Vnr * logLnr)
  *         if not g:
  *             raise MemoryError("allocation failed")             # <<<<<<<<<<<<<<
  *         for j in range(1, logLnr):
  *             for i in range((j - 1) * Vnr, j * Vnr):
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_allocation_failed); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_allocation_failed); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "my_bliss.pyx":243
+  /* "my_bliss.pyx":244
  *         g = new Digraph(Vnr)
  *         if not g:
  *             raise MemoryError("allocation failed")             # <<<<<<<<<<<<<<
  *     else:
  *         logLnr = len(numpy.binary_repr(Lnr))
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_allocation_failed); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 243, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_allocation_failed); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 244, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "my_bliss.pyx":248
+  /* "my_bliss.pyx":249
  *         g = new Digraph(Vnr * logLnr)
  *         if not g:
  *             raise MemoryError("allocation failed")             # <<<<<<<<<<<<<<
  *         for j in range(1, logLnr):
  *             for i in range((j - 1) * Vnr, j * Vnr):
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_allocation_failed); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 248, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_allocation_failed); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "my_bliss.pyx":818
+  /* "my_bliss.pyx":819
  * 
  *     if not g:
  *         raise MemoryError("allocation failed")             # <<<<<<<<<<<<<<
  * 
  *     for i, v in enumerate(G):
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_allocation_failed); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 818, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_allocation_failed); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 819, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
-  /* "my_bliss.pyx":851
+  /* "my_bliss.pyx":852
  * 
  *     if not g:
  *         raise MemoryError("allocation failed")             # <<<<<<<<<<<<<<
  * 
  *     for i, v in enumerate(G):
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_allocation_failed); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 851, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_allocation_failed); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 852, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
   __Pyx_RefNannyFinishContext();
@@ -12396,40 +12521,40 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":287
+  /* "my_bliss.pyx":288
  * #####################################################
  * 
  * cdef canonical_form_from_edge_list(int Vnr, list Vout, list Vin, int Lnr=1, list labels=[],             # <<<<<<<<<<<<<<
  *                                        list partition=None, bint directed=False, bint certificate=False):
  *     r"""
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 287, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 288, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_k__2 = ((PyObject*)__pyx_t_2);
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":498
+  /* "my_bliss.pyx":499
  * #####################################################
  * 
  * cdef automorphism_group_gens_from_edge_list(int Vnr, Vout, Vin, int Lnr=1, labels=[],             # <<<<<<<<<<<<<<
  *                                                 int2vert=[], partition=None, bint directed=False):
  *     r"""
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 498, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 499, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_k__3 = __pyx_t_2;
   __Pyx_GIVEREF(__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "my_bliss.pyx":499
+  /* "my_bliss.pyx":500
  * 
  * cdef automorphism_group_gens_from_edge_list(int Vnr, Vout, Vin, int Lnr=1, labels=[],
  *                                                 int2vert=[], partition=None, bint directed=False):             # <<<<<<<<<<<<<<
  *     r"""
  *     Return an unsorted list of labelled edges of a canonical form.
  */
-  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 499, __pyx_L1_error)
+  __pyx_t_2 = PyList_New(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 500, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_k__4 = __pyx_t_2;
   __Pyx_GIVEREF(__pyx_t_2);
