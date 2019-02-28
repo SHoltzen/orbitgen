@@ -6,16 +6,14 @@ from my_graphs import *
 def flip():
     return numpy.random.binomial(1, 0.5)
 
-class FactorGraph:
+class MarkovModel:
     ### graph: a sage graph
     ### variables: a list of graph vertices which correspond to variables in the factor graph
-    ### factors: a list of list of graph vertices which correspond to colored factors in the factor graph
     ### potential: state -> real: a function which evaluates the potential on a particular state
     ###    a state is a dictionary assigning variables to Boolean values
-    def __init__(self, graph, variables, factors, potential):
+    def __init__(self, graph, variables, potential):
         self.graph = graph
         self.variables = variables
-        self.factors = factors
         self.potential = potential
 
     ### converts a variable state into a variable partition
@@ -32,23 +30,28 @@ class FactorGraph:
     ### computes a burnside process transition beginning from a state particular state
     ### n: number of moves
     def burnside(self, state, n):
-        print("state: %s" % state)
         for j in range(0,n):
             var_part = self.state_to_partition(state)
-            partition = var_part + self.factors
+            partition = var_part
             stab = self.graph.automorphism_group(partition=partition)
-            stab = libgap(stab)
-            # product replacement
-            p = libgap.PseudoRandom(stab).sage()
+            p = stab.random_element().cycle_tuples(singletons=True)
+            # stab = libgap(stab)
+            # p = (libgap.PseudoRandom(stab).sage()).to_cycles(singletons=True)
+            # if len(p) == 0:
+            #     # this is the identity; for some reason, Sage doesn't do this one correctly
+            #     for v in self.variables:
+            #         p += [(v,)]
+
             # now convert p into a state
+            # print(p)
             state = dict()
-            for cyc in p.to_cycles():
+            for cyc in p:
                 # sample a value for cyc and fill in the new current value
                 v = flip()
                 for idx in cyc:
-                    if (idx - 1) in self.variables:
+                    if (idx) in self.variables:
                         #-1, zero indexed
-                        state[idx-1] = v
+                        state[idx] = v
         return state
 
     ### perform a single step of orbit jumping
@@ -82,7 +85,6 @@ class FactorGraph:
                 cur_state = new_state
             else:
                 samples.append(cur_state)
-
         return samples
 
 
@@ -90,7 +92,6 @@ class FactorGraph:
 def gen_complete_pairwise_factorgraph(n):
     (g, (v, factors)) = gen_complete_pairwise_factor(n)
     def potential(state):
-        print("potential got state: %s" % state)
         p = 0.0
         for v in state.itervalues():
             if v:
@@ -98,9 +99,32 @@ def gen_complete_pairwise_factorgraph(n):
         return p
     return FactorGraph(g, v, [factors], potential)
 
+def run_burnside():
+    cur_state = dict()
+    counts = dict()
+    g = graphs.CompleteGraph(2)
+    f = MarkovModel(g, g.vertices(), None)
+    for v in f.variables:
+        cur_state[v] = flip()
+        counts[v] = 0
+    counts[len(f.variables)] = 0
+
+    for i in range(0, 5000):
+        cur_state = f.burnside(cur_state, 12)
+        # print(cur_state)
+        num_true = 0
+        for k,v in cur_state.iteritems():
+            if v:
+                num_true += 1
+        counts[num_true] = counts[num_true] + 1
+
+    print(counts)
+
+
 def main():
-    graph = gen_complete_pairwise_factorgraph(4)
-    print(graph.orbitjumpmcmc(4, 10))
+    # print some burnside samples
+    # print(graph.orbitjumpmcmc(4, 10))
+    None
 
 if __name__ == "__main__":
     main()
