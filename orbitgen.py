@@ -53,6 +53,7 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f, orders=False):
     # set of representative graph colorings
     reps = set()
     while len(queue) != 0:
+        # print("queue: %s" % queue)
         c = queue.popleft()
         # TODO: turn this into a single GI call by having it return both the
         # automorphism group and the canonical fora
@@ -73,7 +74,7 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f, orders=False):
         if (gcanon, (tuple(c_canon[0]), tuple(c_canon[1]))) in reps:
             continue
 
-        A, orbits = graph.automorphism_group(partition=c + fixcolors, orbits=True,
+        A, orbits = graph.automorphism_group(partition=part, orbits=True,
                                              algorithm="bliss")
         if orders:
             acc = f(acc, graph, c, g_order, A.order())
@@ -157,4 +158,5 @@ def find_representatives():
 
 
 if __name__ == "__main__":
+    set_gap_memory_pool_size(900000000)
     find_representatives()
