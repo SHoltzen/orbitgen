@@ -122,9 +122,7 @@ class MarkovModel:
                 # sample a value for cyc and fill in the new current value
                 v = flip()
                 for idx in cyc:
-                    if (idx) in self.variables:
-                        #-1, zero indexed
-                        state[idx] = v
+                    state[idx] = v
         return state
 
     ### perform a single step of orbit jumping
@@ -134,16 +132,24 @@ class MarkovModel:
         hatx = self.burnside(state, n)
         probx = self.potential(state)
         probhatx = self.potential(hatx)
-        orbx = self.graph.automorphism_group(partition=self.state_to_partition(state)).order()
-        orbhatx = self.graph.automorphism_group(partition=self.state_to_partition(hatx)).order()
-        transitionprob = (probhatx * orbhatx) / (probx * orbx)
-        return (transitionprob, hatx)
+        orbx = self.graph_aut_order / self.graph.automorphism_group(partition=self.state_to_partition(state)).order()
+        orbhatx = self.graph_aut_order / self.graph.automorphism_group(partition=self.state_to_partition(hatx)).order()
+        # print("x: %s, hatx: %s, probx: %s, probhatx: %s, orbx: %s, orbhatx: %s" %
+        #       (state, hatx, probx, probhatx, orbx, orbhatx))
+        try:
+            transitionprob = (probhatx * orbhatx) / (probx * orbx)
+            return (transitionprob, hatx)
+        except:
+            # divided by 0
+            return (1.0, hatx)
 
     ### draw n samples according to orbit jump MCMC with no orbital MCMC
     ### burnsidesize: number of burnside steps to take
     ### query: state -> bool, evaluates a query on a state
+    ### gamma: how often to orbit-jump
+    ### burn: the burn in of the chain
     ### returns the probability of the query
-    def orbitjumpmcmc(self, burnsidesize, n, query):
+    def orbitjumpmcmc(self, burnsidesize, n, query, burn):
         samples = []
         # set up initial random state
         cur_state = dict()
@@ -151,18 +157,29 @@ class MarkovModel:
             cur_state[v] = flip()
 
         query_count = 0.0
-        for i in range(0, n):
+        cur_step = 0
+        counts = dict()
+        for v in self.variables:
+            counts[v] = 0
+        counts[len(self.variables)] = 0
+
+        for i in range(0, n * burn):
             (ratio, new_state) = self.orbitjump(cur_state, burnsidesize)
+            num_true = 0
+            for k,v in new_state.iteritems():
+                if v:
+                    num_true += 1
+            counts[num_true] = counts[num_true] + 1
+
             # accept with transition probability
             acceptprob = numpy.minimum(1, ratio)
-            print("accept prob: %s" % acceptprob)
             if numpy.random.binomial(1, acceptprob):
-                samples.append(new_state)
                 cur_state = new_state
-            else:
-                samples.append(cur_state)
-            if query(new_state):
-                query_count += 1
+            if cur_step % burn == 0:
+                if query(cur_state):
+                    query_count += 1
+            cur_step += 1
+        print("counts: %s " % counts)
         return query_count / n
 
 
@@ -187,7 +204,7 @@ def run_burnside():
         counts[v] = 0
     counts[len(f.variables)] = 0
 
-    for i in range(0, 500):
+    for i in range(0, 5000):
         cur_state = f.burnside(cur_state, 12)
         # print(cur_state)
         num_true = 0
@@ -201,8 +218,8 @@ def run_burnside():
 
 def main():
     # print some burnside samples
-    n = 1000
-    g = graphs.CompleteGraph(5)
+    n = 100
+    g = graphs.CompleteGraph(2)
     def potential(state):
         p = 0.0
         for v in state.itervalues():
@@ -215,12 +232,12 @@ def main():
         for k,v in state.iteritems():
             if v:
                 num_true += 1
-        return num_true == 5
+        return num_true == 1
 
 
     graph = MarkovModel(g, g.vertices(), potential)
     print("exact: %s" % graph.query_enumerate(query))
-    print("query: %s" % graph.orbitjumpmcmc(4, n, query))
+    print("query: %s" % graph.orbitjumpmcmc(4, n, query, 10))
 
 
 if __name__ == "__main__":
