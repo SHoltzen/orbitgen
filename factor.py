@@ -5,6 +5,10 @@ import random
 import my_bliss
 from my_graphs import *
 import cProfile, pstats, StringIO
+import itertools
+
+def findsubsets(S,m):
+    return set(itertools.combinations(S, m))
 
 def flip():
     return numpy.random.binomial(1, 0.5)
@@ -165,8 +169,8 @@ class MarkovModel:
         # apply g to the state
         for cyc in g:
             fst = state[cyc[0]]
-            for var in cyc:
-                state[var] = state[(var + 1) % len(cyc)]
+            for idx, var in enumerate(cyc):
+                state[var] = state[cyc[(idx + 1) % len(cyc)]]
             state[cyc[-1]] = fst
         return state
 
@@ -240,24 +244,43 @@ def run_burnside():
     print(counts)
 
 
-def main():
+def experiment():
     # print some burnside samples
-    nlist = [200, 225, 250, 275, 300]
-    g = graphs.CompleteGraph(10)
+    nlist = [25, 50, 100, 500, 1000]
+
+    g = graphs.CompleteGraph(6)
     def potential(state):
-        p = 0.0
-        for v1 in state.itervalues():
-            for v2 in state.itervalues():
-                if v1 == v2:
-                    p += 1
-        return p
+        num_t = 0.0
+        for v in state.itervalues():
+            if v:
+                num_t += 1
+
+        if num_t == 0 or num_t == 6:
+            return 100
+        if num_t == 1 or num_t == 5:
+            return 6
+        if num_t == 2 or num_t == 4:
+            return 7
+        if num_t == 3:
+            return 20
+    # def potential(state):
+    #     num_t = 0.0
+    #     for v in state.itervalues():
+    #         if v:
+    #             num_t += 1
+
+    #     if num_t == 0 or num_t == 20:
+    #         return 2*184756
+    #     else:
+    #         return 1
+
     def query(state):
         num_true = 0
         # print(r)
         for k,v in state.iteritems():
             if v:
                 num_true += 1
-        return (num_true == 0)
+        return (num_true == 0 or num_true == 6)
 
     # pr = cProfile.Profile()
     # pr.enable()
@@ -266,9 +289,9 @@ def main():
     for n in nlist:
         res = []
         for i in range(0, 5):
-            v = graph.orbitjumpmcmc(n, query, gamma=5, burn=10, burnsidesize=1)
-            res.append(numpy.absolute(v - exact))
-        print("%s %s %s" % (n, numpy.average(res), numpy.std(res)))
+            v1 = graph.orbitjumpmcmc(n, query, gamma=1, burn=5, burnsidesize=4)
+            res.append(numpy.absolute(exact - v1))
+        print("%s\t%s\t%s" % (n, numpy.average(res), numpy.std(res)))
 
     # pr.disable()
     # s = StringIO.StringIO()
@@ -277,7 +300,74 @@ def main():
     # ps.print_stats()
     # print s.getvalue()
 
+def motivating_example():
+    # print some burnside samples
+    total_people = 6
+    g = graphs.CompleteGraph(total_people)
+    def potential(state):
+        num_t = 0.0
+        for v in state.itervalues():
+            if v:
+                num_t += 1
+
+        if num_t == 0 or num_t == 6:
+            return 100
+        if num_t == 1 or num_t == 5:
+            return 4
+        if num_t == 2 or num_t == 4:
+            return 5
+        if num_t == 3:
+            return 20
+
+    # pr = cProfile.Profile()
+    # pr.enable()
+    graph = MarkovModel(g, g.vertices(), potential)
+    for n in range(0, total_people+1):
+        def query(state):
+            num_true = 0
+            # print(r)
+            for k,v in state.iteritems():
+                if v:
+                    num_true += 1
+            return (num_true == n)
+        print("%s: %s" % (n, graph.query_enumerate(query)))
+    # v1 = graph.orbitjumpmcmc(20, query, gamma=1, burn=2, burnsidesize=5)
+    # print("exact: %s, approx: %s" % (exact, v1))
+
+def bigger_motivating_example():
+    # print some burnside samples
+    total_people = 20
+    g = graphs.CompleteGraph(total_people)
+    def potential(state):
+        num_t = 0.0
+        for v in state.itervalues():
+            if v:
+                num_t += 1
+
+        if num_t == 0 or num_t == 20:
+            return 2*184756
+        if num_t == 10:
+            return 1
+        else:
+            return 0.5
+
+    # pr = cProfile.Profile()
+    # pr.enable()
+    graph = MarkovModel(g, g.vertices(), potential)
+    for n in range(0, total_people+1):
+        def query(state):
+            num_true = 0
+            # print(r)
+            for k,v in state.iteritems():
+                if v:
+                    num_true += 1
+            return (num_true == n)
+        print("%s: %s" % (n, graph.query_enumerate(query)))
+    # v1 = graph.orbitjumpmcmc(20, query, gamma=1, burn=2, burnsidesize=5)
+    # print("exact: %s, approx: %s" % (exact, v1))
+
+
 
 
 if __name__ == "__main__":
-    main()
+    experiment()
