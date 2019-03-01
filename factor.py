@@ -8,6 +8,12 @@ from my_graphs import *
 def flip():
     return numpy.random.binomial(1, 0.5)
 
+### returns a random element from a group g using product replacement
+def fast_random_element(g):
+    stab = libgap(g)
+    return (libgap.PseudoRandom(stab).sage(parent=g)).cycle_tuples(singletons=True)
+
+
 class MarkovModel:
     ### graph: a sage graph
     ### variables: a list of graph vertices which correspond to variables in the factor graph
@@ -107,13 +113,8 @@ class MarkovModel:
             var_part = self.state_to_partition(state)
             partition = var_part
             stab = self.graph.automorphism_group(partition=partition)
-            p = stab.random_element().cycle_tuples(singletons=True)
-            # stab = libgap(stab)
-            # p = (libgap.PseudoRandom(stab).sage()).to_cycles(singletons=True)
-            # if len(p) == 0:
-            #     # this is the identity; for some reason, Sage doesn't do this one correctly
-            #     for v in self.variables:
-            #         p += [(v,)]
+            p = fast_random_element(stab)
+            #p = stab.random_element().cycle_tuples(singletons=True)
 
             # now convert p into a state
             # print(p)
@@ -157,6 +158,15 @@ class MarkovModel:
 
         new_v = numpy.random.binomial(1, prob)
         state[v] = new_v
+
+        # now walk along the orbit
+        g = fast_random_element(self.graph_aut)
+        # apply g to the state
+        for cyc in g:
+            fst = state[cyc[0]]
+            for var in cyc:
+                state[var] = state[(var + 1) % len(cyc)]
+            state[cyc[-1]] = fst
         return state
 
 
