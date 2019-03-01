@@ -4,6 +4,7 @@ from collections import deque
 import random
 import my_bliss
 from my_graphs import *
+import cProfile, pstats, StringIO
 
 def flip():
     return numpy.random.binomial(1, 0.5)
@@ -174,11 +175,10 @@ class MarkovModel:
     ### draw n samples according to orbit jump MCMC with no orbital MCMC
     ### burnsidesize: number of burnside steps to take
     ### n: int, total number of samples to take
-    ### query: state -> bool, evaluates a query on a state
-    ### gamma: int, after how many steps to perform an orbit jump
+    ### gamma: int, number of steps between taking orbit jumps
     ### burn: the burn in of the chain
     ### returns the probability of the query
-    def orbitjumpmcmc(self, burnsidesize, n, query, burn):
+    def orbitjumpmcmc(self, n, query, burnsidesize=10, gamma=10, burn=100):
         samples = []
         # set up initial random state
         cur_state = dict()
@@ -189,7 +189,7 @@ class MarkovModel:
         cur_step = 0
 
         for i in range(0, n * burn):
-            if False:
+            if (cur_step % gamma) == 0:
                 # do a jump update
                 (ratio, new_state) = self.orbitjump(cur_state, burnsidesize)
                 # accept with transition probability
@@ -242,13 +242,14 @@ def run_burnside():
 
 def main():
     # print some burnside samples
-    n = 1000
-    g = graphs.CompleteGraph(2)
+    nlist = [200, 225, 250, 275, 300]
+    g = graphs.CompleteGraph(10)
     def potential(state):
         p = 0.0
-        for v in state.itervalues():
-            if v:
-                p += 1
+        for v1 in state.itervalues():
+            for v2 in state.itervalues():
+                if v1 == v2:
+                    p += 1
         return p
     def query(state):
         num_true = 0
@@ -256,12 +257,26 @@ def main():
         for k,v in state.iteritems():
             if v:
                 num_true += 1
-        return num_true == 1
+        return (num_true == 0)
 
-
+    # pr = cProfile.Profile()
+    # pr.enable()
     graph = MarkovModel(g, g.vertices(), potential)
-    print("exact: %s" % graph.query_enumerate(query))
-    print("query: %s" % graph.orbitjumpmcmc(4, n, query, 10))
+    exact = graph.query_enumerate(query)
+    for n in nlist:
+        res = []
+        for i in range(0, 5):
+            v = graph.orbitjumpmcmc(n, query, gamma=5, burn=10, burnsidesize=1)
+            res.append(numpy.absolute(v - exact))
+        print("%s %s %s" % (n, numpy.average(res), numpy.std(res)))
+
+    # pr.disable()
+    # s = StringIO.StringIO()
+    # sortby = 'cumulative'
+    # ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+    # ps.print_stats()
+    # print s.getvalue()
+
 
 
 if __name__ == "__main__":
