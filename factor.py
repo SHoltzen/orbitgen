@@ -143,10 +143,29 @@ class MarkovModel:
             # divided by 0
             return (1.0, hatx)
 
+    ### perform a standard orbital MCMC gibbs update, a la Niepert 2012
+    ### state: a state
+    ### returns: the gibbs update state
+    def orbitgibbs(self, state):
+        v = sage.misc.prandom.choice(self.variables)
+        # resample the variable
+        v_true = state.copy()
+        v_true[v] = True
+        v_false = state.copy()
+        v_false[v] = False
+        prob = self.potential(v_true) / (self.potential(v_true) + self.potential(v_false))
+
+        new_v = numpy.random.binomial(1, prob)
+        state[v] = new_v
+        return state
+
+
+
     ### draw n samples according to orbit jump MCMC with no orbital MCMC
     ### burnsidesize: number of burnside steps to take
+    ### n: int, total number of samples to take
     ### query: state -> bool, evaluates a query on a state
-    ### gamma: how often to orbit-jump
+    ### gamma: int, after how many steps to perform an orbit jump
     ### burn: the burn in of the chain
     ### returns the probability of the query
     def orbitjumpmcmc(self, burnsidesize, n, query, burn):
@@ -158,28 +177,23 @@ class MarkovModel:
 
         query_count = 0.0
         cur_step = 0
-        counts = dict()
-        for v in self.variables:
-            counts[v] = 0
-        counts[len(self.variables)] = 0
 
         for i in range(0, n * burn):
-            (ratio, new_state) = self.orbitjump(cur_state, burnsidesize)
-            num_true = 0
-            for k,v in new_state.iteritems():
-                if v:
-                    num_true += 1
-            counts[num_true] = counts[num_true] + 1
+            if False:
+                # do a jump update
+                (ratio, new_state) = self.orbitjump(cur_state, burnsidesize)
+                # accept with transition probability
+                acceptprob = numpy.minimum(1, ratio)
+                if numpy.random.binomial(1, acceptprob):
+                    cur_state = new_state
+            else:
+                # do a gibbs update
+                cur_state = self.orbitgibbs(cur_state)
 
-            # accept with transition probability
-            acceptprob = numpy.minimum(1, ratio)
-            if numpy.random.binomial(1, acceptprob):
-                cur_state = new_state
             if cur_step % burn == 0:
                 if query(cur_state):
                     query_count += 1
             cur_step += 1
-        print("counts: %s " % counts)
         return query_count / n
 
 
@@ -218,7 +232,7 @@ def run_burnside():
 
 def main():
     # print some burnside samples
-    n = 100
+    n = 1000
     g = graphs.CompleteGraph(2)
     def potential(state):
         p = 0.0
