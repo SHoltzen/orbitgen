@@ -57,7 +57,10 @@ class MarkovModel:
             return [state1]
 
 
-    def query_enumerate(self, query):
+    ### perform a query via exhaustive enumeration using orbit generation
+    ### query: a function state -> bool
+    ### Z: if true, return a tuple (prob, Z)
+    def query_enumerate(self, query, Z=False):
         # queue of colorings yet to be considered
         queue = deque()
         queue.append([[], self.variables])
@@ -108,7 +111,10 @@ class MarkovModel:
                     # we know this is an uncolored vertex
                     newcolor = [c[0] + [e], [x for x in c[1] if x != e]]
                     queue.append(newcolor)
-        return prob / Z
+        if Z:
+            return (prob / Z, Z)
+        else:
+            return prob / Z
 
 
     ### computes a burnside process transition beginning from a state particular state
@@ -212,6 +218,54 @@ class MarkovModel:
 
 
 
+    ### proportion of support of the distribution explored after n steps,
+    ### starting in a random initial state.
+    ###
+    ### n: number of steps
+    ### lag: number of steps between each coverage report
+    ### burnsidesize: number of burnside steps to take
+    ### gamma: int, number of steps between taking orbit jumps
+    ### Z: optionally provide the normalizing constant, to avoid recomputing it
+    ### returns: a list of proportions, one for each lag step
+    def support_explored(self, n, burnsidesize=10, gamma=10, Z=None):
+        def trivial_query(state):
+            return True
+        if Z is None:
+            Z = self.query_enumerate(trivial_query)
+
+        states = set()
+
+        # set up initial random state
+        cur_state = dict()
+        for v in self.variables:
+            cur_state[v] = flip()
+
+        cur_step = 0
+        supp_explored = 0.0
+
+        for i in range(0, n):
+            if (cur_step % gamma) == 0:
+                # do a jump update
+                (ratio, new_state) = self.orbitjump(cur_state, burnsidesize)
+                # accept with transition probability
+                acceptprob = numpy.minimum(1, ratio)
+                if numpy.random.binomial(1, acceptprob):
+                    cur_state = new_state
+            else:
+                # do a gibbs update
+                cur_state = self.orbitgibbs(cur_state)
+
+            state_tup = cur_state.items()
+            state_tup.sort()
+            state_tup = tuple(state_tup)
+
+            if state_tup not in states:
+                states.add(state_tup)
+                supp_explored += self.potential(cur_state) / Z
+            cur_step += 1
+        return supp_explored
+
+
 def gen_complete_pairwise_factorgraph(n):
     (g, (v, factors)) = gen_complete_pairwise_factor(n)
     def potential(state):
@@ -246,7 +300,8 @@ def run_burnside():
 
 def experiment():
     # print some burnside samples
-    nlist = [25, 50, 100, 500, 1000]
+    nlist = [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
+    # nlist = [25]
 
     g = graphs.CompleteGraph(6)
     def potential(state):
@@ -274,23 +329,18 @@ def experiment():
     #     else:
     #         return 1
 
-    def query(state):
-        num_true = 0
-        # print(r)
-        for k,v in state.iteritems():
-            if v:
-                num_true += 1
-        return (num_true == 0 or num_true == 6)
-
     # pr = cProfile.Profile()
     # pr.enable()
+    def trivial(state):
+        return True
+
     graph = MarkovModel(g, g.vertices(), potential)
-    exact = graph.query_enumerate(query)
+    prob, Z = graph.query_enumerate(trivial, Z=True)
     for n in nlist:
         res = []
-        for i in range(0, 5):
-            v1 = graph.orbitjumpmcmc(n, query, gamma=1, burn=5, burnsidesize=4)
-            res.append(numpy.absolute(exact - v1))
+        for i in range(0, 15):
+            v1 = graph.support_explored(n, burnsidesize=4, gamma=20, Z=Z)
+            res.append(v1)
         print("%s\t%s\t%s" % (n, numpy.average(res), numpy.std(res)))
 
     # pr.disable()
