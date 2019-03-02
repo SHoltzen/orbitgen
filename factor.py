@@ -165,8 +165,11 @@ class MarkovModel:
         v_true[v] = True
         v_false = state.copy()
         v_false[v] = False
-        prob = self.potential(v_true) / (self.potential(v_true) + self.potential(v_false))
-
+        prob = None
+        try:
+            prob = self.potential(v_true) / (self.potential(v_true) + self.potential(v_false))
+        except:
+            return state # evidence was not satisfied
         new_v = numpy.random.binomial(1, prob)
         state[v] = new_v
 
@@ -298,7 +301,7 @@ def run_burnside():
     print(counts)
 
 
-def experiment():
+def experiment_motivating():
     # print some burnside samples
     nlist = [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000]
     # nlist = [25]
@@ -318,19 +321,7 @@ def experiment():
             return 7
         if num_t == 3:
             return 20
-    # def potential(state):
-    #     num_t = 0.0
-    #     for v in state.itervalues():
-    #         if v:
-    #             num_t += 1
 
-    #     if num_t == 0 or num_t == 20:
-    #         return 2*184756
-    #     else:
-    #         return 1
-
-    # pr = cProfile.Profile()
-    # pr.enable()
     def trivial(state):
         return True
 
@@ -343,16 +334,111 @@ def experiment():
             res.append(v1)
         print("%s\t%s\t%s" % (n, numpy.average(res), numpy.std(res)))
 
-    # pr.disable()
-    # s = StringIO.StringIO()
-    # sortby = 'cumulative'
-    # ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
-    # ps.print_stats()
-    # print s.getvalue()
+def experiment_friends_smokers():
+    # make a friends/smokers markov model
+    g = Graph(sparse=true)
+    num_smokers = 5
+    # make n smoker vertices
+    smokers = [x for x in range(0,num_smokers)]
+    # connect all the smokers
+    smokeredges = findsubsets(smokers, 2)
+    # make friends
+    friends = []
+    friendedges = []
+    count = num_smokers
+    for (s1,s2) in findsubsets(smokers, 2):
+        friends += [count]
+        friendedges += [(s1, count), (s2, count)]
+        count += 1
+
+    g.add_vertices(smokers)
+    g.add_vertices(friends)
+    g.add_edges(friendedges)
+    g.add_edges(smokeredges)
+
+
+    # print some burnside samples
+    nlist = [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900]
+
+    def potential(state):
+        count = num_smokers
+        total = 0.0
+        for (s1,s2) in findsubsets(smokers, 2):
+            # friend vertex == counta
+            # add 3 if S(s1) /\ F(s1,s2) => S(s2), 1 otherwise
+            if state[s1] == state[s2]:
+                total += 1000000
+            else:
+                total += 1
+            count += 1
+        return total
+
+    def trivial(state):
+        return True
+
+    graph = MarkovModel(g, g.vertices(), potential)
+    prob, Z = graph.query_enumerate(trivial, Z=True)
+    for n in nlist:
+        res = []
+        for i in range(0, 15):
+            v1 = graph.support_explored(n, burnsidesize=8, gamma=n+1, Z=Z)
+            res.append(v1)
+        print("%s\t%s\t%s" % (n, numpy.average(res), numpy.std(res)))
+
+
+
+def experiment_pigeonhole():
+    # make a friends/smokers markov model
+    nholes = 2
+    npigeons = 5
+    g = gen_pigeonhole(nholes,npigeons)
+    # print some burnside samples
+    nlist = [50,
+             75,
+             100,
+             200,
+             300,
+             400,
+             500,
+             600,
+             700,
+             800,
+             900]
+
+    def potential(state):
+        total = 0.0
+        distinct_holes = set()
+        for p in range(0, npigeons):
+            num_holes = 0
+            for h in range(0, nholes):
+                distinct_holes.add(h)
+                if state[(h, p)]:
+                    num_holes += 1
+            if num_holes == 1:
+                total += 100
+            else:
+                total -= 100
+
+            # penalize if many distinct holes are occupied
+            total -= 100 * len(distinct_holes)
+        return math.exp(total)
+
+    def trivial(state):
+        return True
+
+    graph = MarkovModel(g, g.vertices(), potential)
+    prob, Z = graph.query_enumerate(trivial, Z=True)
+    for n in nlist:
+        res = []
+        for i in range(0, 5):
+            v1 = graph.support_explored(n, burnsidesize=8, gamma=5, Z=Z)
+            res.append(v1)
+        print("%s\t%s\t%s" % (n, numpy.average(res), numpy.std(res)))
+
 
 def motivating_example():
     # print some burnside samples
-    total_people = 6
+    total_people = 3
     g = graphs.CompleteGraph(total_people)
     def potential(state):
         num_t = 0.0
@@ -384,40 +470,6 @@ def motivating_example():
     # v1 = graph.orbitjumpmcmc(20, query, gamma=1, burn=2, burnsidesize=5)
     # print("exact: %s, approx: %s" % (exact, v1))
 
-def bigger_motivating_example():
-    # print some burnside samples
-    total_people = 20
-    g = graphs.CompleteGraph(total_people)
-    def potential(state):
-        num_t = 0.0
-        for v in state.itervalues():
-            if v:
-                num_t += 1
-
-        if num_t == 0 or num_t == 20:
-            return 2*184756
-        if num_t == 10:
-            return 1
-        else:
-            return 0.5
-
-    # pr = cProfile.Profile()
-    # pr.enable()
-    graph = MarkovModel(g, g.vertices(), potential)
-    for n in range(0, total_people+1):
-        def query(state):
-            num_true = 0
-            # print(r)
-            for k,v in state.iteritems():
-                if v:
-                    num_true += 1
-            return (num_true == n)
-        print("%s: %s" % (n, graph.query_enumerate(query)))
-    # v1 = graph.orbitjumpmcmc(20, query, gamma=1, burn=2, burnsidesize=5)
-    # print("exact: %s, approx: %s" % (exact, v1))
-
-
-
 
 if __name__ == "__main__":
-    experiment()
+    experiment_pigeonhole()

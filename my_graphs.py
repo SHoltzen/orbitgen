@@ -6,7 +6,7 @@ def findsubsets(S,m):
 
 ### generates a friends and smokers graph with n people
 def gen_friends_smokers(n):
-    g = Graph(sparse=True)
+    g = graph(sparse=true)
     # make n smoker vertices
     smokers = [x for x in range(0,n)]
     # connect all the smokers
@@ -102,8 +102,6 @@ def gen_friends_smokers_factor(n):
     return (g, (smokers + friends, factors))
 
 
-
-# generates a graph which is fully-connected in m and connected across n
 def gen_pigeonhole(n,m):
     g = Graph()
     v = []
@@ -111,22 +109,25 @@ def gen_pigeonhole(n,m):
     # generate vertices
     for x in range(0,n):
         for y in range(0,m):
-            v += [x*m + y]
+            v += [(x,y)]
+    print(v)
 
     # generate edges
     # generate fully connected graph in n
     for x in range(0,n):
         for y in findsubsets(range(0, m), 2):
-            e += [(x*m + y[0], x*m + y[1])]
+            t = tuple([(x, y[0]), (x, y[1])])
+            e.append(t)
 
     # connect between n and m
     for x in range(0,n):
         for y in range (0,m):
-            e += [(x*m + y, ((x + 1) % n)*m + y)]
-
+            t = tuple([(x, y), (((x + 1) % n), y)])
+            e.append(t)
     g.add_vertices(v)
     g.add_edges(e)
     return g
+
 
 # generates a complete graph with n vertices with some extra nodes on each
 # vertex
