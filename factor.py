@@ -71,7 +71,6 @@ class MarkovModel:
         Z = 0.0
         reps = set()
         while len(queue) != 0:
-            # print("queue: %s" % queue)
             c = queue.popleft()
             # TODO: turn this into a single GI call by having it return both the
             # automorphism group and the canonical fora
@@ -129,7 +128,6 @@ class MarkovModel:
             #p = stab.random_element()cycle_tuples(singletons=True)
 
             # now convert p into a state
-            # print(p)
             state = dict()
             for cyc in p:
                 # sample a value for cyc and fill in the new current value
@@ -201,6 +199,41 @@ class MarkovModel:
                     transition[idx,cur_idx] += (1.0 / order) * (1.0 / (2**len(cyc_tuples)))
         return transition
 
+
+    ### computes the transition matrix of a single step of the burnside process
+    ### Z: the normalizing constant for the distribution
+    def gibbs_transition(self):
+        states = self.gen_all_states()
+        state_to_idx = dict()
+        idx_to_state = dict()
+        for (idx, st) in enumerate(states):
+            state_to_idx[st] = idx
+            idx_to_state[idx] = st
+
+        transition = np.zeros([len(states),len(states)])
+        for (idx, s) in enumerate(states):
+            for v in self.variables:
+                # compute two resulting new states
+                st1 = dict(s)
+                st2 = dict(s)
+                st1[v] = True
+                st2[v] = False
+
+                st1prob = self.potential(st1)
+                st1 = st1.items()
+                st1.sort()
+                st1 = tuple(st1)
+                st1idx = state_to_idx[st1]
+
+                st2prob = self.potential(st2)
+                st2 = st2.items()
+                st2.sort()
+                st2 = tuple(st2)
+                st2idx = state_to_idx[st2]
+                transition[idx, st1idx] += (1.0 / len(self.variables)) * (float(st1prob) / (st1prob + st2prob))
+                transition[idx, st2idx] += (1.0 / len(self.variables)) * (float(st2prob) / (st1prob + st2prob))
+        return transition
+
     ### computes the metropolis hastings transition matrix for a burnside
     ### proposal of `burnsidesteps` steps
     def burnside_mh_transition(self, burnsidesteps):
@@ -235,7 +268,6 @@ class MarkovModel:
 
     def brute_force_prob_vector(self):
         states = self.gen_all_states()
-        print("states: %s" % states)
         state_to_idx = dict()
         idx_to_state = dict()
         for (idx, st) in enumerate(states):
@@ -244,7 +276,6 @@ class MarkovModel:
         Z = 0.0
         for st in states:
             Z += self.potential(dict(st))
-        print("Z: %f" % Z)
         # return the vector
         vec = np.zeros(len(states))
         for st in states:
@@ -254,14 +285,12 @@ class MarkovModel:
 
     def total_variation(self, transition_matrix, starting_point, num_steps):
         v = self.brute_force_prob_vector()
-        p = starting_point.dot(np.linalg.matrix_power(transition_matrix, num_steps))
-        print("result vector: %s" % p)
-        print("expected: %s" % v)
-        print(sum(p))
-        d = 0.0
-        for idx in range(0, len(v)):
-            d += abs(v[idx] - p[idx])
-        return d
+        for i in range(1, num_steps):
+            p = starting_point.dot(np.linalg.matrix_power(transition_matrix, i))
+            d = 0.0
+            for idx in range(0, len(v)):
+                d += abs(v[idx] - p[idx])
+            print("%s\t%s" % (i, d))
 
     ### perform a single step of orbit jumping
     ### returns: a pair, (the ratio of transition probabilities, new state)
@@ -272,8 +301,6 @@ class MarkovModel:
         probhatx = self.potential(hatx)
         orbx = self.graph_aut_order / self.graph.automorphism_group(partition=self.state_to_partition(state)).order()
         orbhatx = self.graph_aut_order / self.graph.automorphism_group(partition=self.state_to_partition(hatx)).order()
-        # print("x: %s, hatx: %s, probx: %s, probhatx: %s, orbx: %s, orbhatx: %s" %
-        #       (state, hatx, probx, probhatx, orbx, orbhatx))
         try:
             transitionprob = (probhatx * orbhatx) / (probx * orbx)
             return (transitionprob, hatx)
@@ -417,14 +444,12 @@ def run_burnside():
 
     for i in range(0, 5000):
         cur_state = f.burnside(cur_state, 12)
-        # print(cur_state)
         num_true = 0
         for k,v in cur_state.iteritems():
             if v:
                 num_true += 1
         counts[num_true] = counts[num_true] + 1
 
-    print(counts)
 
 
 def experiment_motivating():
@@ -596,26 +621,36 @@ def motivating_example():
     # v1 = graph.orbitjumpmcmc(20, query, gamma=1, burn=2, burnsidesize=5)
     # print("exact: %s, approx: %s" % (exact, v1))
 
-def test():
+def total_var():
+    total_people = 3
+    g = graphs.CompleteGraph(total_people)
     def potential(state):
         num_t = 0.0
         for v in state.itervalues():
             if v:
                 num_t += 1
-        return num_t
-    g = graphs.CompleteGraph(3)
+
+        if num_t == 0 or num_t == 6:
+            return 100
+        if num_t == 1 or num_t == 5:
+            return 4
+        if num_t == 2 or num_t == 4:
+            return 5
+        if num_t == 3:
+            return 20
     graph = MarkovModel(g, g.vertices(), potential)
     # print(np.linalg.matrix_power(graph.burnside_transition(), 10))
     # print("------")
     # print(graph.burnside_mh_transition(4))
-    M = graph.burnside_mh_transition(1)
+    # M = graph.burnside_mh_transition(4)
+    # M = graph.burnside_mh_transition(4)
+    M = graph.gibbs_transition()
     pv = graph.brute_force_prob_vector()
     start = np.zeros([2**len(graph.variables)])
     start[0] = 1
-    print(M)
-    # print(np.linalg.matrix_power(M, 5))
+    print(np.linalg.matrix_power(M, 5))
     print(graph.total_variation(M, start, 100))
 
 
 if __name__ == "__main__":
-    test()
+    total_var()
