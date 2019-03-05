@@ -2,6 +2,7 @@ from sage.all import *
 import numpy.random
 from collections import deque
 import random
+import numpy as np
 import my_bliss
 from my_graphs import *
 import cProfile, pstats, StringIO
@@ -125,7 +126,7 @@ class MarkovModel:
             partition = var_part
             stab = self.graph.automorphism_group(partition=partition)
             p = fast_random_element(stab)
-            #p = stab.random_element().cycle_tuples(singletons=True)
+            #p = stab.random_element()cycle_tuples(singletons=True)
 
             # now convert p into a state
             # print(p)
@@ -136,6 +137,95 @@ class MarkovModel:
                 for idx in cyc:
                     state[idx] = v
         return state
+
+    ### returns: a list of all possible states (as sorted tuples)
+    def gen_all_states(self):
+        def add_vertex(cur_lst, rst):
+            if len(rst) == 0:
+                return cur_lst
+            cur_add = rst.pop()
+            new_lst = []
+            for itm in cur_lst:
+                itm1 = itm.copy()
+                itm2 = itm.copy()
+                itm1[cur_add] = False
+                itm2[cur_add] = True
+                new_lst.append(itm1)
+                new_lst.append(itm2)
+            return add_vertex(new_lst, rst)
+        tbl = add_vertex([dict()], self.graph.vertices())
+        res = []
+        for itm in tbl:
+            l = itm.items()
+            l.sort()
+            res.append(tuple(l))
+        return res
+
+
+    ### computes the transition matrix of a single step of the burnside process
+    ### Z: the normalizing constant for the distribution
+    def burnside_transition(self):
+        states = self.gen_all_states()
+        state_to_idx = dict()
+        idx_to_state = dict()
+        for (idx, st) in enumerate(states):
+            state_to_idx[st] = idx
+            idx_to_state[idx] = st
+
+        transition = np.zeros([len(states),len(states)])
+        for (idx, s) in enumerate(states):
+            var_part = self.state_to_partition(dict(s))
+            partition = var_part
+            stab = self.graph.automorphism_group(partition=partition)
+            order = stab.order()
+            gelems = stab.list()
+            for e in gelems:
+                row_states = [dict()]
+                # build of list of states which are transitioned to
+                cyc_tuples = e.cycle_tuples(singletons=True)
+                for cyc in cyc_tuples:
+                    new_states = []
+                    for state in row_states:
+                        st1 = state.copy()
+                        st2 = state.copy()
+                        for i in cyc:
+                            st1[i] = True
+                            st2[i] = False
+                        new_states.append(st1)
+                        new_states.append(st2)
+                    row_states = new_states
+                for st in row_states:
+                    l = st.items()
+                    l.sort()
+                    cur_idx = state_to_idx[tuple(l)]
+                    transition[idx,cur_idx] += (1.0 / order) * (1.0 / (2**len(cyc_tuples)))
+        return transition
+
+    ### computes the metropolis hastings transition matrix for a burnside
+    ### proposal of `burnsidesteps` steps
+    def burnside_mh_transition(self, burnsidesteps):
+        # now apply the metropolis correction for the transition x -> y, where
+        # each entry in `transition` contains the burnside transition
+        # probability
+        states = self.gen_all_states()
+        state_to_idx = dict()
+        idx_to_state = dict()
+        for (idx, st) in enumerate(states):
+            state_to_idx[st] = idx
+            idx_to_state[idx] = st
+
+        B = np.linalg.matrix_power(self.burnside_transition(), burnsidesteps)
+        for x in range(0, len(states)):
+            for y in range(0, len(states)):
+                st_x = idx_to_state[x]
+                orbx = self.graph.automorphism_group(partition=self.state_to_partition(dict(st_x))).order()
+                prx = self.potential(dict(st_x))
+                st_y = idx_to_state[y]
+                orby = self.graph.automorphism_group(partition=self.state_to_partition(dict(st_y))).order()
+                pry = self.potential(dict(st_y))
+                if prx != 0.0:
+                    B[x,y] = B[x,y] * np.minimum(1, (pry * orby) / (prx * orbx))
+        return B
 
     ### perform a single step of orbit jumping
     ### returns: a pair, (the ratio of transition probabilities, new state)
@@ -183,7 +273,7 @@ class MarkovModel:
             state[cyc[-1]] = fst
         return state
 
-
+    # def total_variation(self, burnsidesize):
 
     ### draw n samples according to orbit jump MCMC with no orbital MCMC
     ### burnsidesize: number of burnside steps to take
@@ -470,6 +560,16 @@ def motivating_example():
     # v1 = graph.orbitjumpmcmc(20, query, gamma=1, burn=2, burnsidesize=5)
     # print("exact: %s, approx: %s" % (exact, v1))
 
+def test():
+    def potential(state):
+        num_t = 0.0
+        for v in state.itervalues():
+            if v:
+                num_t += 1
+        return num_t
+    g = graphs.CompleteGraph(3)
+    graph = MarkovModel(g, g.vertices(), potential)
+    print(graph.burnside_mh_transition(4))
 
 if __name__ == "__main__":
-    experiment_pigeonhole()
+    test()
