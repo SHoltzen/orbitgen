@@ -218,14 +218,50 @@ class MarkovModel:
         for x in range(0, len(states)):
             for y in range(0, len(states)):
                 st_x = idx_to_state[x]
-                orbx = self.graph.automorphism_group(partition=self.state_to_partition(dict(st_x))).order()
+                orbx = self.graph_aut_order / self.graph.automorphism_group(partition=self.state_to_partition(dict(st_x))).order()
                 prx = self.potential(dict(st_x))
                 st_y = idx_to_state[y]
-                orby = self.graph.automorphism_group(partition=self.state_to_partition(dict(st_y))).order()
+                orby = self.graph_aut_order / self.graph.automorphism_group(partition=self.state_to_partition(dict(st_y))).order()
                 pry = self.potential(dict(st_y))
                 if prx != 0.0:
                     B[x,y] = B[x,y] * np.minimum(1, (pry * orby) / (prx * orbx))
+            # compute probability of staying in the current position
+            prob_stay = 0.0
+            for yp in range(0, len(states)):
+                prob_stay += B[x,yp]
+            prob_stay = 1.0 - prob_stay
+            B[x,x] = B[x,x] + prob_stay
         return B
+
+    def brute_force_prob_vector(self):
+        states = self.gen_all_states()
+        print("states: %s" % states)
+        state_to_idx = dict()
+        idx_to_state = dict()
+        for (idx, st) in enumerate(states):
+            state_to_idx[st] = idx
+            idx_to_state[idx] = st
+        Z = 0.0
+        for st in states:
+            Z += self.potential(dict(st))
+        print("Z: %f" % Z)
+        # return the vector
+        vec = np.zeros(len(states))
+        for st in states:
+            vec[state_to_idx[st]] = self.potential(dict(st)) / Z
+
+        return vec
+
+    def total_variation(self, transition_matrix, starting_point, num_steps):
+        v = self.brute_force_prob_vector()
+        p = starting_point.dot(np.linalg.matrix_power(transition_matrix, num_steps))
+        print("result vector: %s" % p)
+        print("expected: %s" % v)
+        print(sum(p))
+        d = 0.0
+        for idx in range(0, len(v)):
+            d += abs(v[idx] - p[idx])
+        return d
 
     ### perform a single step of orbit jumping
     ### returns: a pair, (the ratio of transition probabilities, new state)
@@ -569,7 +605,17 @@ def test():
         return num_t
     g = graphs.CompleteGraph(3)
     graph = MarkovModel(g, g.vertices(), potential)
-    print(graph.burnside_mh_transition(4))
+    # print(np.linalg.matrix_power(graph.burnside_transition(), 10))
+    # print("------")
+    # print(graph.burnside_mh_transition(4))
+    M = graph.burnside_mh_transition(1)
+    pv = graph.brute_force_prob_vector()
+    start = np.zeros([2**len(graph.variables)])
+    start[0] = 1
+    print(M)
+    # print(np.linalg.matrix_power(M, 5))
+    print(graph.total_variation(M, start, 100))
+
 
 if __name__ == "__main__":
     test()
