@@ -7,6 +7,7 @@ import my_bliss
 from my_graphs import *
 import cProfile, pstats, StringIO
 import itertools
+import timeit
 
 def findsubsets(S,m):
     return set(itertools.combinations(S, m))
@@ -621,9 +622,33 @@ def motivating_example():
     # v1 = graph.orbitjumpmcmc(20, query, gamma=1, burn=2, burnsidesize=5)
     # print("exact: %s, approx: %s" % (exact, v1))
 
-def total_var():
-    total_people = 3
-    g = graphs.CompleteGraph(total_people)
+# n pigeons, m holes
+def mk_pigeonhole_fg(n, m):
+    w1 = 10
+    w2 = 10
+    g = gen_pigeonhole(n, m)
+    def potential(state):
+        total = 0.0
+        # to see every pigeon in some hole
+        for p in range(0, n):
+            # check the holes for the pigeons
+            in_hole = False
+            for h in range(0, m):
+                if state[(p, h)]:
+                    in_hole = True
+            if in_hole:
+                total += w1
+        # check to see no pigeon is in more than 1 hole
+        for h in range(0, m):
+            for (p1, p2) in findsubsets(range(0, n), 2):
+                if state[(p1, h)] and state[(p2, h)]:
+                    total += w2
+
+        return total
+    return MarkovModel(g, g.vertices(), potential)
+
+def mk_simple_complete_fg(n):
+    g = graphs.CompleteGraph(n)
     def potential(state):
         num_t = 0.0
         for v in state.itervalues():
@@ -633,12 +658,19 @@ def total_var():
         if num_t == 0 or num_t == 6:
             return 100
         if num_t == 1 or num_t == 5:
+            btex
             return 4
         if num_t == 2 or num_t == 4:
             return 5
         if num_t == 3:
             return 20
-    graph = MarkovModel(g, g.vertices(), potential)
+        else:
+            return 1
+    return MarkovModel(g, g.vertices(), potential)
+
+
+def total_var():
+    model = mk_pigeonhole_fg(2, 5)
     # print(np.linalg.matrix_power(graph.burnside_transition(), 10))
     # print("------")
     # print(graph.burnside_mh_transition(4))
@@ -651,6 +683,13 @@ def total_var():
     print(np.linalg.matrix_power(M, 5))
     print(graph.total_variation(M, start, 100))
 
+def pigeonhole_exact_experiment():
+    fg = mk_pigeonhole_fg(2,30)
+    def query(omega):
+        # compute partition
+        return True
+    fg.query_enumerate(query)
 
 if __name__ == "__main__":
-    total_var()
+    print(timeit.timeit("pigeonhole_exact_experiment()", number=5, setup="from factor import pigeonhole_exact_experiment"))
+    # total_var()
