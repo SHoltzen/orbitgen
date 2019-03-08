@@ -5,7 +5,7 @@ def findsubsets(S,m):
     return set(itertools.combinations(S, m))
 
 # num pigeons
-n = 3
+n = 20
 print("MARKOV")
 print(n * 2)
 for i in range(0,n * 2):
@@ -20,7 +20,6 @@ for (a,b) in subsets:
 # print holes
 for a in range(0, n):
     print("2 %s %s" % (a, a+n))
-
 print("")
 # print tables
 for i in range(0, len(subsets) * 2 + n):

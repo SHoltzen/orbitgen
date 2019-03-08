@@ -94,6 +94,8 @@ class MarkovModel:
             A, orbits = self.graph.automorphism_group(partition=c, orbits=True,
                                                  algorithm="bliss")
             orbitsz = g_order / A.order()
+            A = None
+
             states = self.partition_to_state(c)
             for s in states:
                 weight = orbitsz * self.potential(s)
@@ -201,8 +203,6 @@ class MarkovModel:
         return transition
 
 
-    ### computes the transition matrix of a single step of the burnside process
-    ### Z: the normalizing constant for the distribution
     def gibbs_transition(self):
         states = self.gen_all_states()
         state_to_idx = dict()
@@ -233,6 +233,30 @@ class MarkovModel:
                 st2idx = state_to_idx[st2]
                 transition[idx, st1idx] += (1.0 / len(self.variables)) * (float(st1prob) / (st1prob + st2prob))
                 transition[idx, st2idx] += (1.0 / len(self.variables)) * (float(st2prob) / (st1prob + st2prob))
+        return transition
+
+    def orbit_transition(self):
+        states = self.gen_all_states()
+        state_to_idx = dict()
+        idx_to_state = dict()
+        for (idx, st) in enumerate(states):
+            state_to_idx[st] = idx
+            idx_to_state[idx] = st
+
+        transition = np.zeros([len(states),len(states)])
+        for (idx, s) in enumerate(states):
+            st_dict = dict(s)
+            for g in self.graph_aut.list():
+                cur_s = dict()
+                for cyc in g.cycle_tuples(singletons=True):
+                    for i, var in enumerate(cyc):
+                        cur_s[var] = st_dict[cyc[(i + 1) % len(cyc)]]
+                st = cur_s.items()
+                st.sort()
+                st = tuple(st)
+
+                new_idx = state_to_idx[st]
+                transition[idx, new_idx] += 1.0 / self.graph_aut_order
         return transition
 
     ### computes the metropolis hastings transition matrix for a burnside
@@ -624,8 +648,8 @@ def motivating_example():
 
 # n pigeons, m holes
 def mk_pigeonhole_fg(n, m):
-    w1 = 10
-    w2 = 10
+    w1 = 1000
+    w2 = 1000
     g = gen_pigeonhole(n, m)
     def potential(state):
         total = 0.0
@@ -658,7 +682,6 @@ def mk_simple_complete_fg(n):
         if num_t == 0 or num_t == 6:
             return 100
         if num_t == 1 or num_t == 5:
-            btex
             return 4
         if num_t == 2 or num_t == 4:
             return 5
@@ -670,26 +693,33 @@ def mk_simple_complete_fg(n):
 
 
 def total_var():
-    model = mk_pigeonhole_fg(2, 5)
+    # model = mk_pigeonhole_fg(2, 4)
+    model = mk_simple_complete_fg(6)
     # print(np.linalg.matrix_power(graph.burnside_transition(), 10))
     # print("------")
     # print(graph.burnside_mh_transition(4))
     # M = graph.burnside_mh_transition(4)
     # M = graph.burnside_mh_transition(4)
-    M = graph.gibbs_transition()
-    pv = graph.brute_force_prob_vector()
-    start = np.zeros([2**len(graph.variables)])
+
+    M = model.gibbs_transition()
+    M2 = model.orbit_transition()
+    M = np.matmul(M2, M)
+    # M = model.burnside_mh_transition(4)
+
+    pv = model.brute_force_prob_vector()
+    start = np.zeros([2**len(model.variables)])
     start[0] = 1
-    print(np.linalg.matrix_power(M, 5))
-    print(graph.total_variation(M, start, 100))
+    # print(np.linalg.matrix_power(M, 5))
+    print(model.total_variation(M, start, 100))
 
 def pigeonhole_exact_experiment():
-    fg = mk_pigeonhole_fg(2,30)
+    fg = mk_pigeonhole_fg(2,34)
     def query(omega):
         # compute partition
         return True
     fg.query_enumerate(query)
 
 if __name__ == "__main__":
-    print(timeit.timeit("pigeonhole_exact_experiment()", number=5, setup="from factor import pigeonhole_exact_experiment"))
-    # total_var()
+    # set_gap_memory_pool_size(900000000)
+    # pigeonhole_exact_experiment()
+    total_var()
