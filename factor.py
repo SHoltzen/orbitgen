@@ -15,6 +15,12 @@ def findsubsets(S,m):
 def flip():
     return numpy.random.binomial(1, 0.5)
 
+def div_or_0(a, b):
+    if b == 0.0:
+        return 0
+    else:
+        return a / b
+
 ### returns a random element from a group g using product replacement
 def fast_random_element(g):
     stab = libgap(g)
@@ -231,9 +237,25 @@ class MarkovModel:
                 st2.sort()
                 st2 = tuple(st2)
                 st2idx = state_to_idx[st2]
-                transition[idx, st1idx] += (1.0 / len(self.variables)) * (float(st1prob) / (st1prob + st2prob))
-                transition[idx, st2idx] += (1.0 / len(self.variables)) * (float(st2prob) / (st1prob + st2prob))
+                if st1prob + st2prob > 0:
+                    transition[idx, st1idx] += ((1.0/ len(self.variables)) * float(st1prob)/ (st1prob + st2prob))
+                    transition[idx, st2idx] += ((1.0 / len(self.variables)) * float(st2prob)/ (st1prob + st2prob))
+                else:
+                    # stay
+                    s_idx = state_to_idx[s]
+                    transition[s_idx, st1idx] += 1.0 / len(self.variables)
         return transition
+
+    def uniform_transition(self):
+        states = self.gen_all_states()
+
+        transition = np.zeros([len(states),len(states)])
+        for x in range(0, len(states)):
+            for y in range(0, len(states)):
+                transition[x, y] = 1.0 / len(states)
+
+        return transition
+
 
     def orbit_transition(self):
         states = self.gen_all_states()
@@ -272,14 +294,29 @@ class MarkovModel:
             state_to_idx[st] = idx
             idx_to_state[idx] = st
 
+        aut_cache = dict()
         B = np.linalg.matrix_power(self.burnside_transition(), burnsidesteps)
         for x in range(0, len(states)):
             for y in range(0, len(states)):
                 st_x = idx_to_state[x]
-                orbx = self.graph_aut_order / self.graph.automorphism_group(partition=self.state_to_partition(dict(st_x))).order()
+                part_x = self.state_to_partition(dict(st_x))
+                orbx = None
+                if st_x in aut_cache:
+                    orbx = aut_cache[st_x]
+                else:
+                    orbx = self.graph_aut_order / self.graph.automorphism_group(partition=self.state_to_partition(dict(st_x))).order()
+                    aut_cache[st_x] = orbx
+
                 prx = self.potential(dict(st_x))
                 st_y = idx_to_state[y]
-                orby = self.graph_aut_order / self.graph.automorphism_group(partition=self.state_to_partition(dict(st_y))).order()
+                orby = None
+                if st_y in aut_cache:
+                    orby = aut_cache[st_y]
+                else:
+                    orby = self.graph_aut_order / self.graph.automorphism_group(partition=self.state_to_partition(dict(st_y))).order()
+                    aut_cache[st_y] = orby
+
+                # orby = self.graph_aut_order / self.graph.automorphism_group(partition=self.state_to_partition(dict(st_y))).order()
                 pry = self.potential(dict(st_y))
                 if prx != 0.0:
                     B[x,y] = B[x,y] * np.minimum(1, (pry * orby) / (prx * orbx))
@@ -308,10 +345,16 @@ class MarkovModel:
 
         return vec
 
-    def total_variation(self, transition_matrix, starting_point, num_steps):
+    def total_variation(self, transition_matrix, starting_point, num_steps, stagger=None, staggerlen=0):
         v = self.brute_force_prob_vector()
+        T = transition_matrix
         for i in range(1, num_steps):
-            p = starting_point.dot(np.linalg.matrix_power(transition_matrix, i))
+            if staggerlen > 0 and i % staggerlen == 0:
+                T = np.matmul(T,stagger)
+            else:
+                T = np.matmul(T, transition_matrix)
+
+            p = starting_point.dot(T)
             d = 0.0
             for idx in range(0, len(v)):
                 d += abs(v[idx] - p[idx])
@@ -648,24 +691,29 @@ def motivating_example():
 
 # n pigeons, m holes
 def mk_pigeonhole_fg(n, m):
-    w1 = 1000
-    w2 = 1000
+    w1 = 10000000
+    w2 = 100000
     g = gen_pigeonhole(n, m)
     def potential(state):
         total = 0.0
-        # to see every pigeon in some hole
+        # to see every pigeon in exactly one hole
         for p in range(0, n):
             # check the holes for the pigeons
             in_hole = False
             for h in range(0, m):
                 if state[(p, h)]:
-                    in_hole = True
+                    if in_hole:
+                        return 0.0
+                    else:
+                        in_hole = True
             if in_hole:
                 total += w1
-        # check to see no pigeon is in more than 1 hole
+
+
+        # check to see no no hole has 2 pigeons
         for h in range(0, m):
             for (p1, p2) in findsubsets(range(0, n), 2):
-                if state[(p1, h)] and state[(p2, h)]:
+                if not state[(p1, h)] or not state[(p2, h)]:
                     total += w2
 
         return total
@@ -693,24 +741,40 @@ def mk_simple_complete_fg(n):
 
 
 def total_var():
-    # model = mk_pigeonhole_fg(2, 4)
-    model = mk_simple_complete_fg(6)
+    model = mk_pigeonhole_fg(2, 5)
+    # model = mk_simple_complete_fg(6)
     # print(np.linalg.matrix_power(graph.burnside_transition(), 10))
     # print("------")
     # print(graph.burnside_mh_transition(4))
     # M = graph.burnside_mh_transition(4)
     # M = graph.burnside_mh_transition(4)
 
-    M = model.gibbs_transition()
-    M2 = model.orbit_transition()
-    M = np.matmul(M2, M)
-    # M = model.burnside_mh_transition(4)
+    gibbs = model.gibbs_transition()
+    # print(gibbs)
+    # print(sum(gibbs))
+    within_orbit = model.orbit_transition()
+    orbitalmcmc = np.matmul(within_orbit, gibbs)
+    # unif = model.uniform_transition()
+    burnside = model.burnside_mh_transition(4)
+    M = orbitalmcmc
 
     pv = model.brute_force_prob_vector()
     start = np.zeros([2**len(model.variables)])
-    start[0] = 1
+    start[10] = 1
     # print(np.linalg.matrix_power(M, 5))
-    print(model.total_variation(M, start, 100))
+    print("-------------------")
+    print("pure gibbs")
+    model.total_variation(gibbs, start, 100)
+    print("------------------")
+    print("pure jump")
+    model.total_variation(burnside, start, 100, stagger=burnside, staggerlen=200)
+    print("------------------")
+    print("5-stagger")
+    print(model.total_variation(gibbs, start, 100, stagger=burnside, staggerlen=5))
+    print("------------------")
+    print("10-stagger")
+    print(model.total_variation(gibbs, start, 100, stagger=burnside, staggerlen=10))
+
 
 def pigeonhole_exact_experiment():
     fg = mk_pigeonhole_fg(2,34)
