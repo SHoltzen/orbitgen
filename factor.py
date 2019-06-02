@@ -7,7 +7,7 @@ import my_bliss
 from my_graphs import *
 import cProfile, pstats, StringIO
 import itertools
-import timeit
+import time
 
 def findsubsets(S,m):
     return set(itertools.combinations(S, m))
@@ -32,12 +32,13 @@ class MarkovModel:
     ### variables: a list of graph vertices which correspond to variables in the factor graph
     ### potential: state -> real: a function which evaluates the potential on a particular state
     ###    a state is a dictionary assigning variables to Boolean values
-    def __init__(self, graph, variables, potential):
+    def __init__(self, graph, variables, potential, order=True):
         self.graph = graph
         self.variables = variables
         self.potential = potential
-        self.graph_aut = graph.automorphism_group()
-        self.graph_aut_order = self.graph_aut.order()
+        if order:
+            self.graph_aut = graph.automorphism_group()
+            self.graph_aut_order = self.graph_aut.order()
 
     ### converts a variable state into a variable partition
     def state_to_partition(self, state):
@@ -124,6 +125,58 @@ class MarkovModel:
             return (prob / Z, Z)
         else:
             return prob / Z
+
+    def query_mpe(self):
+        # queue of colorings yet to be considered
+        queue = deque()
+        queue.append([[], self.variables])
+        # g_order = self.graph_aut_order
+        # set of representative graph colorings
+        prob = 0.0
+        reps = set()
+        m = 0.0
+        while len(queue) != 0:
+            c = queue.popleft()
+            # TODO: turn this into a single GI call by having it return both the
+            # automorphism group and the canonical fora
+            gcanon, cert = my_bliss.canonical_form(self.graph, partition=c, certificate=True,
+                                                   return_graph=False)
+            gcanon = tuple(gcanon)
+            # convert the colors to their coloring in the canonical graph
+            c_canon = [[], []]
+            for c1 in c[0]:
+                c_canon[0].append(cert[c1])
+            for c1 in c[1]:
+                c_canon[1].append(cert[c1])
+
+            c_canon[0].sort()
+            c_canon[1].sort()
+
+            if (gcanon, (tuple(c_canon[0]), tuple(c_canon[1]))) in reps:
+                continue
+
+            A, orbits = self.graph.automorphism_group(partition=c, orbits=True,
+                                                 algorithm="bliss")
+            A = None
+            states = self.partition_to_state(c)
+            for s in states:
+                if self.potential(s) > m:
+                    m = self.potential(s)
+
+            reps.add((gcanon, (tuple(c_canon[0]), tuple(c_canon[1]))))
+            if len(c_canon[0]) + 1 <= len(self.variables) / 2.0:
+                # if we need the full automorphism group, we can compute it here.
+                # expand this node and add it to the queue
+                for o in orbits:
+                    e = o.pop() # pick an element in the orbit arbitrarily
+                    # check if this orbit is already true, or if it is any of the fixed colors
+                    if e in c[0]:
+                        continue
+                    # we know this is an uncolored vertex
+                    newcolor = [c[0] + [e], [x for x in c[1] if x != e]]
+                    queue.append(newcolor)
+        return m
+
 
 
     ### computes a burnside process transition beginning from a state particular state
@@ -556,7 +609,7 @@ def experiment_motivating():
 def experiment_friends_smokers():
     # make a friends/smokers markov model
     g = Graph(sparse=true)
-    num_smokers = 5
+    num_smokers = 8
     # make n smoker vertices
     smokers = [x for x in range(0,num_smokers)]
     # connect all the smokers
@@ -577,7 +630,7 @@ def experiment_friends_smokers():
 
 
     # print some burnside samples
-    nlist = [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900]
+    # nlist = [25, 50, 75, 100, 200, 300, 400, 500, 600, 700, 800, 900]
 
     def potential(state):
         count = num_smokers
@@ -597,12 +650,12 @@ def experiment_friends_smokers():
 
     graph = MarkovModel(g, g.vertices(), potential)
     prob, Z = graph.query_enumerate(trivial, Z=True)
-    for n in nlist:
-        res = []
-        for i in range(0, 15):
-            v1 = graph.support_explored(n, burnsidesize=8, gamma=n+1, Z=Z)
-            res.append(v1)
-        print("%s\t%s\t%s" % (n, numpy.average(res), numpy.std(res)))
+    # for n in nlist:
+    #     res = []
+    #     for i in range(0, 15):
+    #         v1 = graph.support_explored(n, burnsidesize=8, gamma=n+1, Z=Z)
+    #         res.append(v1)
+    #     print("%s\t%s\t%s" % (n, numpy.average(res), numpy.std(res)))
 
 
 
@@ -690,7 +743,7 @@ def motivating_example():
     # print("exact: %s, approx: %s" % (exact, v1))
 
 # n pigeons, m holes
-def mk_pigeonhole_fg(n, m):
+def mk_pigeonhole_fg(n, m, order=True):
     w1 = 10000000
     w2 = 100000
     g = gen_pigeonhole(n, m)
@@ -703,7 +756,7 @@ def mk_pigeonhole_fg(n, m):
             for h in range(0, m):
                 if state[(p, h)]:
                     if in_hole:
-                        return 0.0
+                        return 0.000000001
                     else:
                         in_hole = True
             if in_hole:
@@ -717,7 +770,7 @@ def mk_pigeonhole_fg(n, m):
                     total += w2
 
         return total
-    return MarkovModel(g, g.vertices(), potential)
+    return MarkovModel(g, g.vertices(), potential, order=order)
 
 def mk_simple_complete_fg(n):
     g = graphs.CompleteGraph(n)
@@ -775,9 +828,28 @@ def total_var():
     print("10-stagger")
     print(model.total_variation(gibbs, start, 100, stagger=burnside, staggerlen=10))
 
+def pigeonhole_mpe_experiment():
+    pr = cProfile.Profile()
+    pr.enable()
+
+    points = [30]
+    for p in points:
+        start = time.time()
+        fg = mk_pigeonhole_fg(2,p,order=False)
+        inf = fg.query_mpe()
+        end = time.time()
+        print ("%d\t%f" % (p, (start - end)))
+
+    pr.disable()
+    s = StringIO.StringIO()
+    sortby = 'cumulative'
+    ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
+    ps.print_stats()
+    print s.getvalue()
+
 
 def pigeonhole_exact_experiment():
-    fg = mk_pigeonhole_fg(2,34)
+    fg = mk_pigeonhole_fg(2,20)
     def query(omega):
         # compute partition
         return True
@@ -786,4 +858,5 @@ def pigeonhole_exact_experiment():
 if __name__ == "__main__":
     # set_gap_memory_pool_size(900000000)
     # pigeonhole_exact_experiment()
-    total_var()
+    pigeonhole_mpe_experiment()
+    # experiment_friends_smokers()
