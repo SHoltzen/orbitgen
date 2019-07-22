@@ -31,24 +31,19 @@ def gen_friends_smokers(n):
 ### and second element are the factors
 def gen_complete_pairwise_factor(n):
     g = Graph(sparse=True)
-    # make n smoker vertices
-    smokers = [x for x in range(0,n)]
-    # connect all the smoker to the factors
-    # make friends
+    v = [x for x in range(0,n)]
     factors = []
     edges = []
-    # friends = []
-    # friendedges = []
     count = n
-    for (s1,s2) in findsubsets(smokers, 2):
+    for (s1,s2) in findsubsets(v, 2):
         factors += [count]
         edges += [(s1, count), (s2, count)]
         count += 1
 
-    g.add_vertices(smokers)
+    g.add_vertices(v)
     g.add_vertices(factors)
     g.add_edges(edges)
-    return (g, (smokers, factors))
+    return (g, (v, factors))
 
 
 ### generates a factor graph with one big factor and n variables connected to it
