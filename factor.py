@@ -1,3 +1,7 @@
+### The main file that was used to run experiments in the paper.
+### Defines a simple factor class, a brute force exact inference
+### algorithm, lifted orbit generation and orbit-jump MCMC.
+
 from sage.all import *
 import numpy.random
 from collections import deque
@@ -6,6 +10,7 @@ import numpy as np
 import my_bliss
 from my_graphs import *
 import cProfile, pstats, StringIO
+from test import *
 import itertools
 import time
 
@@ -38,7 +43,7 @@ class FactorGraph:
         self.variables = variables
         self.factors = factors
         self.potential = potential
-        g = graph.automorphism_group(partition=[variables] + factors)
+        g = graph.automorphism_group(partition=[variables] + self.factors)
         self.graph_aut = g
         # print self.graph_aut
         self.graph_aut_order = self.graph_aut.order()
@@ -83,13 +88,34 @@ class FactorGraph:
                 new_lst.append(itm1)
                 new_lst.append(itm2)
             return add_vertex(new_lst, rst)
-        tbl = add_vertex([dict()], self.variables)
+        tbl = add_vertex([dict()], self.variables[:])
         res = []
         for itm in tbl:
             l = itm.items()
             l.sort()
             res.append(tuple(l))
         return res
+
+    ### Given a group g, strips the factor generators from that group
+    def strip_factors(self, g):
+        stripped_gens = []
+        for gen in g.gens():
+            sgen = []
+            for cycle in gen.cycle_tuples(singletons=True):
+                # print "checking cycle " + str(cycle)
+                # check this cycle contains a factor
+                contains_factor = False
+                for factor in self.factors:
+                    for e in factor:
+                        # print "checking if " + str(e) + " in " + str(cycle)
+                        if e in cycle:
+                            contains_factor = True
+                if not contains_factor:
+                    # print "no factor in " + str(cycle)
+                    sgen.append(cycle)
+            stripped_gens.append(tuple(sgen))
+        return PermutationGroup(stripped_gens)
+
 
 
     ### compute partition via exhaustive enumeration using orbit generation
@@ -147,6 +173,8 @@ class FactorGraph:
         return Z
 
 
+    ### brute forces the partition function by enumerating all possible states
+    ### for testing and benchmarking purposes
     def brute_force_partition(self):
         states = self.gen_all_states()
         # print "states: " + str(states)
@@ -160,20 +188,295 @@ class FactorGraph:
             Z += self.potential(dict(st))
         return Z
 
-def gen_complete_pairwise_factorgraph(n):
-    (g, (v, factors)) = gen_complete_pairwise_factor(n)
-    def potential(state):
-        p = 0.0
-        for v in state.itervalues():
-            if v:
-                p += 1
-        return p
-    # make half the factors different colors
-    # return FactorGraph(g, v, [factors[:len(factors)/2],factors[len(factors)/2:]], potential)
-    return FactorGraph(g, v, [factors], potential)
+    ### computes the transition matrix of a single step of the burnside process
+    def burnside_transition(self):
+        states = self.gen_all_states()
+        state_to_idx = dict()
+        idx_to_state = dict()
+        for (idx, st) in enumerate(states):
+            state_to_idx[st] = idx
+            idx_to_state[idx] = st
 
+        print "states_to_idx: %s" % state_to_idx
+        transition = np.zeros([len(states),len(states)])
+        for (idx, s) in enumerate(states):
+            var_part = self.state_to_partition(dict(s))
+            partition = var_part
+            stab = self.strip_factors(self.graph.automorphism_group(partition=partition + self.factors))
+            order = stab.order()
+            gelems = stab.list()
+            for e in gelems:
+                row_states = [dict()]
+                # build of list of states which are transitioned to
+                cyc_tuples = e.cycle_tuples(singletons=True)
+                for cyc in cyc_tuples:
+                    new_states = []
+                    for state in row_states:
+                        st1 = state.copy()
+                        st2 = state.copy()
+                        for i in cyc:
+                            st1[i] = True
+                            st2[i] = False
+                        new_states.append(st1)
+                        new_states.append(st2)
+                    row_states = new_states
+                for st in row_states:
+                    l = st.items()
+                    l.sort()
+                    cur_idx = state_to_idx[tuple(l)]
+                    transition[idx,cur_idx] += (1.0 / order) * (1.0 / (2**len(cyc_tuples)))
+        return transition
+
+    ### computes the transition matrix for a Gibbs step
+    def gibbs_transition(self):
+        states = self.gen_all_states()
+        state_to_idx = dict()
+        idx_to_state = dict()
+        for (idx, st) in enumerate(states):
+            state_to_idx[st] = idx
+            idx_to_state[idx] = st
+
+        transition = np.zeros([len(states),len(states)])
+        for (idx, s) in enumerate(states):
+            for v in self.variables:
+                # compute two resulting new states
+                st1 = dict(s)
+                st2 = dict(s)
+                st1[v] = True
+                st2[v] = False
+
+                st1prob = self.potential(st1)
+                st1 = st1.items()
+                st1.sort()
+                st1 = tuple(st1)
+                st1idx = state_to_idx[st1]
+
+                st2prob = self.potential(st2)
+                st2 = st2.items()
+                st2.sort()
+                st2 = tuple(st2)
+                st2idx = state_to_idx[st2]
+                if st1prob + st2prob > 0:
+                    transition[idx, st1idx] += ((1.0/ len(self.variables)) * float(st1prob)/ (st1prob + st2prob))
+                    transition[idx, st2idx] += ((1.0 / len(self.variables)) * float(st2prob)/ (st1prob + st2prob))
+                else:
+                    # stay
+                    s_idx = state_to_idx[s]
+                    transition[s_idx, st1idx] += 1.0 / len(self.variables)
+        return transition
+
+    ### compute transition matrix of a within-orbit step, for implementing
+    ### lifted MCMC
+    def orbit_transition(self):
+        states = self.gen_all_states()
+        state_to_idx = dict()
+        idx_to_state = dict()
+        for (idx, st) in enumerate(states):
+            state_to_idx[st] = idx
+            idx_to_state[idx] = st
+
+        transition = np.zeros([len(states),len(states)])
+        for (idx, s) in enumerate(states):
+            st_dict = dict(s)
+            stripped = self.strip_factors(self.graph_aut)
+            for g in stripped.list():
+                cur_s = dict()
+                for cyc in g.cycle_tuples(singletons=True):
+                    for i, var in enumerate(cyc):
+                        cur_s[var] = st_dict[cyc[(i + 1) % len(cyc)]]
+                st = cur_s.items()
+                st.sort()
+                st = tuple(st)
+
+                new_idx = state_to_idx[st]
+                transition[idx, new_idx] += 1.0 / self.graph_aut_order
+        return transition
+
+    ### computes the metropolis hastings transition matrix for a burnside
+    ### proposal of `burnsidesteps` steps
+    def burnside_mh_transition(self, burnsidesteps):
+        # now apply the metropolis correction for the transition x -> y, where
+        # each entry in `transition` contains the burnside transition
+        # probability
+        states = self.gen_all_states()
+        state_to_idx = dict()
+        idx_to_state = dict()
+        for (idx, st) in enumerate(states):
+            state_to_idx[st] = idx
+            idx_to_state[idx] = st
+
+        aut_cache = dict()
+        B = np.linalg.matrix_power(self.burnside_transition(), burnsidesteps)
+        for x in range(0, len(states)):
+            for y in range(0, len(states)):
+                st_x = idx_to_state[x]
+                part_x = self.state_to_partition(dict(st_x))
+                orbx = None
+                if st_x in aut_cache:
+                    orbx = aut_cache[st_x]
+                else:
+                    orbx = self.graph_aut_order / \
+                           self.graph.automorphism_group(partition=self.state_to_partition(dict(st_x)) + self.factors).order()
+                    aut_cache[st_x] = orbx
+
+                prx = self.potential(dict(st_x))
+                st_y = idx_to_state[y]
+                orby = None
+                if st_y in aut_cache:
+                    orby = aut_cache[st_y]
+                else:
+                    orby = self.graph_aut_order / \
+                           self.graph.automorphism_group(partition=self.state_to_partition(dict(st_y)) + self.factors).order()
+                    aut_cache[st_y] = orby
+
+                # orby = self.graph_aut_order / self.graph.automorphism_group(partition=self.state_to_partition(dict(st_y))).order()
+                pry = self.potential(dict(st_y))
+                if prx != 0.0:
+                    B[x,y] = B[x,y] * np.minimum(1, (pry * orby) / (prx * orbx))
+            # compute probability of staying in the current position
+            prob_stay = 0.0
+            for yp in range(0, len(states)):
+                prob_stay += B[x,yp]
+            prob_stay = 1.0 - prob_stay
+            B[x,x] = B[x,x] + prob_stay
+        return B
+
+    def brute_force_prob_vector(self):
+        states = self.gen_all_states()
+        state_to_idx = dict()
+        idx_to_state = dict()
+        for (idx, st) in enumerate(states):
+            state_to_idx[st] = idx
+            idx_to_state[idx] = st
+        Z = 0.0
+        for st in states:
+            Z += self.potential(dict(st))
+        # return the vector
+        vec = np.zeros(len(states))
+        for st in states:
+            vec[state_to_idx[st]] = self.potential(dict(st)) / Z
+
+        return vec
+
+    ### compute the total variation distance of the factor graph from its
+    ### stationary distribution
+    ### for each time step t, print d_tv(stationary_dist, transition_matrix^t * starting_point)
+    ### transition_matrix: describes transition probabilities between states
+    ### starting_point: initial probability vector on states
+    ### num_steps: total number of steps for which to run
+    def total_variation(self, transition_matrix, starting_point, num_steps):
+        v = self.brute_force_prob_vector()
+        T = transition_matrix
+        for i in range(1, num_steps):
+            T = np.matmul(T, transition_matrix)
+            p = starting_point.dot(T)
+            d = 0.0
+            for idx in range(0, len(v)):
+                d += abs(v[idx] - p[idx])
+            print("%s\t%s" % (i, d))
+
+    ### perform a single step of orbit jumping
+    ### returns: a pair, (the ratio of transition probabilities, new state)
+    ### n: number of burnside steps to take
+    def orbitjump(self, state, n):
+        hatx = self.burnside(state, n)
+        probx = self.potential(state)
+        probhatx = self.potential(hatx)
+        orbx = self.graph_aut_order / \
+               self.graph.automorphism_group(partition=self.state_to_partition(state) + self.factors).order()
+        orbhatx = self.graph_aut_order / \
+                  self.graph.automorphism_group(partition=self.state_to_partition(hatx) + self.factors).order()
+        try:
+            transitionprob = (probhatx * orbhatx) / (probx * orbx)
+            return (transitionprob, hatx)
+        except:
+            # divided by 0
+            return (1.0, hatx)
+
+    ### perform a standard orbital MCMC gibbs update, a la Niepert 2012
+    ### state: a state
+    ### returns: the gibbs update state
+    def orbitgibbs(self, state):
+        v = sage.misc.prandom.choice(self.variables)
+        # resample the variable
+        v_true = state.copy()
+        v_true[v] = True
+        v_false = state.copy()
+        v_false[v] = False
+        prob = None
+        try:
+            prob = self.potential(v_true) / (self.potential(v_true) + self.potential(v_false))
+        except:
+            return state # evidence was not satisfied
+        new_v = numpy.random.binomial(1, prob)
+        state[v] = new_v
+
+        # now walk along the orbit
+        g = fast_random_element(self.graph_aut)
+        # apply g to the state
+        for cyc in g:
+            fst = state[cyc[0]]
+            for idx, var in enumerate(cyc):
+                state[var] = state[cyc[(idx + 1) % len(cyc)]]
+            state[cyc[-1]] = fst
+        return state
+
+    ### draw n samples according to orbit jump MCMC with no orbital MCMC
+    ### burnsidesize: number of burnside steps to take
+    ### n: int, total number of samples to take
+    ### gamma: int, number of steps between taking orbit jumps
+    ### burn: the burn in of the chain
+    ### returns the probability of the query
+    def orbitjumpmcmc(self, n, query, burnsidesize=10, gamma=10, burn=100):
+        samples = []
+        # set up initial random state
+        cur_state = dict()
+        for v in self.variables:
+            cur_state[v] = flip()
+
+        query_count = 0.0
+        cur_step = 0
+
+        for i in range(0, n * burn):
+            if (cur_step % gamma) == 0:
+                # do a jump update
+                (ratio, new_state) = self.orbitjump(cur_state, burnsidesize)
+                # accept with transition probability
+                acceptprob = numpy.minimum(1, ratio)
+                if numpy.random.binomial(1, acceptprob):
+                    cur_state = new_state
+            else:
+                # do a gibbs update
+                cur_state = self.orbitgibbs(cur_state)
+
+            if cur_step % burn == 0:
+                if query(cur_state):
+                    query_count += 1
+            cur_step += 1
+        return query_count / n
 
 if __name__ == "__main__":
-    fg = gen_complete_pairwise_factorgraph(10)
-    print fg.partition()
-    print fg.brute_force_partition()
+    model = gen_complete_pairwise_factorgraph(6)
+    gibbs = model.gibbs_transition()
+    # print(gibbs)
+    # print(sum(gibbs))
+    within_orbit = model.orbit_transition()
+    orbitalmcmc = np.matmul(within_orbit, gibbs)
+    # unif = model.uniform_transition()
+    burnside = model.burnside_mh_transition(4)
+    M = orbitalmcmc
+
+    pv = model.brute_force_prob_vector()
+    start = np.zeros([2**len(model.variables)])
+    start[10] = 1
+    # print(np.linalg.matrix_power(M, 5))
+    print("-------------------")
+    print("pure gibbs")
+    model.total_variation(gibbs, start, 100)
+    print("------------------")
+    print("pure jump")
+    model.total_variation(burnside, start, 100)
+
+
+    # print fg.partition()
+    # print fg.brute_force_partition()

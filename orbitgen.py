@@ -1,3 +1,7 @@
+### orbit generation for Markov networks
+### all cliques are assumed to be symmetric and identical
+### this file is for experimenting; it is not what was used in the paper
+
 from sage.all import *
 from my_graphs import *
 import cProfile, pstats, StringIO
@@ -81,7 +85,7 @@ def bfs_foldrep(graph, colors, fixcolors, acc, f, orders=False):
         else:
             acc = f(acc, graph, c)
         reps.add((gcanon, (tuple(c_canon[0]), tuple(c_canon[1]))))
-        print(len(reps))
+        # print(len(reps))
         if len(c_canon[0]) + 1 <= len(colors) / 2.0:
             # if we can add more colors, try to
 
@@ -154,7 +158,7 @@ def find_representatives():
     sortby = 'cumulative'
     ps = pstats.Stats(pr, stream=s).sort_stats(sortby)
     ps.print_stats()
-    print s.getvalue()
+    # print s.getvalue()
 
 
 if __name__ == "__main__":

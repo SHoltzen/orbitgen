@@ -1,30 +1,11 @@
+### utility file for generating useful factor graphs, and graphs used
+### in the experiments
+
 from sage.all import *
 import itertools
 
 def findsubsets(S,m):
     return set(itertools.combinations(S, m))
-
-### generates a friends and smokers graph with n people
-def gen_friends_smokers(n):
-    g = graph(sparse=true)
-    # make n smoker vertices
-    smokers = [x for x in range(0,n)]
-    # connect all the smokers
-    smokeredges = findsubsets(smokers, 2)
-    # make friends
-    friends = []
-    friendedges = []
-    count = n
-    for (s1,s2) in findsubsets(smokers, 2):
-        friends += [count]
-        friendedges += [(s1, count), (s2, count)]
-        count += 1
-
-    g.add_vertices(smokers)
-    g.add_vertices(friends)
-    g.add_edges(friendedges)
-    g.add_edges(smokeredges)
-    return g
 
 ### generates a complete pairwise factor graph
 ### returns a the graph and a tuple whose first element are the variables
