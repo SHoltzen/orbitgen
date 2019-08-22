@@ -29,7 +29,7 @@ def fast_random_element(g):
 
 class MarkovModel:
     ### graph: a sage graph
-    ### variables: a list of graph vertices which correspond to variables in the factor graph
+    ### variables: a list of graph vertices which correspond to variables
     ### potential: state -> real: a function which evaluates the potential on a particular state
     ###    a state is a dictionary assigning variables to Boolean values
     def __init__(self, graph, variables, potential, order=True):
@@ -543,15 +543,7 @@ class MarkovModel:
         return supp_explored
 
 
-def gen_complete_pairwise_factorgraph(n):
-    (g, (v, factors)) = gen_complete_pairwise_factor(n)
-    def potential(state):
-        p = 0.0
-        for v in state.itervalues():
-            if v:
-                p += 1
-        return p
-    return FactorGraph(g, v, [factors], potential)
+
 
 def run_burnside():
     cur_state = dict()

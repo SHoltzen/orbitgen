@@ -28,29 +28,6 @@ def fast_random_element(g):
 
 
 class FactorGraph:
-    ### Given a group g, strips the factor generators from that group
-    ### necessary for the correctness of automorphism group order
-    def strip_factors(self, g):
-        stripped_gens = []
-        for gen in g.gens():
-            sgen = []
-            for cycle in gen.cycle_tuples(singletons=False):
-                # print "checking cycle " + str(cycle)
-                # check this cycle contains a factor
-                contains_factor = False
-                for factor in self.factors:
-                    for e in factor:
-                        # print "checking if " + str(e) + " in " + str(cycle)
-                        if e in cycle:
-                            contains_factor = True
-                if not contains_factor:
-                    # print "no factor in " + str(cycle)
-                    sgen.append(cycle)
-            stripped_gens.append(tuple(sgen))
-        print stripped_gens
-        return PermutationGroup(stripped_gens)
-
-
     ### graph: a sage graph
     ### variables: a list of graph vertices which correspond to variables in the factor graph
     ### factors: a list of list of factors; each list is a single color
@@ -59,14 +36,11 @@ class FactorGraph:
     def __init__(self, graph, variables, factors, potential):
         self.graph = graph
         self.variables = variables
-        print "variables: " + str(variables)
-        print "factors: " + str(factors)
         self.factors = factors
         self.potential = potential
         g = graph.automorphism_group(partition=[variables] + factors)
-        print g
-        self.graph_aut = self.strip_factors(g)
-        print self.graph_aut
+        self.graph_aut = g
+        # print self.graph_aut
         self.graph_aut_order = self.graph_aut.order()
 
     ### converts a variable state into a variable partition
@@ -131,7 +105,6 @@ class FactorGraph:
             c = queue.popleft()
             # TODO: turn this into a single GI call by having it return both the
             # automorphism group and the canonical form
-            print c + self.factors
             gcanon, cert = my_bliss.canonical_form(self.graph,
                                                    partition=c + self.factors,
                                                    certificate=True,
@@ -153,7 +126,7 @@ class FactorGraph:
             A, orbits = self.graph.automorphism_group(partition=c+self.factors,
                                                       orbits=True,
                                                       algorithm="bliss")
-            orbitsz = g_order / (self.strip_factors(A)).order()
+            orbitsz = g_order / A.order()
             A = None
 
             states = self.partition_to_state(c)
@@ -195,10 +168,12 @@ def gen_complete_pairwise_factorgraph(n):
             if v:
                 p += 1
         return p
-    return FactorGraph(g, v, [factors[:len(factors)/2],factors[len(factors)/2:]], potential)
+    # make half the factors different colors
+    # return FactorGraph(g, v, [factors[:len(factors)/2],factors[len(factors)/2:]], potential)
+    return FactorGraph(g, v, [factors], potential)
 
 
 if __name__ == "__main__":
-    fg = gen_complete_pairwise_factorgraph(8)
+    fg = gen_complete_pairwise_factorgraph(10)
     print fg.partition()
     print fg.brute_force_partition()
