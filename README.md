@@ -3,7 +3,7 @@
 This repository contains the implementation that performed the experiments for the 
 research paper:
 
-* Holtzen, Steven, Todd Millstein, and Guy Van den Broeck. ["Generating and
+* Steven Holtzen, Todd Millstein, and Guy Van den Broeck. ["Generating and
   Sampling Orbits for Lifted Probabilistic
   Inference."](https://arxiv.org/abs/1903.04672) Uncertainty in Artificial
   Intelligence (UAI). 2019.
@@ -46,7 +46,7 @@ To use this library:
   from the paper.
 * `my_graphs.py` contains the example factor graphs that are generated
 * `experiments.py` contains stubs for running the experiments from the paper
-* `tests.py` contains some standard test cases that illustrate usage.
+* `test.py` contains some standard test cases that illustrate usage.
 
 To execute these files, use `sage` (*not* the regular Python command). I.e.,
 run `sage test.py`. 
