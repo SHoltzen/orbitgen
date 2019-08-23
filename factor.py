@@ -197,7 +197,6 @@ class FactorGraph:
             state_to_idx[st] = idx
             idx_to_state[idx] = st
 
-        print "states_to_idx: %s" % state_to_idx
         transition = np.zeros([len(states),len(states)])
         for (idx, s) in enumerate(states):
             var_part = self.state_to_partition(dict(s))
@@ -456,7 +455,8 @@ class FactorGraph:
         return query_count / n
 
 if __name__ == "__main__":
-    model = gen_complete_pairwise_factorgraph(6)
+    model = gen_complete_pairwise_factorgraph_half(6)
+    print(model)
     gibbs = model.gibbs_transition()
     # print(gibbs)
     # print(sum(gibbs))
@@ -472,7 +472,7 @@ if __name__ == "__main__":
     # print(np.linalg.matrix_power(M, 5))
     print("-------------------")
     print("pure gibbs")
-    model.total_variation(gibbs, start, 100)
+    model.total_variation(orbitalmcmc, start, 100)
     print("------------------")
     print("pure jump")
     model.total_variation(burnside, start, 100)

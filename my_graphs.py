@@ -104,6 +104,43 @@ def gen_pigeonhole(n,m):
     return g
 
 
+def gen_pigeonhole_fg(n,m):
+    # n = holes, m = pigeons
+    g = Graph()
+    v = []
+    e = []
+    pigeon_factors = []
+    hole_factors = []
+    # generate vertices
+    for x in range(0,n):
+        for y in range(0,m):
+            v += [(x,y)]
+
+    count = 0
+    # generate edges
+    # generate fully connected graph in n
+    for x in range(0,n):
+        for y in findsubsets(range(0, m), 2):
+            count += 1
+            pigeon_factors.append(count)
+            e.append(tuple([(x, y[0]), count]))
+            e.append(tuple([count, (x, y[1])]))
+    # connect between n and m
+    for x in range(0,n-1):
+        for y in range (0,m):
+            count += 1
+            hole_factors.append(count)
+            e.append(tuple([(x, y), count]))
+            e.append(tuple([count, (((x + 1) % n), y)]))
+    g.add_vertices(v)
+    g.add_vertices(pigeon_factors)
+    g.add_vertices(hole_factors)
+    g.add_edges(e)
+    return (g, (v, [hole_factors, pigeon_factors]))
+
+
+
+
 # generates a complete graph with n vertices with some extra nodes on each
 # vertex
 def gen_complete_extra(n):
